@@ -23,7 +23,7 @@ Rs: register(source).
 
 #### opcodes
 **Register Type**
-| Instruction Code | Mnemonic | Description  | behave      |
+| Instruction Code | Mnemonic | Description  | behavior      |
 |------------------|----------|--------------|-------------|
 | 0000000000000000 | NOP      | No Operation | r0 <- r0    |
 | 00000dddsss00001 | MV d,s   | Move         | d <- s      |
@@ -34,18 +34,39 @@ Rs: register(source).
 | 00000dddsss01000 | SL d,s   | Shift Left   | d <- s << 1 |
 | 00000dddsss01001 | SR d,s   | Shift Right  | d <- s >> 1 |
 | 00000dddsss01010 | AND d,s  | AND          | d <- d & s  |
-| 00000dddsss01011 | OR d,s   | OR           | d <- d \|s  |
+| 00000dddsss01011 | OR d,s   | OR           | d <- d \| s  |
 
 **Memory Type**
-| Instruction Code | Mnemonic  | Description | behave                                                         |
+| Instruction Code | Mnemonic  | Description | behavior                                                       |
 |------------------|-----------|-------------|----------------------------------------------------------------|
 | 00000dddsss10000 | ST d, (s) | Store       | Store the content of the register ddd where indicated by sss   |
 | 00000dddsss10001 | LD d, (s) | Load        | Load the content on the address which is indicated by sss to d |
 
 **Immediate Type**
+| Instruction Code | Mnemonic  | Description          | behavior                                           |
+|------------------|-----------|----------------------|----------------------------------------------------|
+| 00100dddxxxxxxxx | ADDI d,#X | Add Immediate        | d <- d + X                                         |
+| 01010dddxxxxxxxx | ANDI d,#X | And Immediate        | d <- d & X                                         |
+| 01011dddxxxxxxxx | ORI d,#X  | Or Immediate         | d <- d \| X                                        |
+| 00001dddxxxxxxxx | LLI d,#X  | Load Lower Immediate | store the value x on register d                    |
+| 00110dddxxxxxxxx | LUI d,#X  | Load Upper Immediate | store the value x on the upper 8bits of register d |
+
+**Branch Type**
+| Instruction Code | Mnemonic | Description              | behavior                              |
+|------------------|----------|--------------------------|---------------------------------------|
+| 10000dddxxxxxxxx | BNEZ d,X | Branch on Not Equal Zero | if register d isn't 0, add X to PC    |
+| 10001dddxxxxxxxx | BEQZ d,X | Branch on Equal Zero     | if register d is 0, add X to PC       |
+| 10010dddxxxxxxxx | BMI d,X  | Branch on Minus          | if register d is negative add X to PC |
+| 10011dddxxxxxxxx | BPL d,X  | Branch on Plus           | if register d is positive add X to PC |
+
+PC: Program counter
+
+**Jump Type**
+| Instruction Code | Mnemonic | Description | behavior                       |
+|------------------|----------|-------------|--------------------------------|
+| 11000xxxxxxxxxxx | JMP X    | Jump        | Without condition, add X to PC |
+
 
 ## Asm
-An assembler written in Rust
-
-### Usage
+An assembler for this RISC16 arch written in Rust. This assmbler can generate codes both in ascii and binary.
 
