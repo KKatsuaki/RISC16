@@ -34,8 +34,3 @@ An assembler written in Rust
 
 ### Usage
 
-
-# RISC16
-# RISC16
-# RISC16
-# RISC16
