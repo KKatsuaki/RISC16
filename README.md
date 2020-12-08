@@ -25,8 +25,8 @@ Rs: register(source).
 Arithmetic Mnemonics
 | Mnemonic | code(binary) | description |
 |----------|--------------|-------------|
-| ADD      | 00100        | Addtion     |
-| SUB      | 00101        | subdract    |
+|    ADD   |     00100    |  Addtion    |
+|    SUB   |     00101    |  Subdract   |
 
 
 ## Asm
