@@ -22,12 +22,27 @@ Rd: register(destination).
 Rs: register(source).
 
 #### opcodes
-Arithmetic Mnemonics
-| Mnemonic | code(binary) | description |
-|----------|--------------|-------------|
-|    ADD   |     00100    |  Addtion    |
-|    SUB   |     00101    |  Subdract   |
+**Register Type**
+| Instruction Code | Mnemonic | Description  | behave      |
+|------------------|----------|--------------|-------------|
+| 0000000000000000 | NOP      | No Operation | r0 <- r0    |
+| 00000dddsss00001 | MV d,s   | Move         | d <- s      |
+| 00000dddsss00010 | NOT d,s  | Not          | d <- ~s     |
+| 00000dddsss00011 | XOR d,s  | Exclusive OR | d <- d ^ s  |
+| 00000dddsss00100 | ADD d,s  | Add          | d <- d + s  |
+| 00000dddsss00101 | SUB d,s  | Subtruct     | d <- d - s  |
+| 00000dddsss01000 | SL d,s   | Shift Left   | d <- s << 1 |
+| 00000dddsss01001 | SR d,s   | Shift Right  | d <- s >> 1 |
+| 00000dddsss01010 | AND d,s  | AND          | d <- d & s  |
+| 00000dddsss01011 | OR d,s   | OR           | d <- d \|s  |
 
+**Memory Type**
+| Instruction Code | Mnemonic  | Description | behave                                                         |
+|------------------|-----------|-------------|----------------------------------------------------------------|
+| 00000dddsss10000 | ST d, (s) | Store       | Store the content of the register ddd where indicated by sss   |
+| 00000dddsss10001 | LD d, (s) | Load        | Load the content on the address which is indicated by sss to d |
+
+**Immediate Type**
 
 ## Asm
 An assembler written in Rust
