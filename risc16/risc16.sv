@@ -162,25 +162,9 @@ module risc16
 	   // head of branch
 	   if(ir[15] == 1'b1) begin
 	      if (ir[14] != 1'b1) // branch
-		if (ir[7] == 1'b1)  begin
-		   sbus2[15:8] <= 8'b11111111;
-		   sbus2[7:0] <= ir[7:0];
-		end
-		else 
-		  begin
-		     sbus2[15:8] <= 8'b0;
-		     sbus2[7:0] <= ir[7:0];
-		  end
+		sbus2 <= {{8{ir[7]}},ir[7:0]};
 	      else // jmp
-		if (ir[10] == 1'b1)  begin
-		   sbus2[15:11] <= 5'b1111;
-		   sbus2[10:0] <= ir[11:0];
-		end
-		else 
-		  begin
-		     sbus2[15:11] <= 5'b0;
-		     sbus2[10:0] <= ir[10:0];
-		  end
+		sbus2 <= {{5{ir[11]}},ir[11:0]};		
 	      op <= `ADD;
    	   end
 	   else 
@@ -189,20 +173,14 @@ module risc16
 		   sbus2 <= treg2;
 		   op <= ir[3:0];
 		end else begin// other
-		   if(ir[7] == 1'b1)begin
-		      sbus2[15:8] <= 8'b11111111;
-		      sbus2[7:0] <= ir[7:0];
-		   end else begin
-		      sbus2[15:8] <= 8'b0;
-		      sbus2[7:0] <= ir[7:0] ; // immediate. other's values are don't care
-		   end
+		   sbus2 <= {{8{ir[7]}},ir[7:0]};
 		   if(ir[15] == 1'b0 && ir[14:11]!= 4'b0000) //immediate
 		     op <= ir[14:11];
 		   else
 		     op <= `THROUGH_AIN; // st value. other's value are don't care
 		end
 	     end // else: !if(ir[15] == 1'b1)
-	   
+
 	   dout <= 16'bx;
 
 	   if(ir[15] == 1'b1)begin

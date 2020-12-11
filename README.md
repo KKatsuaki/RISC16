@@ -25,16 +25,16 @@ Rs: register(source).
 **Register Type**
 | Instruction Code | Mnemonic | Description  | behavior      |
 |------------------|----------|--------------|-------------|
-| 0000000000000000 | NOP      | No Operation | r0 <- r0    |
-| 00000dddsss00001 | MV d,s   | Move         | d <- s      |
-| 00000dddsss00010 | NOT d,s  | Not          | d <- ~s     |
-| 00000dddsss00011 | XOR d,s  | Exclusive OR | d <- d ^ s  |
-| 00000dddsss00100 | ADD d,s  | Add          | d <- d + s  |
-| 00000dddsss00101 | SUB d,s  | Subtruct     | d <- d - s  |
-| 00000dddsss01000 | SL d,s   | Shift Left   | d <- s << 1 |
-| 00000dddsss01001 | SR d,s   | Shift Right  | d <- s >> 1 |
-| 00000dddsss01010 | AND d,s  | AND          | d <- d & s  |
-| 00000dddsss01011 | OR d,s   | OR           | d <- d \| s  |
+| 00000000000 00000 | NOP      | No Operation | r0 <- r0    |
+| 00000dddsss 00001 | MV d,s   | Move         | d <- s      |
+| 00000dddsss 00010 | NOT d,s  | Not          | d <- ~s     |
+| 00000dddsss 00011 | XOR d,s  | Exclusive OR | d <- d ^ s  |
+| 00000dddsss 00100 | ADD d,s  | Add          | d <- d + s  |
+| 00000dddsss 00101 | SUB d,s  | Subtruct     | d <- d - s  |
+| 00000dddsss 01000 | SL d,s   | Shift Left   | d <- s << 1 |
+| 00000dddsss 01001 | SR d,s   | Shift Right  | d <- s >> 1 |
+| 00000dddsss 01010 | AND d,s  | AND          | d <- d & s  |
+| 00000dddsss 01011 | OR d,s   | OR           | d <- d \| s  |
 
 **Memory Type**
 | Instruction Code | Mnemonic  | Description | behavior                                                       |
