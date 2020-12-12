@@ -1,7 +1,7 @@
-	LLI r3, #0x20
-	LD r0, (r3)
+	LLI r0, #0x34
+	LUI r0, #0x12
 	LLI r4, #0x22
-	LD r1, (r4)
+	LLI r1, #0x4
 	LLI r5, #0x24
 	LD r2, (r5)
 	ADD r2, r0
