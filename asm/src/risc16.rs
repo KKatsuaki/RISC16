@@ -281,8 +281,8 @@ fn handle_operand(operand : &str, bits : usize) -> Option::<u16>{
     match re_imm_bin.captures(&operand){
         Some(b) => {                                  
             let mut temp = String::from_str(b.get(1).unwrap().as_str()).unwrap();
-            temp.retain(|ch| ch != '_');                                         
-            op = u16::from_str_radix(&temp,16).unwrap();
+            temp.retain(|ch| ch != '_');
+            op = u16::from_str_radix(&temp,2).unwrap();
 	    res |= true;
         },                                            
         None => (),                                   
