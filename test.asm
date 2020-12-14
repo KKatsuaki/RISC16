@@ -13,7 +13,6 @@
 	JMP #-2
 	NOP
 	NOP
-	NOP
-	NOP
-	NOP
+	#0x1234
+	#0x4
 	NOP

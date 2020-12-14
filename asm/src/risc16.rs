@@ -35,6 +35,7 @@ pub enum Mnemonic{
     BMI,
     BPL,
     JMP,
+    DATA(u16)
 }
 
 use std::str::FromStr;
@@ -42,6 +43,7 @@ impl FromStr for Mnemonic{
     type Err = AsmError;
     fn from_str(s: &str) -> Result<Self, Self::Err> {
 	let tmp = String::from(s);
+
 	tmp.to_ascii_uppercase();
 	match tmp.as_ref(){
 	    "NOP" => Ok(NOP),
@@ -66,7 +68,12 @@ impl FromStr for Mnemonic{
 	    "BMI" => Ok(BMI),
 	    "BPL" => Ok(BPL),
 	    "JMP" => Ok(JMP),
-	    _ => Err(AsmError{})
+	    _ => {
+		match handle_operand(&tmp,16){
+		    Some(b) => Ok(DATA(b)),
+		    None => Err(AsmError{})
+		}
+	    }
 	}
     }
 }
@@ -98,6 +105,7 @@ impl Mnemonic{
 	    BMI  => 0b10010_000_00000000,
 	    BPL  => 0b10011_000_00000000,
 	    JMP  => 0b11000_00000000000,
+	    DATA(d) => *d,
 	}                 
     }
 }
@@ -163,12 +171,12 @@ impl Instruction{
 	};
 
 	let op1 = match tokens.next(){
-	    Some(s) => Some(handle_operand(s,bits)),
+	    Some(s) => handle_operand(s,bits),
 	    None => None
 	};
 	
 	let op2 = match tokens.next(){
-            Some(s) => Some(handle_operand(s,bits)),
+            Some(s) => handle_operand(s,bits),
 	    None => None              
 	};
 
@@ -238,30 +246,46 @@ pub fn conv_complement(n : i16, bits : usize) -> u16{
 }
 
 
-fn handle_operand(operand : &str, bits : usize) -> u16{
-    let re_imm_dec = regex::Regex::new(r"#(\-?[0-9]+)").unwrap();
-    let re_imm_hex = regex::Regex::new("#0x([0-9a-fA-F]+)").unwrap();
-    let re_reg = regex::Regex::new(r"\(?([rR][0-8])\)?").unwrap();
+fn handle_operand(operand : &str, bits : usize) -> Option::<u16>{
+    let re_imm_dec = regex::Regex::new(r"#(\-?[0-9_]+)").unwrap();
+    let re_imm_hex = regex::Regex::new("#0x([0-9a-fA-F_]+)").unwrap();
+    let re_reg = regex::Regex::new(r"\(?([rR][0-8_])\)?").unwrap();
+    let re_imm_bin = regex::Regex::new("#0b([0-1_]+)").unwrap();
     let mut op = 0;
+    let mut res = false;
 
     let mut operand = String::from(operand);
     operand.retain(|ch| !ch.is_whitespace());    
 
     match re_imm_dec.captures(&operand){
 	Some(b) => {
-	    let temp = b.get(1).unwrap().as_str();
+	    let mut temp = String::from_str(b.get(1).unwrap().as_str()).unwrap();
+	    temp.retain(|ch| ch != '_');
 	    let tmp : i16 = temp.parse().unwrap();
 	    op = if tmp < 0 {conv_complement(tmp, bits)}else{tmp as u16};
+	    res |= true;
 	},
 	None => (),
     }
 
     match re_imm_hex.captures(&operand){
 	Some(b) => {
-	    let tmp = b.get(1).unwrap().as_str();
-	    op = u16::from_str_radix(tmp,16).unwrap();
+            let mut temp = String::from_str(b.get(1).unwrap().as_str()).unwrap();
+            temp.retain(|ch| ch != '_');                                         
+	    op = u16::from_str_radix(&temp,16).unwrap();
+	    res |= true;
 	},
 	None => (),
+    }
+
+    match re_imm_bin.captures(&operand){
+        Some(b) => {                                  
+            let mut temp = String::from_str(b.get(1).unwrap().as_str()).unwrap();
+            temp.retain(|ch| ch != '_');                                         
+            op = u16::from_str_radix(&temp,16).unwrap();
+	    res |= true;
+        },                                            
+        None => (),                                   
     }
     
     match re_reg.captures(&operand){
@@ -270,9 +294,10 @@ fn handle_operand(operand : &str, bits : usize) -> u16{
 	    op = match reg2bin(tmp){
 		Some(s) => s,
 		None => 0,
-	    }
+	    };
+	    res |= true;
 	},
         None => (),                           
     }                                           
-    op
+    if res {Some(op)}else{None}
 }
