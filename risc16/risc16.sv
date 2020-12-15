@@ -136,6 +136,7 @@ module risc16
            oe <= 1'b1;
            we <= 1'b0;
         end
+
         RF: begin /* registor fetch */
            addr <= 16'bx;
            sbus1 <= 16'bx;
@@ -164,7 +165,7 @@ module risc16
 	      if (ir[14] != 1'b1) // branch
 		sbus2 <= {{8{ir[7]}},ir[7:0]};
 	      else // jmp
-		sbus2 <= {{5{ir[11]}},ir[11:0]};		
+		sbus2 <= {{5{ir[10]}},ir[10:0]};		
 	      op <= `ADD;
    	   end
 	   else 
@@ -188,17 +189,17 @@ module risc16
 		pc_we <= 1'b1;
 	      else begin
 		 case(ir[12:11])
-		   2'b00 : begin
+		   2'b00 : begin // BNEZ
 		      if(treg1 != 16'b0)
 			pc_we <= 1'b1;
 		      else
 			pc_we<= 1'b0;
 		   end
-		   2'b01 : begin
- 		      if(treg1 != 16'b0)
-			pc_we <= 1'b0;
+		   2'b01 : begin // BEQZ
+ 		      if(treg1 == 16'b0)
+			pc_we <= 1'b1;
 		      else
-			pc_we<= 1'b1;
+			pc_we<= 1'b0;
 		   end
 		   2'b10:begin
  		      if(treg1[15] == 1'b1)
@@ -207,7 +208,7 @@ module risc16
 			pc_we<= 1'b0;
 		   end
 		   2'b11 : begin
- 		      if(treg1[15] != 1'b1)
+ 		      if(treg1[15] == 1'b0)
 			pc_we <= 1'b1;
 		      else
 			pc_we<= 1'b0;
@@ -232,7 +233,8 @@ module risc16
 
 	   treg_we <= 1'b0;
 
-	   if((ir[15:11] == 5'b00000 && ir[4] == 1'b0) || (ir[15] == 0'b0 && ir[14:11] != 4'b0000))
+	   //if((ir[15:11] == 5'b00000 && ir[4] == 1'b0) || (ir[15] == 1'b0 && ir[14:11] != 4'b0000))
+	   if(ir[15] == 1'b0)	   
 	     reg_file_we <= 1'b1;
 	   else
 	     reg_file_we <= 1'b0;
@@ -355,7 +357,6 @@ module alu16
 	`RIGHT_SHIFT_BIN_1 : dout <= bin >> 1;
 	`AND : dout <= ain & bin;
 	`OR:dout<= ain | bin;
-	
 	default : dout <= 16'bx;
       endcase // case (op)
    end // always_comb begin

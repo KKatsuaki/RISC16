@@ -2,7 +2,7 @@
 `default_nettype none
 
 module sim_risc16();
-   localparam int     SIMULATION_CYCLES  = 100;
+   localparam int     SIMULATION_CYCLES  = 1000;
    localparam real    CLOCK_FREQ_HZ      = 25 * 10**6; // 25MHz 
    localparam real    CLOCK_PERIOD_NS    = 10**9 / CLOCK_FREQ_HZ;
    logic              clk, rst;
@@ -43,7 +43,7 @@ module sim_risc16();
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
          print();
-         if (risc16_inst.pc == 16'h01a)
+         if (risc16_inst.pc == 16'h22)
            $finish;
       end
       $finish;
