@@ -1,5 +1,5 @@
 `default_nettype none
-  typedef enum {IF, RF, EX, WB} state_t;
+typedef enum {IF, RF, EX, WB} state_t;
 `define THROUGH_AIN 4'b0000
 `define THROUGH_BIN 4'b0001
 `define NOT_B 4'b0010
@@ -24,11 +24,11 @@ module risc16
    );
    
    state_t state;
-   reg [15:0] 	       pc, ir, rdr, wdr, treg1, treg2;
+   reg [15:0]          pc, ir, rdr, wdr, treg1, treg2;
    logic [15:0]        sbus1, sbus2;                   // source buses
-   wire [15:0] 	       dbus;                           // destination bus
-   logic [3:0] 	       op;                             // ALU operation
-   wire [15:0] 	       reg_file_dout1, reg_file_dout2; // register file outputs
+   wire [15:0]         dbus;                           // destination bus
+   logic [3:0]         op;                             // ALU operation
+   wire [15:0]         reg_file_dout1, reg_file_dout2; // register file outputs
    logic               pc_we, ir_we, rdr_we, wdr_we, treg_we, reg_file_we;
 
    alu16 alu16_inst
@@ -55,18 +55,17 @@ module risc16
    always_ff @(posedge clk) begin
       if (rst)
         state <= IF;
-	else begin
-           case (state)
-             IF: state <= RF;
-             RF: state <= EX;
-             EX: if ( ir[4] == 1'b1 && ir[15:11] == 5'b00000) 
-	       // load or store instructions
-               state <= WB;
-             else
-               state <= IF;
-             WB: state <= IF;
-           endcase
-	end 
+      else begin
+         case (state)
+           IF: state <= RF;
+           RF: state <= EX;
+           EX: if ( ir[4] == 1'b1 && ir[15:11] == 5'b0) 
+             state <= WB;
+           else
+             state <= IF;
+           WB: state <= IF;
+         endcase
+      end 
    end
 
    // program counter
@@ -154,122 +153,122 @@ module risc16
         end
 
         EX: begin /* execution */
-	   addr <= treg2;
-	   if (ir[15] == 1'b1)
-	     sbus1 <= pc;
-	   else		      
-	     sbus1 <= treg1;
+           addr <= treg2;
+           if (ir[15] == 1'b1)
+             sbus1 <= pc;
+           else		      
+             sbus1 <= treg1;
 
-	   // head of branch
-	   if(ir[15] == 1'b1) begin
-	      if (ir[14] != 1'b1) // branch
-		sbus2 <= {{8{ir[7]}},ir[7:0]};
-	      else // jmp
-		sbus2 <= {{5{ir[10]}},ir[10:0]};		
-	      op <= `ADD;
+           // head of branch
+           if(ir[15] == 1'b1) begin
+              if (ir[14] != 1'b1) // branch
+	        sbus2 <= {{8{ir[7]}},ir[7:0]};
+              else // jmp
+	        sbus2 <= {{5{ir[10]}},ir[10:0]};		
+              op <= `ADD;
    	   end
-	   else 
-	     begin
-		if(ir[15:11]==5'b00000 && ir[4] == 0) begin// registor
-		   sbus2 <= treg2;
-		   op <= ir[3:0];
-		end else begin// other
-		   sbus2 <= {{8{ir[7]}},ir[7:0]};
-		   if(ir[15] == 1'b0 && ir[14:11]!= 4'b0000) //immediate
-		     op <= ir[14:11];
-		   else
-		     op <= `THROUGH_AIN; // st value. other's value are don't care
-		end
-	     end // else: !if(ir[15] == 1'b1)
+           else 
+             begin
+	        if(ir[15:11]==5'b00000 && ir[4] == 0) begin// registor
+	           sbus2 <= treg2;
+	           op <= ir[3:0];
+	        end else begin// other
+	           sbus2 <= {{8{ir[7]}},ir[7:0]};
+	           if(ir[15] == 1'b0 && ir[14:11]!= 4'b0) //immediate
+	             op <= ir[14:11];
+	           else
+	             op <= `THROUGH_AIN; // st value. other's value are don't care
+	        end
+             end // else: !if(ir[15] == 1'b1)
 
-	   dout <= 16'bx;
+           dout <= 16'bx;
 
-	   if(ir[15] == 1'b1)begin
-	      if(ir[14] == 1'b1)
-		pc_we <= 1'b1;
-	      else begin
-		 case(ir[12:11])
-		   2'b00 : begin // BNEZ
-		      if(treg1 != 16'b0)
-			pc_we <= 1'b1;
-		      else
-			pc_we<= 1'b0;
-		   end
-		   2'b01 : begin // BEQZ
+           if(ir[15] == 1'b1)begin
+              if(ir[14] == 1'b1)
+	        pc_we <= 1'b1;
+              else begin
+	         case(ir[12:11])
+	           2'b00 : begin // BNEZ
+	              if(treg1 != 16'b0)
+		        pc_we <= 1'b1;
+	              else
+		        pc_we <= 1'b0;
+	           end
+	           2'b01 : begin // BEQZ
  		      if(treg1 == 16'b0)
-			pc_we <= 1'b1;
-		      else
-			pc_we<= 1'b0;
-		   end
-		   2'b10:begin
+		        pc_we <= 1'b1;
+	              else
+		        pc_we <= 1'b0;
+	           end
+	           2'b10:begin
  		      if(treg1[15] == 1'b1)
-			pc_we <= 1'b1;
-		      else
-			pc_we<= 1'b0;
-		   end
-		   2'b11 : begin
+		        pc_we <= 1'b1;
+	              else
+		        pc_we <= 1'b0;
+	           end
+	           2'b11 : begin
  		      if(treg1[15] == 1'b0)
-			pc_we <= 1'b1;
-		      else
-			pc_we<= 1'b0;
-		   end
-		 endcase // case (ir[12:11])
-		 end // else: !if(ir[14] == 1'b1)
-	   end // if (ir[15] == 1'b1)
+		        pc_we <= 1'b1;
+	              else
+		        pc_we <= 1'b0;
+	           end
+	         endcase // case (ir[12:11])
+	      end // else: !if(ir[14] == 1'b1)
+           end // if (ir[15] == 1'b1)
 
-	   else
-	     pc_we <= 1'b0;
-	   ir_we <= 1'b0;
+           else
+             pc_we <= 1'b0;
+           ir_we <= 1'b0;
 
-	   if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b1) // if ld
-	     rdr_we = 1'b1;
-	   else
-	     rdr_we = 1'b0;
-	   
-	   if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b0) // if st
-	     wdr_we = 1'b1;
-	   else
-	     wdr_we = 1'b0;
+           if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b1) // if ld
+             rdr_we = 1'b1;
+           else
+             rdr_we = 1'b0;
+           
+           if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b0) // if st
+             wdr_we = 1'b1;
+           else
+             wdr_we = 1'b0;
 
-	   treg_we <= 1'b0;
+           treg_we <= 1'b0;
 
-	   //if((ir[15:11] == 5'b00000 && ir[4] == 1'b0) || (ir[15] == 1'b0 && ir[14:11] != 4'b0000))
-	   if(ir[15] == 1'b0)	   
-	     reg_file_we <= 1'b1;
-	   else
-	     reg_file_we <= 1'b0;
+           //if((ir[15:11] == 5'b00000 && ir[4] == 1'b0) || (ir[15] == 1'b0 && ir[14:11] != 4'b0000))
+           if(ir[15] == 1'b0)	   
+             reg_file_we <= 1'b1;
+           else
+             reg_file_we <= 1'b0;
 
-	   if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b1) // if ld
-	     oe <= 1'b1;
-	   else
-	     oe <= 1'b0;
+           if(ir[15:11] == 5'b00000 && ir[4] == 1'b1 && ir[0] == 1'b1) // if ld
+             oe <= 1'b1;
+           else
+             oe <= 1'b0;
 
-	   we <= 1'b0;
+           we <= 1'b0;
         end // case: EX
 
-	WB: begin 
+        WB: begin 
            addr <= treg2;
-	   sbus1 <= 16'bx;
-	   sbus2 <= rdr;
-	   op <= `THROUGH_BIN;
-	   dout <= wdr ;
-	   oe <= 1'b0;
-	   pc_we <= 1'b0;	      
-	   ir_we <= 1'b0;
-	   rdr_we <= 1'b0;
-	   wdr_we <= 1'b0;
-	   treg_we <= 1'b0;
-	   if(ir[0] == 1'b1) begin//ld
-	      reg_file_we <= 1'b1;
-	      we <= 1'b0;
-	   end else begin // if (ir[0]) st
-	      reg_file_we <= 1'b0;
-	      we <= 1'b1;
-	   end // else: !if(ir[0])
-	end // case: WB
-		 endcase 
-	      end
-	      endmodule
+           sbus1 <= 16'bx;
+           sbus2 <= rdr;
+           op <= `THROUGH_BIN;
+           dout <= wdr ;
+           oe <= 1'b0;
+           pc_we <= 1'b0;	      
+           ir_we <= 1'b0;
+           rdr_we <= 1'b0;
+           wdr_we <= 1'b0;
+           treg_we <= 1'b0;
+           if(ir[0] == 1'b1) begin//ld
+              reg_file_we <= 1'b1;
+              we <= 1'b0;
+           end else begin // if (ir[0]) st
+              reg_file_we <= 1'b0;
+              we <= 1'b1;
+           end // else: !if(ir[0])
+        end // case: WB
+      endcase 
+   end
+endmodule
 
 module reg_file
   (
@@ -280,10 +279,10 @@ module reg_file
    input wire          we
    );
    
-   reg [15:0] 	       register0, register1;
-   reg [15:0] 	       register2, register3;
-   reg [15:0] 	       register4, register5;
-   reg [15:0] 	       register6, register7;
+   reg [15:0]          register0, register1;
+   reg [15:0]          register2, register3;
+   reg [15:0]          register4, register5;
+   reg [15:0]          register6, register7;
    
    always_comb begin
       case (addr1)
@@ -339,25 +338,25 @@ endmodule
 
 module alu16
   (
-   input wire [15:0] ain,bin,
-   input wire [3:0] op,
+   input wire [15:0]   ain,bin,
+   input wire [3:0]    op,
    output logic [15:0] dout
    );
 
    always_comb begin
       case (op)
-	`THROUGH_AIN: dout <= ain;
-	`THROUGH_BIN: dout <= bin;
-	`NOT_B: dout <= ~bin;
-	`XOR: dout <= ain ^ bin;
-	`ADD : dout <= ain + bin;
-	`SUB : dout <= ain - bin;
-	`LEFT_SHIFT_BIN_8: dout <= bin << 8;
-	`LEFT_SHIFT_BIN_1 : dout <= bin << 1;
-	`RIGHT_SHIFT_BIN_1 : dout <= bin >> 1;
-	`AND : dout <= ain & bin;
-	`OR:dout<= ain | bin;
-	default : dout <= 16'bx;
+        `THROUGH_AIN      : dout <= ain;
+        `THROUGH_BIN      : dout <= bin;
+        `NOT_B            : dout <= ~bin;
+        `XOR              : dout <= ain ^ bin;
+        `ADD              : dout <= ain + bin;
+        `SUB              : dout <= ain - bin;
+        `LEFT_SHIFT_BIN_8 : dout <= bin << 8;
+        `LEFT_SHIFT_BIN_1 : dout <= bin << 1;
+        `RIGHT_SHIFT_BIN_1: dout <= bin >> 1;
+        `AND              : dout <= ain & bin;
+        `OR               : dout <= ain | bin;
+        default           : dout <= 16'bx;
       endcase // case (op)
    end // always_comb begin
 endmodule

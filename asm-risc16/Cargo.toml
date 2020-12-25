@@ -1,5 +1,5 @@
 [package]
-name = "asm"
+name = "asm-risc16"
 version = "0.1.0"
 authors = ["KKatsuaki <kami0731mae@gmail.com>"]
 edition = "2018"
