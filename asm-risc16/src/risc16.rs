@@ -248,7 +248,7 @@ impl Instruction{
             },
 
             DataWithAddr(_) => {
-                ddd
+                op | ddd | sss
             }
 
             // Memory Type and Register Type

@@ -1,0 +1,134 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/geek_731/Workspace/github/RISC16/risc16
+valu16
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 DXx4 work 14 risc16_sv_unit 0 22 @Qi5iXA<0mM4Tz6Z9;>dk3
+Z3 !s110 1609020481
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+!i10b 1
+!s100 Ink6_QAEPceZ]9aMo[Xk;1
+IlL<gLV22DY^F9f<U_LZ=?3
+Z5 !s105 risc16_sv_unit
+S1
+R0
+Z6 w1608914782
+Z7 8risc16.sv
+Z8 Frisc16.sv
+!i122 10
+L0 339 24
+Z9 OV;L;2020.1;71
+31
+Z10 !s108 1609020481.000000
+!s107 risc16.sv|sim_risc16.sv|
+Z11 !s90 sim_risc16.sv|risc16.sv|
+!i113 1
+Z12 tCvgOpt 0
+vreg_file
+R1
+R2
+R3
+R4
+r1
+!s85 0
+!i10b 1
+!s100 :8_kg0UI>QZNN8W1LOaF;1
+I@M]>QoGaNOjL=DLi5A6TE1
+R5
+S1
+R0
+R6
+R7
+R8
+!i122 10
+L0 273 64
+R9
+31
+R10
+Z13 !s107 risc16.sv|sim_risc16.sv|
+R11
+!i113 1
+R12
+vrisc16
+R1
+R2
+R3
+R4
+r1
+!s85 0
+!i10b 1
+!s100 zFWl19bh5lN_ab;7^GkzX2
+IU;T20fHVkYfDPidEgP<h_2
+R5
+S1
+R0
+R6
+R7
+R8
+!i122 10
+L0 15 257
+R9
+31
+R10
+R13
+R11
+!i113 1
+R12
+Xrisc16_sv_unit
+R1
+R3
+V@Qi5iXA<0mM4Tz6Z9;>dk3
+r1
+!s85 0
+!i10b 1
+!s100 >0hgC@V0kg[E5ZjPc@0Ig3
+I@Qi5iXA<0mM4Tz6Z9;>dk3
+!i103 1
+S1
+R0
+R6
+R7
+R8
+!i122 10
+L0 2 0
+R9
+31
+R10
+R13
+R11
+!i113 1
+R12
+vsim_risc16
+R1
+R3
+!i10b 1
+!s100 RA1R?=H0XkNkl7zDYiS]k1
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IPLnN<H=5JQ^jblaTi?U>23
+R4
+S1
+R0
+w1609004298
+8sim_risc16.sv
+Fsim_risc16.sv
+!i122 10
+L0 4 82
+R9
+r1
+!s85 0
+31
+R10
+R13
+R11
+!i113 1
+R12

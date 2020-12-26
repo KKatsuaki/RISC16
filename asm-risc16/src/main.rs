@@ -27,7 +27,7 @@ fn main() -> Result::<()>{
         for line in lines{
             if line.len() > 0{
                 let code = Instruction::asm2inst(line.as_ref());
-                let disp = format!("{} // {}",code.in_ascii(&mut offset),code);
+                let disp = format!("{}",code.in_ascii(&mut offset));
                 println!("{}",disp)
             }
         }
@@ -37,7 +37,7 @@ fn main() -> Result::<()>{
         for line in lines{                                                     
             if line.len() > 0{                                                 
                 let code = Instruction::asm2inst(line.as_ref());               
-                let disp = format!("{} // {}\n",code.in_ascii(&mut offset),code);
+                let disp = format!("{}\n",code.in_ascii(&mut offset));
                 out_file.write(disp.as_bytes())?;
             }                                                                  
         }                                                                      
