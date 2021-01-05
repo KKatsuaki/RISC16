@@ -166,102 +166,106 @@ module risc16p
 
    always_comb begin // alu_ain, alu_bin, alu_op, dout, doe, dwe
       /* revise here
-       |reg       |ST      |LD|IMM         |BR and JMP
+              |reg       |ST      |LD|IMM         |BR and JMP
        alu_ain|rf_treg1  |x       |x |rf_treg1    |rf_pc       
        alu_bin|rf_treg2  |x       |x |rf_immediate|rf_immediate
        alu_op |rf_ir[3:0]|x       |x |rf_ir[14:11]|`ADD        
-       dout   |x         |rf_treg1|x |x           |x           
+       ddout  |x         |rf_treg1|x |x           |x           
        doe    |0         |0       |1 |0           |0           
        dwe    |0         |1       |0 |0           |0           
        */
-      if(rf_ir[15] == 1b'0)  begin // reg, mem, imm
-         if(rf_ir[14:11] == 4b'0) begin // reg and mem
-            alu_ain = rf_treg1;
-            alu_bin = rf_treg2;
-            alu_op = rf_ir[3:0];
-            dout = rf_treg1;
-            if(rf_ir[4] == 1b'0) begin // reg
-               doe = 1b'0;
-               dwe = 1b'0;
+      if(rf_ir[15] == 1'b0)  begin // reg, mem, imm
+         if(rf_ir[14:11] == 4'b0) begin // reg and mem
+            alu_ain <= rf_treg1;
+            alu_bin <= rf_treg2;
+            alu_op <= rf_ir[3:0];
+            ddout <= rf_treg1;
+
+            if(rf_ir[4] == 1'b0) begin  // reg
+               doe <= 1'b0;
+               dwe <= 1'b0;
             end
             else begin // mem
-               if(rf_ir[0] == 1b'0) begin //ld
-                  doe = 1b'1;
-                  dwe = 1b'0;
-               end
-               else begin // st
-                  doe = 1b'0;
-                  dwe = 1b'1;                  
-               end
-            end
-         else begin // imm
-            alu_ain = rf_treg1; 
-            alu_bin = rf_immediate; 
-            alu_op = rf_ir[14:11];
-            dout = 16b'x;
-            doe = 1b'0;
-            dwe = 1b'0;
-         end
-         end
-         else begin// br or jmp
-            alu_ain = rf_pc;
-            alu_bin = rf_immediate;
-            alu_op = `ADD;
-            doub = 16b'x;
-            doe = 0;
-            dwe = 0;
-         end
+                 if(rf_ir[0] == 1'b0) begin // st
+                    doe <= 1'b0;
+                    dwe <= 1'b1;
+                 end
+                 else begin // ld
+                    doe <= 1'b1;
+                    dwe <= 1'b0;                  
+                 end
+            end // else: !if(rf_ir[4] == 1'b0)
+         end // if (rf_ir[14:11] == 4'b0)
+         else begin // imm            
+            alu_ain <= rf_treg1; 
+            alu_bin <= rf_immediate; 
+            alu_op <= rf_ir[14:11];
+            ddout <= 16'bx;
+            doe <= 1'b0;
+            dwe <= 1'b0;
+         end // else: !if(rf_ir[14:11] == 4'b0)
+      end // if (rf_ir[15] == 1'b0)
+      else begin// br or jmp
+         alu_ain <= rf_pc;
+         alu_bin <= rf_immediate;
+         alu_op <= `ADD;
+         ddout <= 16'bx;
+         doe <= 1'b0;
+         dwe <= 1'b0;
+      end // else: !if(rf_ir[15] == 1'b0)
+   end // always_comb
+   
+   // WB (Write Back) stage
+   always_comb begin // if_pc_we, reg_file_we
+      /* revise here
+                  |reg          |ST |LD |IMM|BR                           |JMP
+       if_pc_we   |0            |0  |0  |0  |1(if satsfy *check ex_treg1) |1
+       reg_file_we|1(if not NOP)|0  |1  |1  |0                            |0
+       */
+      if(ex_ir[15] == 1'b0)  begin // reg, mem, imm
+         if_pc_we <= 1'b0;
+         if(ex_ir == 16'b0 /*NOP*/ || (ex_ir[14:11] == 4'b0 && ex_ir[4] == 1'b1 && ex_ir[0] == 1'b0) /*ST*/)
+           reg_file_we <= 1'b0;
+         else
+           reg_file_we <= 1'b1;
       end
-      
-      // WB (Write Back) stage
-      always_comb begin // if_pc_we, reg_file_we
-         /* revise here
-          |reg          |ST |LD |IMM|BR                           |JMP
-          if_pc_we   |0            |0  |0  |0  |1(if satsfy *check ex_treg1) |1
-          reg_file_we|1(if not NOP)|0  |1  |1  |0                            |0
-          */
-         if(rf_ir[15] == 1b'0)  begin // reg, mem, imm
-            if_pc_we = 1b'0;
-            if(ex_ir == 16h'0 /*NOP*/ || (ex_ir[14:11] == 4b'0 && ex_ir[4:0] == 5b'10001) /*LD*/)
-              reg_file_we = 1b'0;
-            else
-              reg_file_we = 1b'1;
-         end
-         else begin // BR and JMP
-            reg_file_we = 1b'0;
-            if(ex_ir[14] == 1b'1)
-              if_pc_we=1b'1;
-            else begin
-               case(ex_ir[12:11])
-                 2'b00 : begin // BNEZ   
-                    if(ex_treg1 != 16'b0)   
-                      if_pc_we <= 1'b1;     
-                    else                 
-                      if_pc_we <= 1'b0;     
-                 end                     
-                 2'b01 : begin // BEQZ   
-                    if(ex_treg1 == 16'b0)   
-                      if_pc_we <= 1'b1;     
-                    else                 
-                      if_pc_we <= 1'b0;     
-                 end                     
-                 2'b10:begin             
-                    if(ex_treg1[15] == 1'b1)
-                      if_pc_we <= 1'b1;     
-                    else                 
-                      if_pc_we <= 1'b0;     
-                 end                     
-                 2'b11 : begin           
-                    if(ex_treg1[15] == 1'b0)
-                      if_pc_we <= 1'b1;     
-                    else                 
-                      if_pc_we <= 1'b0;     
-                 end                     
-               endcase // case (ex_ir[12:11])
-            end
-         end
-      end
-endmodule
+      else begin // BR and JMP
+         reg_file_we <= 1'b0;
+         
+         if(ex_ir[14] == 1'b1) //JMP
+           if_pc_we <= 1'b1;
+         else begin
+            case(ex_ir[12:11])
+              2'b00 : begin // BNEZ   
+                 if(ex_treg1 != 16'b0)   
+                   if_pc_we <= 1'b1;     
+                 else                 
+                   if_pc_we <= 1'b0;     
+              end                     
+              2'b01 : begin // BEQZ   
+                 if(ex_treg1 == 16'b0)   
+                   if_pc_we <= 1'b1;     
+                 else                 
+                   if_pc_we <= 1'b0;     
+              end                     
+              2'b10:begin             
+                 if(ex_treg1[15] == 1'b1)
+                   if_pc_we <= 1'b1;     
+                 else                 
+                   if_pc_we <= 1'b0;     
+              end                     
+              2'b11 : begin           
+                 if(ex_treg1[15] == 1'b0)
+                   if_pc_we <= 1'b1;     
+                 else                 
+                   if_pc_we <= 1'b0;     
+              end                     
+            endcase // case (ex_ir[12:11])
+         end // else: !if(ex_ir[14] == 1'b1)
+      end // else: !if(rf_ir[15] == 1'b0)
+   end // always_comb 
+endmodule // risc16p
+
 
 module reg_file
   (
