@@ -123,12 +123,12 @@ module risc16
         IF: begin /* instruction fetch */
            addr <= pc;
            sbus1 <= pc;
-           sbus2 <= 16'h0002;
+           sbus2 <= 16'h2;
            op <= `ADD;
-           dout <= 16'bx;
+           dout <= 16'b0;
            pc_we <= 1'b1;
            ir_we <= 1'b1;
-           rdr_we <= 1'b0;
+           rdr_we <= 1'b0;           
            wdr_we <= 1'b0;
            treg_we <= 1'b0;
            reg_file_we <= 1'b0;
@@ -233,7 +233,7 @@ module risc16
            treg_we <= 1'b0;
 
            //if((ir[15:11] == 5'b00000 && ir[4] == 1'b0) || (ir[15] == 1'b0 && ir[14:11] != 4'b0000))
-           if(ir[15] == 1'b0)	   
+             if(ir[15] == 1'b0)	   
              reg_file_we <= 1'b1;
            else
              reg_file_we <= 1'b0;
