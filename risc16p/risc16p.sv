@@ -1,8 +1,16 @@
-`default_nettype none
+`default_nettype none                 
+`define THROUGH_AIN 4'b0000           
+`define THROUGH_BIN 4'b0001           
+`define NOT_B 4'b0010                 
+`define XOR 4'b0011                   
+`define ADD 4'b0100                   
+`define SUB 4'b0101                   
+`define LEFT_SHIFT_BIN_8 4'b0110      
+`define LEFT_SHIFT_BIN_1 4'b1000      
+`define RIGHT_SHIFT_BIN_1 4'b1001     
+`define AND 4'b1010                   
+`define OR 4'b1011                    
 
-`define ALU_THROUGH_AIN  4'b0000
-...
-  
 module risc16p
   (
    input wire          clk,
@@ -87,7 +95,7 @@ module risc16p
         rf_immediate <= 16'd0;
       else begin
          if (if_ir[15] == 1'b0) begin // Register, Memory, or Immediate type
-            if (if_ir[14:11] == `ALU_ADD) begin // ADDI
+            if (if_ir[14:11] == `ADD) begin // ADDI
                if (if_ir[7] == 1'b0) // sign extension
                  rf_immediate <= {8'h00, if_ir[7:0]};
                else
@@ -155,15 +163,104 @@ module risc16p
    end
 
    assign daddr = rf_treg2;
-    
+
    always_comb begin // alu_ain, alu_bin, alu_op, dout, doe, dwe
-      ...
-   end
-   
-   // WB (Write Back) stage
-   always_comb begin // if_pc_we, reg_file_we
-     ...
-   end
+      /* revise here
+       |reg       |ST      |LD|IMM         |BR and JMP
+       alu_ain|rf_treg1  |x       |x |rf_treg1    |rf_pc       
+       alu_bin|rf_treg2  |x       |x |rf_immediate|rf_immediate
+       alu_op |rf_ir[3:0]|x       |x |rf_ir[14:11]|`ADD        
+       dout   |x         |rf_treg1|x |x           |x           
+       doe    |0         |0       |1 |0           |0           
+       dwe    |0         |1       |0 |0           |0           
+       */
+      if(rf_ir[15] == 1b'0)  begin // reg, mem, imm
+         if(rf_ir[14:11] == 4b'0) begin // reg and mem
+            alu_ain = rf_treg1;
+            alu_bin = rf_treg2;
+            alu_op = rf_ir[3:0];
+            dout = rf_treg1;
+            if(rf_ir[4] == 1b'0) begin // reg
+               doe = 1b'0;
+               dwe = 1b'0;
+            end
+            else begin // mem
+               if(rf_ir[0] == 1b'0) begin //ld
+                  doe = 1b'1;
+                  dwe = 1b'0;
+               end
+               else begin // st
+                  doe = 1b'0;
+                  dwe = 1b'1;                  
+               end
+            end
+         else begin // imm
+            alu_ain = rf_treg1; 
+            alu_bin = rf_immediate; 
+            alu_op = rf_ir[14:11];
+            dout = 16b'x;
+            doe = 1b'0;
+            dwe = 1b'0;
+         end
+         end
+         else begin// br or jmp
+            alu_ain = rf_pc;
+            alu_bin = rf_immediate;
+            alu_op = `ADD;
+            doub = 16b'x;
+            doe = 0;
+            dwe = 0;
+         end
+      end
+      
+      // WB (Write Back) stage
+      always_comb begin // if_pc_we, reg_file_we
+         /* revise here
+          |reg          |ST |LD |IMM|BR                           |JMP
+          if_pc_we   |0            |0  |0  |0  |1(if satsfy *check ex_treg1) |1
+          reg_file_we|1(if not NOP)|0  |1  |1  |0                            |0
+          */
+         if(rf_ir[15] == 1b'0)  begin // reg, mem, imm
+            if_pc_we = 1b'0;
+            if(ex_ir == 16h'0 /*NOP*/ || (ex_ir[14:11] == 4b'0 && ex_ir[4:0] == 5b'10001) /*LD*/)
+              reg_file_we = 1b'0;
+            else
+              reg_file_we = 1b'1;
+         end
+         else begin // BR and JMP
+            reg_file_we = 1b'0;
+            if(ex_ir[14] == 1b'1)
+              if_pc_we=1b'1;
+            else begin
+               case(ex_ir[12:11])
+                 2'b00 : begin // BNEZ   
+                    if(ex_treg1 != 16'b0)   
+                      if_pc_we <= 1'b1;     
+                    else                 
+                      if_pc_we <= 1'b0;     
+                 end                     
+                 2'b01 : begin // BEQZ   
+                    if(ex_treg1 == 16'b0)   
+                      if_pc_we <= 1'b1;     
+                    else                 
+                      if_pc_we <= 1'b0;     
+                 end                     
+                 2'b10:begin             
+                    if(ex_treg1[15] == 1'b1)
+                      if_pc_we <= 1'b1;     
+                    else                 
+                      if_pc_we <= 1'b0;     
+                 end                     
+                 2'b11 : begin           
+                    if(ex_treg1[15] == 1'b0)
+                      if_pc_we <= 1'b1;     
+                    else                 
+                      if_pc_we <= 1'b0;     
+                 end                     
+               endcase // case (ex_ir[12:11])
+            end
+         end
+      end
 endmodule
 
 module reg_file
@@ -231,6 +328,28 @@ module reg_file
      end
 endmodule 
 
-...
-
+module alu16                                  
+  (                                           
+                                              input wire [15:0]   ain,bin, 
+                                              input wire [3:0]    op, 
+                                              output logic [15:0] dout                   
+                                              );                                         
+   
+   always_comb begin                          
+      case (op)                               
+        `THROUGH_AIN      : dout <= ain;      
+        `THROUGH_BIN      : dout <= bin;      
+        `NOT_B            : dout <= ~bin;     
+        `XOR              : dout <= ain ^ bin;
+        `ADD              : dout <= ain + bin;
+        `SUB              : dout <= ain - bin;
+        `LEFT_SHIFT_BIN_8 : dout <= bin << 8; 
+        `LEFT_SHIFT_BIN_1 : dout <= bin << 1; 
+        `RIGHT_SHIFT_BIN_1: dout <= bin >> 1; 
+        `AND              : dout <= ain & bin;
+        `OR               : dout <= ain | bin;
+        default           : dout <= 16'bx;    
+      endcase // case (op)                    
+   end // always_comb begin                   
+endmodule                                     
 `default_nettype wire
