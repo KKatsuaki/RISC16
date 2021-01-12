@@ -14,7 +14,7 @@
         SUB r4, r5
         NOP
         NOP
-	BEQZ r4, #40
+	BEQZ r4, #42
         NOP
         NOP
         NOP
@@ -27,12 +27,12 @@
 	SUB r1, r0
         NOP
         NOP
-	BPL r1, #6
+	BPL r1, #8
         NOP
         NOP
         NOP
 	MV r0, r2
-	JMP #-48
+	JMP #-52
         NOP
         NOP
         NOP
