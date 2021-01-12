@@ -9,7 +9,7 @@
 	LD r0, (r5)
 	ADDI r5, #2
 	MV r4, r7
-	NOP
+        NOP
         NOP
         SUB r4, r5
         NOP
@@ -27,17 +27,20 @@
 	SUB r1, r0
         NOP
         NOP
-	BPL r1, #2
-	NOP
+	BPL r1, #6
+        NOP
         NOP
         NOP
 	MV r0, r2
-	JMP #-52
+	JMP #-48
         NOP
         NOP
         NOP
 	ST r0, (r6)
 	JMP #-2
+        NOP
+        NOP
+        NOP
 	@100 #0xab
 	@102 #0xff
 	@104 #0x14
