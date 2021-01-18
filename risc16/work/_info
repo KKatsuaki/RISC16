@@ -1,134 +1,118 @@
 m255
-K4
-z2
-!s11f vlog 2020.1 2020.02, Feb 28 2020
+K3
 13
-!s112 1.1
-!i10d 8192
-!i10e 25
-!i10f 100
 cModel Technology
-Z0 d/home/geek_731/Workspace/github/RISC16/risc16
+Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16
 valu16
-Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 DXx4 work 14 risc16_sv_unit 0 22 @Qi5iXA<0mM4Tz6Z9;>dk3
-Z3 !s110 1610480571
-Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
+Z2 DXx4 work 14 risc16_sv_unit 0 22 hheT?;8k;Cb6o2=5^k^:P0
+Z3 Vd6eEEC>JB>`o1OT]UBGQR0
 r1
 !s85 0
-!i10b 1
-!s100 Ink6_QAEPceZ]9aMo[Xk;1
-IlL<gLV22DY^F9f<U_LZ=?3
-Z5 !s105 risc16_sv_unit
-S1
-R0
-Z6 w1609848337
-Z7 8risc16.sv
-Z8 Frisc16.sv
-!i122 3
-L0 339 24
-Z9 OV;L;2020.1;71
 31
-Z10 !s108 1610480571.000000
-!s107 risc16.sv|sim_risc16.sv|
-Z11 !s90 sim_risc16.sv|risc16.sv|
-!i113 1
-Z12 tCvgOpt 0
+!i10b 1
+Z4 !s100 bKEoClco]1;]hm]UGFH?k0
+Z5 IIkh0d^?l[17DaAOJ4=dHC3
+Z6 !s105 risc16_sv_unit
+S1
+Z7 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16
+Z8 w1609848981
+Z9 8risc16.sv
+Z10 Frisc16.sv
+Z11 L0 339
+Z12 OV;L;10.1d;51
+Z13 !s108 1610950768.270408
+Z14 !s107 risc16.sv|sim_risc16.sv|
+Z15 !s90 sim_risc16.sv|risc16.sv|
+!s101 -O0
+o-O0
 vreg_file
 R1
 R2
-R3
-R4
+Z16 Vn_W;PQcaZaJPScl:9?YM@1
 r1
 !s85 0
+31
 !i10b 1
-!s100 :8_kg0UI>QZNN8W1LOaF;1
-I@M]>QoGaNOjL=DLi5A6TE1
-R5
-S1
-R0
+Z17 !s100 H0]eNcY[XNQTiH6BG3Gg60
+Z18 I=;2z>CLefNKcRLC7iD>g52
 R6
+S1
 R7
 R8
-!i122 3
-L0 273 64
 R9
-31
 R10
-Z13 !s107 risc16.sv|sim_risc16.sv|
-R11
-!i113 1
+Z19 L0 273
 R12
+R13
+R14
+R15
+!s101 -O0
+o-O0
 vrisc16
 R1
 R2
-R3
-R4
+Z20 Ven^`J8UR>TbCa>ok[^o5F3
 r1
 !s85 0
+31
 !i10b 1
-!s100 M8M1J<51S0:2EH72QKXHR0
-I^AY8QK<MKLG3B^5??k[@L2
-R5
-S1
-R0
+Z21 !s100 GTjkKG43jiSLHSPz>A;Wc3
+Z22 I6iVj:ik:fROm9YC;4z`<I0
 R6
+S1
 R7
 R8
-!i122 3
-L0 15 257
 R9
-31
 R10
-R13
-R11
-!i113 1
+L0 15
 R12
+R13
+R14
+R15
+!s101 -O0
+o-O0
 Xrisc16_sv_unit
 R1
-R3
-V@Qi5iXA<0mM4Tz6Z9;>dk3
+Z23 VhheT?;8k;Cb6o2=5^k^:P0
 r1
 !s85 0
+31
 !i10b 1
-!s100 >0hgC@V0kg[E5ZjPc@0Ig3
-I@Qi5iXA<0mM4Tz6Z9;>dk3
+Z24 !s100 Ckg<K8YNhMACKQ0Vh8jVk2
+Z25 IhheT?;8k;Cb6o2=5^k^:P0
 !i103 1
 S1
-R0
-R6
 R7
 R8
-!i122 3
-L0 2 0
 R9
-31
 R10
-R13
-R11
-!i113 1
+L0 2
 R12
+R13
+R14
+R15
+!s101 -O0
+o-O0
 vsim_risc16
 R1
-R3
 !i10b 1
-!s100 RA1R?=H0XkNkl7zDYiS]k1
-!s11b Dg1SIo80bB@j0V0VzS_@n1
-IPLnN<H=5JQ^jblaTi?U>23
-R4
+Z26 !s100 5^DW[Z1h3mnzMd42Bk5>[3
+Z27 INSNZz[P8SXl`gLBZT_:5G3
+Z28 Va[zDnd@]5f3HbFKiZfWI=3
+Z29 !s105 sim_risc16_sv_unit
 S1
-R0
-w1610480567
-8sim_risc16.sv
-Fsim_risc16.sv
-!i122 3
-L0 4 82
-R9
+R7
+Z30 w1610948259
+Z31 8sim_risc16.sv
+Z32 Fsim_risc16.sv
+L0 4
+R12
 r1
 !s85 0
 31
-R10
 R13
-R11
-!i113 1
-R12
+R14
+R15
+!s101 -O0
+o-O0
