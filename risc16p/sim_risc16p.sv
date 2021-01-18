@@ -61,7 +61,7 @@ module sim_risc16p();
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
          print();
-	 if (risc16p_inst.if_pc == 16'hff)
+	 if (risc16p_inst.if_pc == 16'h54)
 	   $finish;
       end
       $finish;

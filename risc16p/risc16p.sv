@@ -166,7 +166,7 @@ module risc16p
 
    always_comb begin // alu_ain, alu_bin, alu_op, dout, doe, dwe
       /* revise here
-              |reg       |ST      |LD|IMM         |BR and JMP
+       |reg       |ST      |LD|IMM         |BR and JMP
        alu_ain|rf_treg1  |x       |x |rf_treg1    |rf_pc       
        alu_bin|rf_treg2  |x       |x |rf_immediate|rf_immediate
        alu_op |rf_ir[3:0]|x       |x |rf_ir[14:11]|`ADD        
@@ -186,14 +186,14 @@ module risc16p
                dwe <= 1'b0;
             end
             else begin // mem
-                 if(rf_ir[0] == 1'b0) begin // st
-                    doe <= 1'b0;
-                    dwe <= 1'b1;
-                 end
-                 else begin // ld
-                    doe <= 1'b1;
-                    dwe <= 1'b0;                  
-                 end
+               if(rf_ir[0] == 1'b0) begin // st
+                  doe <= 1'b0;
+                  dwe <= 1'b1;
+               end
+               else begin // ld
+                  doe <= 1'b1;
+                  dwe <= 1'b0;                  
+               end
             end // else: !if(rf_ir[4] == 1'b0)
          end // if (rf_ir[14:11] == 4'b0)
          else begin // imm            
@@ -218,7 +218,7 @@ module risc16p
    // WB (Write Back) stage
    always_comb begin // if_pc_we, reg_file_we
       /* revise here
-                  |reg          |ST |LD |IMM|BR                           |JMP
+       |reg          |ST |LD |IMM|BR                           |JMP
        if_pc_we   |0            |0  |0  |0  |1(if satsfy *check ex_treg1) |1
        reg_file_we|1(if not NOP)|0  |1  |1  |0                            |0
        */
@@ -330,14 +330,15 @@ module reg_file
           3'h7: register7 <= din;
         endcase
      end
-endmodule 
+endmodule // reg_file
 
-module alu16                                  
-  (                                           
-                                              input wire [15:0]   ain,bin, 
-                                              input wire [3:0]    op, 
-                                              output logic [15:0] dout                   
-                                              );                                         
+
+module alu16
+  (
+   input wire [15:0]   ain,bin, 
+   input wire [3:0]    op, 
+   output logic [15:0] dout                   
+   );                                         
    
    always_comb begin                          
       case (op)                               
@@ -355,5 +356,6 @@ module alu16
         default           : dout <= 16'bx;    
       endcase // case (op)                    
    end // always_comb begin                   
-endmodule                                     
+endmodule // alu16
+
 `default_nettype wire

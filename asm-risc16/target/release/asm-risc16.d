@@ -1,1 +1,0 @@
-/Users/geek_731/Workspace/github/RISC16/asm-risc16/target/release/asm-risc16: /Users/geek_731/Workspace/github/RISC16/asm-risc16/src/env.rs /Users/geek_731/Workspace/github/RISC16/asm-risc16/src/main.rs /Users/geek_731/Workspace/github/RISC16/asm-risc16/src/risc16.rs
