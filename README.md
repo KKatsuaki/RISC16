@@ -70,10 +70,10 @@ PC: Program counter
 ## Asm
 An assembler for this RISC16 arch written in Rust. This assmbler generates binary in ascii text.
 
-`asm <source file>` or `asm <source file> -o <output file>`
+`asm-risc16 <source file>` or `asm <source file> -o <output file>`
 
 If you don't specify the output file, this program will generate sim_risc16.mem.
 
-The Makefile in risc16 directory is only support sim_risc16.mem for simulation.
+The Makefile in risc16 directory support sim_risc16.mem for simulation.
 
 `make sim` is the command to execute the simulation.
