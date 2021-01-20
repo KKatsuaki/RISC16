@@ -1,14 +1,11 @@
-extern crate regex;
-
 use std::io::{Read, Write};
 use std::fs::File;
 use std::error;
 
 type Result<T> = std::result::Result<T, Box<dyn error::Error>>;
 
-pub mod risc16;
-pub mod env;
-use risc16::*;
+pub mod asm;
+use asm::{env, risc16::*};
 
 fn main() -> Result::<()>{
     // get command line arguments
@@ -35,9 +32,9 @@ fn main() -> Result::<()>{
         //  files                                               
         let mut out_file = File::create(config.get_out_path())?;
         for line in lines{                                                     
-            if line.len() > 0{                                                 
+            if line.len() > 0{
                 let code = Instruction::asm2inst(line.as_ref());               
-                let disp = format!("{}\n",code.in_ascii(&mut offset));
+                let disp = format!("{} //{}\n",code.in_ascii(&mut offset),line);
                 out_file.write(disp.as_bytes())?;
             }                                                                  
         }                                                                      
@@ -45,3 +42,4 @@ fn main() -> Result::<()>{
 
     Ok(())
 }
+
