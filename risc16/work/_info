@@ -12,7 +12,7 @@ Z0 d/home/geek_731/Workspace/github/RISC16/risc16
 valu16
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
 Z2 DXx4 work 14 risc16_sv_unit 0 22 @Qi5iXA<0mM4Tz6Z9;>dk3
-Z3 !s110 1610480571
+Z3 !s110 1610484077
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
@@ -25,11 +25,11 @@ R0
 Z6 w1609848337
 Z7 8risc16.sv
 Z8 Frisc16.sv
-!i122 3
+!i122 6
 L0 339 24
 Z9 OV;L;2020.1;71
 31
-Z10 !s108 1610480571.000000
+Z10 !s108 1610484077.000000
 !s107 risc16.sv|sim_risc16.sv|
 Z11 !s90 sim_risc16.sv|risc16.sv|
 !i113 1
@@ -50,7 +50,7 @@ R0
 R6
 R7
 R8
-!i122 3
+!i122 6
 L0 273 64
 R9
 31
@@ -75,7 +75,7 @@ R0
 R6
 R7
 R8
-!i122 3
+!i122 6
 L0 15 257
 R9
 31
@@ -99,7 +99,7 @@ R0
 R6
 R7
 R8
-!i122 3
+!i122 6
 L0 2 0
 R9
 31
@@ -121,7 +121,7 @@ R0
 w1610480567
 8sim_risc16.sv
 Fsim_risc16.sv
-!i122 3
+!i122 6
 L0 4 82
 R9
 r1
