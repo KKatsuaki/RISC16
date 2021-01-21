@@ -1,13 +1,11 @@
-# vsim -c sim_risc16f -l sim_risc16f.log -wlf sim_risc16f.wlf -do "add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all" 
-# Start time: 12:07:33 on Jan 21,2021
+# vsim -do {add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all} -l sim_risc16f.log -c -wlf sim_risc16f.wlf sim_risc16f 
 # Loading sv_std.std
 # Loading work.sim_risc16f
 # Loading work.risc16f
 # Loading work.reg_file
 # Loading work.alu16
-# add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem
-# (vsim-4077) Logging very large object: /sim_risc16f/mem
-#  run -all
+# add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem 
+#  run -all 
 # ==== clock: 0 ====
 #  if_pc:0000 if_ir:0000000000000000
 #  rf_pc:0000 rf_ir:0000000000000000 rf_treg1:0000 rf_treg2:0000 rf_immediate:0000
@@ -299,5 +297,3 @@
 # 
 # ** Note: $finish    : sim_risc16f.sv(65)
 #    Time: 680 ns  Iteration: 0  Instance: /sim_risc16f
-# End time: 12:07:33 on Jan 21,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0

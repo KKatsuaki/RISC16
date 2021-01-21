@@ -1,131 +1,93 @@
 m255
-K4
-z2
-!s11f vlog 2020.1 2020.02, Feb 28 2020
+K3
 13
-!s112 1.1
-!i10d 8192
-!i10e 25
-!i10f 100
 cModel Technology
-Z0 d/home/geek_731/Workspace/github/RISC16/risc16f
+Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16f
 valu16
-Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1611198453
+Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
 !i10b 1
-!s100 OI8`:<B=Rn_m=N2RI<Mo?1
-Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-ISh3lG]eQYPe2T<71I>]=B1
-Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s100 7ee3dDS<0o:WDPdb_b<Zf3
+IdB>oSBZCf_S]TBk<^T?_J1
+Vd6eEEC>JB>`o1OT]UBGQR0
+Z2 !s105 risc16f_sv_unit
 S1
-R0
-Z5 w1611198388
-Z6 8risc16f.sv
-Z7 Frisc16f.sv
-!i122 18
-L0 357 24
-Z8 OV;L;2020.1;71
+Z3 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16f
+Z4 w1611206688
+Z5 8risc16f.sv
+Z6 Frisc16f.sv
+L0 357
+Z7 OV;L;10.1d;51
 r1
 !s85 0
 31
-Z9 !s108 1611198453.000000
-Z10 !s107 risc16f.sv|sim_risc16f.sv|
-Z11 !s90 sim_risc16f.sv|risc16f.sv|
-!i113 1
-Z12 tCvgOpt 0
+Z8 !s108 1611206911.301817
+Z9 !s107 risc16f.sv|sim_risc16f.sv|
+Z10 !s90 sim_risc16f.sv|risc16f.sv|
+!s101 -O0
+o-O0
 vreg_file
 R1
-R2
 !i10b 1
-!s100 nhnzODa=YY_Mb:c9joood3
-R3
-IzWMb^eLa22GZXT8YakM4a3
-R4
+!s100 jDWYm>X1iI=LGlaYWK3]M3
+I`li_SiCQY2;[SULFZD5102
+V]dOlhBM^R4i;CYM]kUSZc3
+R2
 S1
-R0
+R3
+R4
 R5
 R6
+L0 291
 R7
-!i122 18
-L0 291 64
-R8
 r1
 !s85 0
 31
+R8
 R9
 R10
-R11
-!i113 1
-R12
+!s101 -O0
+o-O0
 vrisc16f
 R1
-R2
 !i10b 1
-!s100 XYLM_ELU^z`jT]9NhT0CI2
-R3
-I<=4]402D[5dXkb`b=>?lm3
-R4
+!s100 Q0Q:NfT0:EZ5S2f<9i5H?0
+I[N1azgDjV0MJ8>bI]Y:hY0
+VeGz<abOVoW3dGkjdY5KNN0
+R2
 S1
-R0
+R3
+R4
 R5
 R6
+L0 14
 R7
-!i122 18
-Z13 L0 14 275
-R8
 r1
 !s85 0
 31
+R8
 R9
 R10
-R11
-!i113 1
-R12
-vrisc16p
-R1
-!s110 1611170351
-!i10b 1
-!s100 0>@<KVU9FO5MGRYV[AcEe1
-R3
-IYe>9hALRmdo=47MQlKJ6W3
-R4
-S1
-R0
-w1611170327
-R6
-R7
-!i122 0
-R13
-R8
-r1
-!s85 0
-31
-!s108 1611170351.000000
-R10
-R11
-!i113 1
-R12
+!s101 -O0
+o-O0
 vsim_risc16f
 R1
-R2
 !i10b 1
-!s100 k72M3ZJ]Ef@Y?^bIk:BRZ1
-R3
-IOl0@5G1?0YK[BH:obzn:U0
-R4
+!s100 l3h0HfY8L4JQHFJze26Ik1
+I[gG>]d^aSa7>YMQL_75C20
+VBb1KCokUFb6JM_7ea6L2@0
+!s105 sim_risc16f_sv_unit
 S1
-R0
-w1611171022
+R3
+R4
 8sim_risc16f.sv
 Fsim_risc16f.sv
-!i122 18
-L0 4 110
-R8
+L0 4
+R7
 r1
 !s85 0
 31
+R8
 R9
 R10
-R11
-!i113 1
-R12
+!s101 -O0
+o-O0
