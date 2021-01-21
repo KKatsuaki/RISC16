@@ -105,9 +105,11 @@ sim: $(SIM_WORK)
 	asm-risc16 ./test3.asm -o $(SIM_TOP).mem
 	vlog $(SIM_FILE) $(DESIGN).sv
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
-	echo upload to github
+
+push:	sim
+	echo upload to github						  
 	@cd .. && git add -A && git commit -m "update" && git push && cd -
-	done
+	echo done
 
 check: $(CHECKER)
 	./$(CHECKER) sim_$(DESIGN).log
