@@ -1,3 +1,5 @@
+extern crate regex;
+
 use std::io::{Read, Write};
 use std::fs::File;
 use std::error;
