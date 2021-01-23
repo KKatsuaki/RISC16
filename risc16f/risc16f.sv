@@ -27,8 +27,8 @@ module risc16f
 
    reg [15:0]          if_pc, if_ir;
    reg [15:0]          rf_pc, rf_ir, rf_immediate, rf_treg1, rf_treg2, ex_treg1;
-   reg [15:0]          ex_ir, ex_result;
-   logic [15:0]        alu_ain, alu_bin, alu_dout, ex_forwarding;
+   reg [15:0]          ex_ir, ex_result, ex_forwarding;
+   logic [15:0]        alu_ain, alu_bin, alu_dout;
    logic [3:0]         alu_op;
    logic [15:0]        reg_file_dout1, reg_file_dout2;
    logic               reg_file_we, if_pc_we;
@@ -79,33 +79,16 @@ module risc16f
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg1 <= 16'd0;
-      else begin
-         if(rf_ir[10:8] == if_ir[10:8] && rf_ir != 16'b0 && rf_ir[15] == 1'b0 && ((rf_ir[14:11] == 4'b0 && rf_ir[4] == 1'b0) || rf_ir[14:11] != 4'b0 ))
-           rf_treg1 <= ex_forwarding;
-         else begin
-            if(ex_ir[10:8] == if_ir[10:8] && ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b10001)
-              rf_treg1 <= ex_result;
-            else
-              rf_treg1 <= reg_file_dout1;
-         end
-      end // else: !if(rst)
-   end // always_ff @ (posedge clk)
+      else 
+        rf_treg1 <= reg_file_dout1;
+   end 
 
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg2 <= 16'd0;
-      else begin                                                                                                                                         
-         if(rf_ir[10:8] == if_ir[7:5] && rf_ir != 16'b0 && rf_ir[15] == 1'b0 && ((rf_ir[14:11] == 4'b0 && rf_ir[4] == 1'b0) || rf_ir[14:11] != 4'b0 ))
-           rf_treg2 <= ex_forwarding;
-         else begin                                                                                                                                      
-            rf_treg2 <= ex_forwarding;                                                                                                                  
-            if(ex_ir[10:8] == if_ir[7:5] && ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b10001)
-              rf_treg2 <= ex_result;
-            else                                                                                                                                          
-              rf_treg2 <= reg_file_dout2;                                                                                                                 
-         end                                                                                                                                             
-      end // else: !if(rst)                                                                                                                              
-   end // always_ff @ (posedge clk)                                                                                                                      
+      else 
+        rf_treg2 <= reg_file_dout2;
+   end 
 
    always_ff @(posedge clk) begin
       if (rst)
@@ -169,7 +152,7 @@ module risc16f
    end
 
    always_comb begin
-      if(rf_ir[15:11] == 5'd0 && rf_ir[4] == 1'b1)
+      if (rf_ir[15:11] == 5'd0 && rf_ir[4] == 1'b1 && rf_ir[0] == 1'b1)
         ex_forwarding <= ddin;
       else
         ex_forwarding <= alu_dout;
@@ -351,6 +334,7 @@ module reg_file
         endcase
      end
 endmodule // reg_file
+
 
 module alu16
   (
