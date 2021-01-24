@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# vsim -c sim_risc16 -l sim_risc16.log -wlf sim_risc16.wlf -do "add wave -r /sim_risc16/risc16_inst/* /sim_risc16/mem; run -all" 
-# Start time: 05:41:18 on Jan 13,2021
-=======
 # vsim -do {add wave -r /sim_risc16/risc16_inst/* /sim_risc16/mem; run -all} -l sim_risc16.log -c -wlf sim_risc16.wlf sim_risc16 
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 # Loading sv_std.std
 # Loading work.sim_risc16
 # Loading work.risc16_sv_unit
@@ -2052,34 +2047,20 @@
 #  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
-<<<<<<< HEAD
-# ==== clock: 204 state: EX ====
-#  pc:0014 ir:0000001010110001 treg1:0123 treg2:010e rdr:0123 wdr:0000 oe:1 we:0
-#  sbus1:0123 sbus2:ffb1 dbus:0123 addr:010e din:0001 dout:xxxx led:000000
-#  regs: 0012 0111 0123 0000 0002 010e 0200 0110
-=======
 # ==== clock: 204 state: RF ====
 #  pc:0016 ir:0000000101000001 treg1:1041 treg2:010e rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0014 102d 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
 #  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
-<<<<<<< HEAD
-# ==== clock: 205 state: WB ====
-#  pc:0014 ir:0000001010110001 treg1:0123 treg2:010e rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:0001 dbus:0001 addr:010e din:xxxx dout:0000 led:000000
-#  regs: 0012 0111 0123 0000 0002 010e 0200 0110
-=======
 # ==== clock: 205 state: EX ====
 #  pc:0016 ir:0000000101000001 treg1:102d treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:102d sbus2:0012 dbus:0012 addr:0012 din:xxxx dout:xxxx led:000000
 #  regs: 0014 102d 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2087,15 +2068,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 206 state: IF ====
-<<<<<<< HEAD
-#  pc:0014 ir:0000001010110001 treg1:0123 treg2:010e rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:0014 sbus2:0002 dbus:0016 addr:0014 din:0141 dout:0000 led:000000
-#  regs: 0012 0111 0001 0000 0002 010e 0200 0110
-=======
 #  pc:0016 ir:0000000101000001 treg1:102d treg2:0012 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:0016 sbus2:0002 dbus:0018 addr:0016 din:0105 dout:0000 led:000000
 #  regs: 0014 0012 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2103,15 +2078,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 207 state: RF ====
-<<<<<<< HEAD
-#  pc:0016 ir:0000000101000001 treg1:0123 treg2:010e rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0012 0111 0001 0000 0002 010e 0200 0110
-=======
 #  pc:0018 ir:0000000100000101 treg1:102d treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0014 0012 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2119,15 +2088,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 208 state: EX ====
-<<<<<<< HEAD
-#  pc:0016 ir:0000000101000001 treg1:0111 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0111 sbus2:0001 dbus:0001 addr:0001 din:xxxx dout:xxxx led:000000
-#  regs: 0012 0111 0001 0000 0002 010e 0200 0110
-=======
 #  pc:0018 ir:0000000100000101 treg1:0012 treg2:0014 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0012 sbus2:0014 dbus:fffe addr:0014 din:xxxx dout:xxxx led:000000
 #  regs: 0014 0012 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2135,15 +2098,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 209 state: IF ====
-<<<<<<< HEAD
-#  pc:0016 ir:0000000101000001 treg1:0111 treg2:0001 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:0016 sbus2:0002 dbus:0018 addr:0016 din:0105 dout:0000 led:000000
-#  regs: 0012 0001 0001 0000 0002 010e 0200 0110
-=======
 #  pc:0018 ir:0000000100000101 treg1:0012 treg2:0014 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:0018 sbus2:0002 dbus:001a addr:0018 din:9902 dout:0000 led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2151,15 +2108,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 210 state: RF ====
-<<<<<<< HEAD
-#  pc:0018 ir:0000000100000101 treg1:0111 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0012 0001 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001a ir:1001100100000010 treg1:0012 treg2:0014 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2167,15 +2118,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 211 state: EX ====
-<<<<<<< HEAD
-#  pc:0018 ir:0000000100000101 treg1:0001 treg2:0012 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0001 sbus2:0012 dbus:ffef addr:0012 din:xxxx dout:xxxx led:000000
-#  regs: 0012 0001 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001a ir:1001100100000010 treg1:fffe treg2:0014 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:001a sbus2:0002 dbus:001c addr:0014 din:xxxx dout:xxxx led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2183,15 +2128,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 212 state: IF ====
-<<<<<<< HEAD
-#  pc:0018 ir:0000000100000101 treg1:0001 treg2:0012 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:0018 sbus2:0002 dbus:001a addr:0018 din:9902 dout:0000 led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001a ir:1001100100000010 treg1:fffe treg2:0014 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:001a sbus2:0002 dbus:001c addr:001a din:0041 dout:0000 led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2199,15 +2138,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 213 state: RF ====
-<<<<<<< HEAD
-#  pc:001a ir:1001100100000010 treg1:0001 treg2:0012 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001c ir:0000000001000001 treg1:fffe treg2:0014 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2215,15 +2148,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 214 state: EX ====
-<<<<<<< HEAD
-#  pc:001a ir:1001100100000010 treg1:ffef treg2:0012 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:001a sbus2:0002 dbus:001c addr:0012 din:xxxx dout:xxxx led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001c ir:0000000001000001 treg1:0014 treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0014 sbus2:0012 dbus:0012 addr:0012 din:xxxx dout:xxxx led:000000
 #  regs: 0014 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2231,15 +2158,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 215 state: IF ====
-<<<<<<< HEAD
-#  pc:001a ir:1001100100000010 treg1:ffef treg2:0012 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:001a sbus2:0002 dbus:001c addr:001a din:0041 dout:0000 led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001c ir:0000000001000001 treg1:0014 treg2:0012 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:001c sbus2:0002 dbus:001e addr:001c din:c7ec dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2247,15 +2168,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 216 state: RF ====
-<<<<<<< HEAD
-#  pc:001c ir:0000000001000001 treg1:ffef treg2:0012 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001e ir:1100011111101100 treg1:0014 treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2263,15 +2178,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 217 state: EX ====
-<<<<<<< HEAD
-#  pc:001c ir:0000000001000001 treg1:0012 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0012 sbus2:0001 dbus:0001 addr:0001 din:xxxx dout:xxxx led:000000
-#  regs: 0012 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:001e ir:1100011111101100 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:001e sbus2:ffec dbus:000a addr:0110 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2279,15 +2188,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 218 state: IF ====
-<<<<<<< HEAD
-#  pc:001c ir:0000000001000001 treg1:0012 treg2:0001 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:001c sbus2:0002 dbus:001e addr:001c din:c7ec dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000a ir:1100011111101100 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:000a sbus2:0002 dbus:000c addr:000a din:2502 dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2295,15 +2198,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 219 state: RF ====
-<<<<<<< HEAD
-#  pc:001e ir:1100011111101100 treg1:0012 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000c ir:0010010100000010 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2311,15 +2208,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 220 state: EX ====
-<<<<<<< HEAD
-#  pc:001e ir:1100011111101100 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:001e sbus2:ffec dbus:000a addr:0110 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000c ir:0010010100000010 treg1:010e treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:010e sbus2:0002 dbus:0110 addr:0012 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 010e 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2327,15 +2218,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 221 state: IF ====
-<<<<<<< HEAD
-#  pc:000a ir:1100011111101100 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:000a sbus2:0002 dbus:000c addr:000a din:2502 dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000c ir:0010010100000010 treg1:010e treg2:0012 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:000c sbus2:0002 dbus:000e addr:000c din:04e1 dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0002 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2343,15 +2228,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 222 state: RF ====
-<<<<<<< HEAD
-#  pc:000c ir:0010010100000010 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000e ir:0000010011100001 treg1:010e treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2359,15 +2238,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 223 state: EX ====
-<<<<<<< HEAD
-#  pc:000c ir:0010010100000010 treg1:010e treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:010e sbus2:0002 dbus:0110 addr:0001 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 010e 0200 0110
-=======
 #  pc:000e ir:0000010011100001 treg1:0002 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0002 sbus2:0110 dbus:0110 addr:0110 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0002 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2375,15 +2248,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 224 state: IF ====
-<<<<<<< HEAD
-#  pc:000c ir:0010010100000010 treg1:010e treg2:0001 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:000c sbus2:0002 dbus:000e addr:000c din:04e1 dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0002 0110 0200 0110
-=======
 #  pc:000e ir:0000010011100001 treg1:0002 treg2:0110 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:000e sbus2:0002 dbus:0010 addr:000e din:04a5 dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0110 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2391,15 +2258,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 225 state: RF ====
-<<<<<<< HEAD
-#  pc:000e ir:0000010011100001 treg1:010e treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 0110 0200 0110
-=======
 #  pc:0010 ir:0000010010100101 treg1:0002 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0110 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2407,15 +2268,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 226 state: EX ====
-<<<<<<< HEAD
-#  pc:000e ir:0000010011100001 treg1:0002 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0002 sbus2:0110 dbus:0110 addr:0110 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0002 0110 0200 0110
-=======
 #  pc:0010 ir:0000010010100101 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0110 sbus2:0110 dbus:0000 addr:0110 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0110 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2423,15 +2278,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 227 state: IF ====
-<<<<<<< HEAD
-#  pc:000e ir:0000010011100001 treg1:0002 treg2:0110 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:000e sbus2:0002 dbus:0010 addr:000e din:04a5 dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0110 0110 0200 0110
-=======
 #  pc:0010 ir:0000010010100101 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:0010 sbus2:0002 dbus:0012 addr:0010 din:8c0c dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2439,15 +2288,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 228 state: RF ====
-<<<<<<< HEAD
-#  pc:0010 ir:0000010010100101 treg1:0002 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0110 0110 0200 0110
-=======
 #  pc:0012 ir:1000110000001100 treg1:0110 treg2:0110 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2455,15 +2298,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 229 state: EX ====
-<<<<<<< HEAD
-#  pc:0010 ir:0000010010100101 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0110 sbus2:0110 dbus:0000 addr:0110 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0110 0110 0200 0110
-=======
 #  pc:0012 ir:1000110000001100 treg1:0000 treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0012 sbus2:000c dbus:001e addr:0012 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2471,15 +2308,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 230 state: IF ====
-<<<<<<< HEAD
-#  pc:0010 ir:0000010010100101 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:0010 sbus2:0002 dbus:0012 addr:0010 din:8c0c dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 #  pc:001e ir:1000110000001100 treg1:0000 treg2:0012 rdr:0012 wdr:0000 oe:1 we:0
 #  sbus1:001e sbus2:0002 dbus:0020 addr:001e din:00d0 dout:0000 led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2487,15 +2318,9 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 231 state: RF ====
-<<<<<<< HEAD
-#  pc:0012 ir:1000110000001100 treg1:0110 treg2:0110 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 #  pc:0020 ir:0000000011010000 treg1:0000 treg2:0012 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2503,96 +2328,39 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ==== clock: 232 state: EX ====
-<<<<<<< HEAD
-#  pc:0012 ir:1000110000001100 treg1:0000 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0012 sbus2:000c dbus:001e addr:0001 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-#  mem[00-07]: 36 02 37 01 5f 10 35 01
-#  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
-#  mem[10-17]: 8c 0c 02 b1 01 41 01 05
-#  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
-#  mem[20-27]: c7 fe xx xx xx xx xx xx
-# 
-# ==== clock: 233 state: IF ====
-#  pc:001e ir:1000110000001100 treg1:0000 treg2:0001 rdr:0001 wdr:0000 oe:1 we:0
-#  sbus1:001e sbus2:0002 dbus:0020 addr:001e din:00d0 dout:0000 led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-#  mem[00-07]: 36 02 37 01 5f 10 35 01
-#  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
-#  mem[10-17]: 8c 0c 02 b1 01 41 01 05
-#  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
-#  mem[20-27]: c7 fe xx xx xx xx xx xx
-# 
-# ==== clock: 234 state: RF ====
-#  pc:0020 ir:0000000011010000 treg1:0000 treg2:0001 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-#  mem[00-07]: 36 02 37 01 5f 10 35 01
-#  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
-#  mem[10-17]: 8c 0c 02 b1 01 41 01 05
-#  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
-#  mem[20-27]: c7 fe xx xx xx xx xx xx
-# 
-# ==== clock: 235 state: EX ====
-#  pc:0020 ir:0000000011010000 treg1:0001 treg2:0200 rdr:0001 wdr:0000 oe:0 we:0
-#  sbus1:0001 sbus2:ffd0 dbus:0001 addr:0200 din:xxxx dout:xxxx led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 #  pc:0020 ir:0000000011010000 treg1:0012 treg2:0200 rdr:0012 wdr:0000 oe:0 we:0
 #  sbus1:0012 sbus2:ffd0 dbus:0012 addr:0200 din:xxxx dout:xxxx led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
 #  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
-<<<<<<< HEAD
-# ==== clock: 236 state: WB ====
-#  pc:0020 ir:0000000011010000 treg1:0001 treg2:0200 rdr:0001 wdr:0001 oe:0 we:1
-#  sbus1:xxxx sbus2:0001 dbus:0001 addr:0200 din:xxxx dout:0001 led:000000
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 # ==== clock: 233 state: WB ====
 #  pc:0020 ir:0000000011010000 treg1:0012 treg2:0200 rdr:0012 wdr:0012 oe:0 we:1
 #  sbus1:xxxx sbus2:0012 dbus:0012 addr:0200 din:xxxx dout:0012 led:000000
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
 #  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
-<<<<<<< HEAD
-# ==== clock: 237 state: IF ====
-#  pc:0020 ir:0000000011010000 treg1:0001 treg2:0200 rdr:0001 wdr:0001 oe:1 we:0
-#  sbus1:0020 sbus2:0002 dbus:0022 addr:0020 din:c7fe dout:0000 led:000001
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 # ==== clock: 234 state: IF ====
 #  pc:0020 ir:0000000011010000 treg1:0012 treg2:0200 rdr:0012 wdr:0012 oe:1 we:0
 #  sbus1:0020 sbus2:0002 dbus:0022 addr:0020 din:c7fe dout:0000 led:000012
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
 #  mem[18-1f]: 99 02 00 41 c7 ec 00 d0
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
-<<<<<<< HEAD
-# ==== clock: 238 state: RF ====
-#  pc:0022 ir:1100011111111110 treg1:0001 treg2:0200 rdr:0001 wdr:0001 oe:0 we:0
-#  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000001
-#  regs: 0001 ffef 0001 0000 0000 0110 0200 0110
-=======
 # ==== clock: 235 state: RF ====
 #  pc:0022 ir:1100011111111110 treg1:0012 treg2:0200 rdr:0012 wdr:0012 oe:0 we:0
 #  sbus1:xxxx sbus2:xxxx dbus:xxxx addr:xxxx din:xxxx dout:xxxx led:000012
 #  regs: 0012 fffe 0012 0000 0000 0110 0200 0110
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 0c 02 b1 01 41 01 05
@@ -2600,10 +2368,4 @@
 #  mem[20-27]: c7 fe xx xx xx xx xx xx
 # 
 # ** Note: $finish    : sim_risc16.sv(47)
-<<<<<<< HEAD
-#    Time: 9560 ns  Iteration: 0  Instance: /sim_risc16
-# End time: 05:41:18 on Jan 13,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-=======
 #    Time: 9440 ns  Iteration: 0  Instance: /sim_risc16
->>>>>>> a9903aedf80c6879b45e4f6c5550ea079fe56677

@@ -79,15 +79,31 @@ module risc16f
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg1 <= 16'd0;
-      else 
-        rf_treg1 <= reg_file_dout1;
+      else begin
+         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b0 && ex_ir[10:8] == if_ir[10:8])// ld && src == dst (wb)
+           rf_treg1 <= ex_result;
+         else begin
+           if(if_ir != 16'b0 && rf_ir[10:8] == if_ir[10:8])
+             rf_treg1 <= ex_forwarding;
+           else
+             rf_treg1 <= reg_file_dout1;
+         end
+      end
    end 
 
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg2 <= 16'd0;
-      else 
-        rf_treg2 <= reg_file_dout2;
+      else begin
+         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b0 && ex_ir[10:8] == if_ir[7:5])// ld && src == dst (wb)
+           rf_treg2 <= ex_result;                                                                            
+         else begin                                                                                          
+           if(if_ir != 16'b0 && rf_ir[10:8] == if_ir[7:5])                                                  
+             rf_treg2 <= ex_forwarding;                                                                      
+           else                                                                                              
+             rf_treg2 <= reg_file_dout1;                                                                     
+         end                                                                                                 
+      end
    end 
 
    always_ff @(posedge clk) begin
