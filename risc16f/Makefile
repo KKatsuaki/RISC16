@@ -107,7 +107,7 @@ sim: $(SIM_WORK)
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
 push:	$(SIM_TOP).log
-	@echo upload to github						  
+	@echo uploading to github....
 	@cd .. && git add -A && git commit -m "update" && git push && cd -
 	@echo done
 
