@@ -1,3 +1,18 @@
+asm-risc16 sim_risc16f.asm -o sim_risc16f.mem
+vlog sim_risc16f.sv risc16f.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module sim_risc16f
+-- Compiling module risc16f
+-- Compiling module reg_file
+-- Compiling module alu16
+
+Top level modules:
+	sim_risc16f
+vsim -c sim_risc16f -l sim_risc16f.log -wlf sim_risc16f.wlf -do "add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all"
+Reading /opt/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+
+# 10.1d
+
 # vsim -do {add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all} -l sim_risc16f.log -c -wlf sim_risc16f.wlf sim_risc16f 
 # Loading sv_std.std
 # Loading work.sim_risc16f

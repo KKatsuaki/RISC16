@@ -1,3 +1,18 @@
+asm-risc16 sim_risc16f.asm -o sim_risc16f.mem
+vlog sim_risc16f.sv risc16f.sv
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module sim_risc16f
+-- Compiling module risc16f
+-- Compiling module reg_file
+-- Compiling module alu16
+
+Top level modules:
+	sim_risc16f
+vsim -c sim_risc16f -l sim_risc16f.log -wlf sim_risc16f.wlf -do "add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all"
+Reading /opt/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+
+# 10.1d
+
 # vsim -do {add wave -r /sim_risc16f/risc16f_inst/* /sim_risc16f/mem; run -all} -l sim_risc16f.log -c -wlf sim_risc16f.wlf sim_risc16f 
 # Loading sv_std.std
 # Loading work.sim_risc16f
@@ -1234,10 +1249,10 @@
 #  if_pc:001c if_ir:0000000101000001
 #  rf_pc:001a rf_ir:0000001010110001 rf_treg1:0111 rf_treg2:0108 rf_immediate:00b1
 #  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0108 ddin:0123 ddout:0111 doe:1 dwe:0
+#  daddr:0108 ddin:0012 ddout:0111 doe:1 dwe:0
 #  iaddr:001c idin:0105 ioe:1
 #  alu_ain:0111 alu_bin:0108 alu_op:0001 reg_file_we:0 if_pc_we:0
-#  alu_out:0108  ex_forwarding:0123
+#  alu_out:0108  ex_forwarding:0012
 #  led:000000
 #  regs: 0014 00fd 0111 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
@@ -1250,12 +1265,12 @@
 # 
 # ==== clock: 69 ====
 #  if_pc:001e if_ir:0000000100000101
-#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:00fd rf_treg2:0123 rf_immediate:0041
-#  ex_ir:0000001010110001 ex_result:0123
-#  daddr:0123 ddin:xxxx ddout:00fd doe:0 dwe:0
+#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:00fd rf_treg2:0012 rf_immediate:0041
+#  ex_ir:0000001010110001 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:00fd doe:0 dwe:0
 #  iaddr:001e idin:9908 ioe:1
-#  alu_ain:00fd alu_bin:0123 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:0123  ex_forwarding:0123
+#  alu_ain:00fd alu_bin:0012 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
 #  regs: 0014 00fd 0111 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
@@ -1268,14 +1283,14 @@
 # 
 # ==== clock: 70 ====
 #  if_pc:0020 if_ir:1001100100001000
-#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:0123 rf_treg2:0014 rf_immediate:0005
-#  ex_ir:0000000101000001 ex_result:0123
-#  daddr:0014 ddin:xxxx ddout:0123 doe:0 dwe:0
+#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:0012 rf_treg2:0014 rf_immediate:0005
+#  ex_ir:0000000101000001 ex_result:0012
+#  daddr:0014 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0020 idin:0000 ioe:1
-#  alu_ain:0123 alu_bin:0014 alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:010f  ex_forwarding:010f
+#  alu_ain:0012 alu_bin:0014 alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:fffe  ex_forwarding:fffe
 #  led:000000
-#  regs: 0014 00fd 0123 0000 0008 0108 0200 0110
+#  regs: 0014 00fd 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1286,14 +1301,14 @@
 # 
 # ==== clock: 71 ====
 #  if_pc:0022 if_ir:0000000000000000
-#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:010f rf_treg2:0014 rf_immediate:0008
-#  ex_ir:0000000100000101 ex_result:010f
+#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:fffe rf_treg2:0014 rf_immediate:0008
+#  ex_ir:0000000100000101 ex_result:fffe
 #  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
 #  iaddr:0022 idin:0000 ioe:1
 #  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
 #  alu_out:0028  ex_forwarding:0028
 #  led:000000
-#  regs: 0014 0123 0123 0000 0008 0108 0200 0110
+#  regs: 0014 0012 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1308,10 +1323,10 @@
 #  ex_ir:1001100100001000 ex_result:0028
 #  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
 #  iaddr:0024 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
 #  alu_out:0014  ex_forwarding:0014
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0014 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1321,15 +1336,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 73 ====
-#  if_pc:0028 if_ir:0000000000000000
+#  if_pc:0026 if_ir:0000000000000000
 #  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
 #  ex_ir:0000000000000000 ex_result:0014
 #  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0028 idin:c7e0 ioe:1
+#  iaddr:0026 idin:0041 ioe:1
 #  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
 #  alu_out:0014  ex_forwarding:0014
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0014 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1339,15 +1354,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 74 ====
-#  if_pc:002a if_ir:1100011111100000
-#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
+#  if_pc:0028 if_ir:0000000001000001
+#  rf_pc:0026 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
 #  ex_ir:0000000000000000 ex_result:0014
 #  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002a idin:0000 ioe:1
+#  iaddr:0028 idin:c7e0 ioe:1
 #  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
 #  alu_out:0014  ex_forwarding:0014
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0014 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1357,15 +1372,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 75 ====
-#  if_pc:002c if_ir:0000000000000000
-#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
+#  if_pc:002a if_ir:1100011111100000
+#  rf_pc:0028 rf_ir:0000000001000001 rf_treg1:0014 rf_treg2:0012 rf_immediate:0041
 #  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:002c idin:0000 ioe:1
-#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:000a  ex_forwarding:000a
+#  daddr:0012 ddin:xxxx ddout:0014 doe:0 dwe:0
+#  iaddr:002a idin:0000 ioe:1
+#  alu_ain:0014 alu_bin:0012 alu_op:0001 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0014 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1375,15 +1390,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 76 ====
-#  if_pc:002e if_ir:0000000000000000
-#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1100011111100000 ex_result:000a
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002e idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002c if_ir:0000000000000000
+#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
+#  ex_ir:0000000001000001 ex_result:0012
+#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:002c idin:0000 ioe:1
+#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:000a  ex_forwarding:000a
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0014 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1393,15 +1408,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 77 ====
-#  if_pc:000a if_ir:0000000000000000
-#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000a idin:2502 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002e if_ir:0000000000000000
+#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1100011111100000 ex_result:000a
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:002e idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1411,15 +1426,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 78 ====
-#  if_pc:000c if_ir:0010010100000010
-#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000c idin:04e1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:000a if_ir:0000000000000000
+#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000a idin:2502 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1429,15 +1444,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 79 ====
-#  if_pc:000e if_ir:0000010011100001
-#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:0108 rf_treg2:0014 rf_immediate:0002
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:000e idin:04a5 ioe:1
-#  alu_ain:0108 alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:010a  ex_forwarding:010a
+#  if_pc:000c if_ir:0010010100000010
+#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000c idin:04e1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1447,15 +1462,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 80 ====
-#  if_pc:0010 if_ir:0000010010100101
-#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0008 rf_treg2:0110 rf_immediate:00e1
-#  ex_ir:0010010100000010 ex_result:010a
-#  daddr:0110 ddin:xxxx ddout:0008 doe:0 dwe:0
-#  iaddr:0010 idin:8c1e ioe:1
-#  alu_ain:0008 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:0110  ex_forwarding:0110
+#  if_pc:000e if_ir:0000010011100001
+#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:0108 rf_treg2:0012 rf_immediate:0002
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:000e idin:04a5 ioe:1
+#  alu_ain:0108 alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
+#  alu_out:010a  ex_forwarding:010a
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 0108 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1465,15 +1480,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 81 ====
-#  if_pc:0012 if_ir:1000110000011110
-#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010a rf_immediate:00a5
-#  ex_ir:0000010011100001 ex_result:0110
-#  daddr:010a ddin:xxxx ddout:0110 doe:0 dwe:0
-#  iaddr:0012 idin:0000 ioe:1
-#  alu_ain:0110 alu_bin:010a alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:0006  ex_forwarding:0006
+#  if_pc:0010 if_ir:0000010010100101
+#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0008 rf_treg2:0110 rf_immediate:00e1
+#  ex_ir:0010010100000010 ex_result:010a
+#  daddr:0110 ddin:xxxx ddout:0008 doe:0 dwe:0
+#  iaddr:0010 idin:8c1e ioe:1
+#  alu_ain:0008 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:0110  ex_forwarding:0110
 #  led:000000
-#  regs: 0014 010f 0123 0000 0008 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 0108 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1483,15 +1498,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 82 ====
-#  if_pc:0014 if_ir:0000000000000000
-#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0006 rf_treg2:0014 rf_immediate:001e
-#  ex_ir:0000010010100101 ex_result:0006
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0014 idin:0000 ioe:1
-#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0030  ex_forwarding:0030
+#  if_pc:0012 if_ir:1000110000011110
+#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010a rf_immediate:00a5
+#  ex_ir:0000010011100001 ex_result:0110
+#  daddr:010a ddin:xxxx ddout:0110 doe:0 dwe:0
+#  iaddr:0012 idin:0000 ioe:1
+#  alu_ain:0110 alu_bin:010a alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:0006  ex_forwarding:0006
 #  led:000000
-#  regs: 0014 010f 0123 0000 0110 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0008 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1501,15 +1516,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 83 ====
-#  if_pc:0016 if_ir:0000000000000000
-#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1000110000011110 ex_result:0030
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0016 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0014 if_ir:0000000000000000
+#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0006 rf_treg2:0012 rf_immediate:001e
+#  ex_ir:0000010010100101 ex_result:0006
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0014 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0030  ex_forwarding:0030
 #  led:000000
-#  regs: 0014 010f 0123 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0110 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1519,15 +1534,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 84 ====
-#  if_pc:0018 if_ir:0000000000000000
-#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0018 idin:02b1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0016 if_ir:0000000000000000
+#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1000110000011110 ex_result:0030
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0016 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1537,15 +1552,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 85 ====
-#  if_pc:001a if_ir:0000001010110001
-#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:001a idin:0141 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0018 if_ir:0000000000000000
+#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0018 idin:02b1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1555,15 +1570,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 86 ====
-#  if_pc:001c if_ir:0000000101000001
-#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:0123 rf_treg2:010a rf_immediate:00b1
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:010a ddin:1041 ddout:0123 doe:1 dwe:0
-#  iaddr:001c idin:0105 ioe:1
-#  alu_ain:0123 alu_bin:010a alu_op:0001 reg_file_we:0 if_pc_we:0
-#  alu_out:010a  ex_forwarding:1041
+#  if_pc:001a if_ir:0000001010110001
+#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:001a idin:0141 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 010f 0123 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1573,15 +1588,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 87 ====
-#  if_pc:001e if_ir:0000000100000101
-#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:010f rf_treg2:1041 rf_immediate:0041
-#  ex_ir:0000001010110001 ex_result:1041
-#  daddr:1041 ddin:xxxx ddout:010f doe:0 dwe:0
-#  iaddr:001e idin:9908 ioe:1
-#  alu_ain:010f alu_bin:1041 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:1041  ex_forwarding:1041
+#  if_pc:001c if_ir:0000000101000001
+#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:0012 rf_treg2:010a rf_immediate:00b1
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:010a ddin:0123 ddout:0012 doe:1 dwe:0
+#  iaddr:001c idin:0105 ioe:1
+#  alu_ain:0012 alu_bin:010a alu_op:0001 reg_file_we:0 if_pc_we:0
+#  alu_out:010a  ex_forwarding:0123
 #  led:000000
-#  regs: 0014 010f 0123 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1591,15 +1606,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 88 ====
-#  if_pc:0020 if_ir:1001100100001000
-#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:1041 rf_treg2:0014 rf_immediate:0005
-#  ex_ir:0000000101000001 ex_result:1041
-#  daddr:0014 ddin:xxxx ddout:1041 doe:0 dwe:0
-#  iaddr:0020 idin:0000 ioe:1
-#  alu_ain:1041 alu_bin:0014 alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:102d  ex_forwarding:102d
+#  if_pc:001e if_ir:0000000100000101
+#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:fffe rf_treg2:0123 rf_immediate:0041
+#  ex_ir:0000001010110001 ex_result:0123
+#  daddr:0123 ddin:xxxx ddout:fffe doe:0 dwe:0
+#  iaddr:001e idin:9908 ioe:1
+#  alu_ain:fffe alu_bin:0123 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:0123  ex_forwarding:0123
 #  led:000000
-#  regs: 0014 010f 1041 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0012 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1609,15 +1624,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 89 ====
-#  if_pc:0022 if_ir:0000000000000000
-#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:102d rf_treg2:0014 rf_immediate:0008
-#  ex_ir:0000000100000101 ex_result:102d
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0022 idin:0000 ioe:1
-#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0028  ex_forwarding:0028
+#  if_pc:0020 if_ir:1001100100001000
+#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:0123 rf_treg2:0012 rf_immediate:0005
+#  ex_ir:0000000101000001 ex_result:0123
+#  daddr:0012 ddin:xxxx ddout:0123 doe:0 dwe:0
+#  iaddr:0020 idin:0000 ioe:1
+#  alu_ain:0123 alu_bin:0012 alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:0111  ex_forwarding:0111
 #  led:000000
-#  regs: 0014 1041 1041 0000 0006 010a 0200 0110
+#  regs: 0012 fffe 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1627,15 +1642,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 90 ====
-#  if_pc:0024 if_ir:0000000000000000
-#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1001100100001000 ex_result:0028
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0024 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0022 if_ir:0000000000000000
+#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:0111 rf_treg2:0012 rf_immediate:0008
+#  ex_ir:0000000100000101 ex_result:0111
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0022 idin:0000 ioe:1
+#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0028  ex_forwarding:0028
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0123 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1645,15 +1660,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 91 ====
-#  if_pc:0028 if_ir:0000000000000000
-#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0028 idin:c7e0 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0024 if_ir:0000000000000000
+#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1001100100001000 ex_result:0028
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0024 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1663,15 +1678,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 92 ====
-#  if_pc:002a if_ir:1100011111100000
-#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002a idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0028 if_ir:0000000000000000
+#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0028 idin:c7e0 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1681,15 +1696,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 93 ====
-#  if_pc:002c if_ir:0000000000000000
-#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:002c idin:0000 ioe:1
-#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:000a  ex_forwarding:000a
+#  if_pc:002a if_ir:1100011111100000
+#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:002a idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1699,15 +1714,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 94 ====
-#  if_pc:002e if_ir:0000000000000000
-#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1100011111100000 ex_result:000a
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002e idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002c if_ir:0000000000000000
+#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:002c idin:0000 ioe:1
+#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
+#  alu_out:000a  ex_forwarding:000a
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1717,15 +1732,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 95 ====
-#  if_pc:000a if_ir:0000000000000000
-#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000a idin:2502 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002e if_ir:0000000000000000
+#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1100011111100000 ex_result:000a
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:002e idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1735,15 +1750,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 96 ====
-#  if_pc:000c if_ir:0010010100000010
-#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000c idin:04e1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:000a if_ir:0000000000000000
+#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000a idin:2502 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1753,15 +1768,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 97 ====
-#  if_pc:000e if_ir:0000010011100001
-#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010a rf_treg2:0014 rf_immediate:0002
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:000e idin:04a5 ioe:1
-#  alu_ain:010a alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:010c  ex_forwarding:010c
+#  if_pc:000c if_ir:0010010100000010
+#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000c idin:04e1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1771,15 +1786,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 98 ====
-#  if_pc:0010 if_ir:0000010010100101
-#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0006 rf_treg2:0110 rf_immediate:00e1
-#  ex_ir:0010010100000010 ex_result:010c
-#  daddr:0110 ddin:xxxx ddout:0006 doe:0 dwe:0
-#  iaddr:0010 idin:8c1e ioe:1
-#  alu_ain:0006 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:0110  ex_forwarding:0110
+#  if_pc:000e if_ir:0000010011100001
+#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010a rf_treg2:0012 rf_immediate:0002
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:000e idin:04a5 ioe:1
+#  alu_ain:010a alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
+#  alu_out:010c  ex_forwarding:010c
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010a 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1789,15 +1804,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 99 ====
-#  if_pc:0012 if_ir:1000110000011110
-#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010c rf_immediate:00a5
-#  ex_ir:0000010011100001 ex_result:0110
-#  daddr:010c ddin:xxxx ddout:0110 doe:0 dwe:0
-#  iaddr:0012 idin:0000 ioe:1
-#  alu_ain:0110 alu_bin:010c alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:0004  ex_forwarding:0004
+#  if_pc:0010 if_ir:0000010010100101
+#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0006 rf_treg2:0110 rf_immediate:00e1
+#  ex_ir:0010010100000010 ex_result:010c
+#  daddr:0110 ddin:xxxx ddout:0006 doe:0 dwe:0
+#  iaddr:0010 idin:8c1e ioe:1
+#  alu_ain:0006 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:0110  ex_forwarding:0110
 #  led:000000
-#  regs: 0014 102d 1041 0000 0006 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010a 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1807,15 +1822,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 100 ====
-#  if_pc:0014 if_ir:0000000000000000
-#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0004 rf_treg2:0014 rf_immediate:001e
-#  ex_ir:0000010010100101 ex_result:0004
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0014 idin:0000 ioe:1
-#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0030  ex_forwarding:0030
+#  if_pc:0012 if_ir:1000110000011110
+#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010c rf_immediate:00a5
+#  ex_ir:0000010011100001 ex_result:0110
+#  daddr:010c ddin:xxxx ddout:0110 doe:0 dwe:0
+#  iaddr:0012 idin:0000 ioe:1
+#  alu_ain:0110 alu_bin:010c alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:0004  ex_forwarding:0004
 #  led:000000
-#  regs: 0014 102d 1041 0000 0110 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0006 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1825,15 +1840,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 101 ====
-#  if_pc:0016 if_ir:0000000000000000
-#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1000110000011110 ex_result:0030
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0016 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0014 if_ir:0000000000000000
+#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0004 rf_treg2:0012 rf_immediate:001e
+#  ex_ir:0000010010100101 ex_result:0004
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0014 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0030  ex_forwarding:0030
 #  led:000000
-#  regs: 0014 102d 1041 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0110 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1843,15 +1858,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 102 ====
-#  if_pc:0018 if_ir:0000000000000000
-#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0018 idin:02b1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0016 if_ir:0000000000000000
+#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1000110000011110 ex_result:0030
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0016 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1861,15 +1876,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 103 ====
-#  if_pc:001a if_ir:0000001010110001
-#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:001a idin:0141 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0018 if_ir:0000000000000000
+#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0018 idin:02b1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1879,15 +1894,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 104 ====
-#  if_pc:001c if_ir:0000000101000001
-#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:1041 rf_treg2:010c rf_immediate:00b1
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:010c ddin:00ff ddout:1041 doe:1 dwe:0
-#  iaddr:001c idin:0105 ioe:1
-#  alu_ain:1041 alu_bin:010c alu_op:0001 reg_file_we:0 if_pc_we:0
-#  alu_out:010c  ex_forwarding:00ff
+#  if_pc:001a if_ir:0000001010110001
+#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:001a idin:0141 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 102d 1041 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1897,15 +1912,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 105 ====
-#  if_pc:001e if_ir:0000000100000101
-#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:102d rf_treg2:00ff rf_immediate:0041
-#  ex_ir:0000001010110001 ex_result:00ff
-#  daddr:00ff ddin:xxxx ddout:102d doe:0 dwe:0
-#  iaddr:001e idin:9908 ioe:1
-#  alu_ain:102d alu_bin:00ff alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:00ff  ex_forwarding:00ff
+#  if_pc:001c if_ir:0000000101000001
+#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:0123 rf_treg2:010c rf_immediate:00b1
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:010c ddin:1041 ddout:0123 doe:1 dwe:0
+#  iaddr:001c idin:0105 ioe:1
+#  alu_ain:0123 alu_bin:010c alu_op:0001 reg_file_we:0 if_pc_we:0
+#  alu_out:010c  ex_forwarding:1041
 #  led:000000
-#  regs: 0014 102d 1041 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1915,15 +1930,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 106 ====
-#  if_pc:0020 if_ir:1001100100001000
-#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:00ff rf_treg2:0014 rf_immediate:0005
-#  ex_ir:0000000101000001 ex_result:00ff
-#  daddr:0014 ddin:xxxx ddout:00ff doe:0 dwe:0
-#  iaddr:0020 idin:0000 ioe:1
-#  alu_ain:00ff alu_bin:0014 alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:00eb  ex_forwarding:00eb
+#  if_pc:001e if_ir:0000000100000101
+#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:0111 rf_treg2:1041 rf_immediate:0041
+#  ex_ir:0000001010110001 ex_result:1041
+#  daddr:1041 ddin:xxxx ddout:0111 doe:0 dwe:0
+#  iaddr:001e idin:9908 ioe:1
+#  alu_ain:0111 alu_bin:1041 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:1041  ex_forwarding:1041
 #  led:000000
-#  regs: 0014 102d 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 0111 0123 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1933,15 +1948,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 107 ====
-#  if_pc:0022 if_ir:0000000000000000
-#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:00eb rf_treg2:0014 rf_immediate:0008
-#  ex_ir:0000000100000101 ex_result:00eb
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0022 idin:0000 ioe:1
-#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0028  ex_forwarding:0028
+#  if_pc:0020 if_ir:1001100100001000
+#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:1041 rf_treg2:0012 rf_immediate:0005
+#  ex_ir:0000000101000001 ex_result:1041
+#  daddr:0012 ddin:xxxx ddout:1041 doe:0 dwe:0
+#  iaddr:0020 idin:0000 ioe:1
+#  alu_ain:1041 alu_bin:0012 alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:102f  ex_forwarding:102f
 #  led:000000
-#  regs: 0014 00ff 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 0111 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1951,15 +1966,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 108 ====
-#  if_pc:0024 if_ir:0000000000000000
-#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1001100100001000 ex_result:0028
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0024 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0022 if_ir:0000000000000000
+#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:102f rf_treg2:0012 rf_immediate:0008
+#  ex_ir:0000000100000101 ex_result:102f
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0022 idin:0000 ioe:1
+#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0028  ex_forwarding:0028
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 1041 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1969,15 +1984,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 109 ====
-#  if_pc:0028 if_ir:0000000000000000
-#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0028 idin:c7e0 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0024 if_ir:0000000000000000
+#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1001100100001000 ex_result:0028
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0024 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -1987,15 +2002,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 110 ====
-#  if_pc:002a if_ir:1100011111100000
-#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002a idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0028 if_ir:0000000000000000
+#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0028 idin:c7e0 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2005,15 +2020,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 111 ====
-#  if_pc:002c if_ir:0000000000000000
-#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:002c idin:0000 ioe:1
-#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:000a  ex_forwarding:000a
+#  if_pc:002a if_ir:1100011111100000
+#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:002a idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2023,15 +2038,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 112 ====
-#  if_pc:002e if_ir:0000000000000000
-#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1100011111100000 ex_result:000a
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:002e idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002c if_ir:0000000000000000
+#  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:002c idin:0000 ioe:1
+#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
+#  alu_out:000a  ex_forwarding:000a
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2041,15 +2056,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 113 ====
-#  if_pc:000a if_ir:0000000000000000
-#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000a idin:2502 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:002e if_ir:0000000000000000
+#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1100011111100000 ex_result:000a
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:002e idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2059,15 +2074,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 114 ====
-#  if_pc:000c if_ir:0010010100000010
-#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:000c idin:04e1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:000a if_ir:0000000000000000
+#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000a idin:2502 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2077,15 +2092,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 115 ====
-#  if_pc:000e if_ir:0000010011100001
-#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010c rf_treg2:0014 rf_immediate:0002
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:000e idin:04a5 ioe:1
-#  alu_ain:010c alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
-#  alu_out:010e  ex_forwarding:010e
+#  if_pc:000c if_ir:0010010100000010
+#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:000c idin:04e1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2095,15 +2110,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 116 ====
-#  if_pc:0010 if_ir:0000010010100101
-#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0004 rf_treg2:0110 rf_immediate:00e1
-#  ex_ir:0010010100000010 ex_result:010e
-#  daddr:0110 ddin:xxxx ddout:0004 doe:0 dwe:0
-#  iaddr:0010 idin:8c1e ioe:1
-#  alu_ain:0004 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:0110  ex_forwarding:0110
+#  if_pc:000e if_ir:0000010011100001
+#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010c rf_treg2:0012 rf_immediate:0002
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:000e idin:04a5 ioe:1
+#  alu_ain:010c alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
+#  alu_out:010e  ex_forwarding:010e
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010c 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2113,15 +2128,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 117 ====
-#  if_pc:0012 if_ir:1000110000011110
-#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010e rf_immediate:00a5
-#  ex_ir:0000010011100001 ex_result:0110
-#  daddr:010e ddin:xxxx ddout:0110 doe:0 dwe:0
-#  iaddr:0012 idin:0000 ioe:1
-#  alu_ain:0110 alu_bin:010e alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:0002  ex_forwarding:0002
+#  if_pc:0010 if_ir:0000010010100101
+#  rf_pc:000e rf_ir:0000010011100001 rf_treg1:0004 rf_treg2:0110 rf_immediate:00e1
+#  ex_ir:0010010100000010 ex_result:010e
+#  daddr:0110 ddin:xxxx ddout:0004 doe:0 dwe:0
+#  iaddr:0010 idin:8c1e ioe:1
+#  alu_ain:0004 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:0110  ex_forwarding:0110
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0004 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010c 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2131,15 +2146,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 118 ====
-#  if_pc:0014 if_ir:0000000000000000
-#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0002 rf_treg2:0014 rf_immediate:001e
-#  ex_ir:0000010010100101 ex_result:0002
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0014 idin:0000 ioe:1
-#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0030  ex_forwarding:0030
+#  if_pc:0012 if_ir:1000110000011110
+#  rf_pc:0010 rf_ir:0000010010100101 rf_treg1:0110 rf_treg2:010e rf_immediate:00a5
+#  ex_ir:0000010011100001 ex_result:0110
+#  daddr:010e ddin:xxxx ddout:0110 doe:0 dwe:0
+#  iaddr:0012 idin:0000 ioe:1
+#  alu_ain:0110 alu_bin:010e alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:0002  ex_forwarding:0002
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0110 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0004 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2149,15 +2164,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 119 ====
-#  if_pc:0016 if_ir:0000000000000000
-#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1000110000011110 ex_result:0030
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0016 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0014 if_ir:0000000000000000
+#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0002 rf_treg2:0012 rf_immediate:001e
+#  ex_ir:0000010010100101 ex_result:0002
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0014 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0030  ex_forwarding:0030
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0110 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2167,15 +2182,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 120 ====
-#  if_pc:0018 if_ir:0000000000000000
-#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0018 idin:02b1 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0016 if_ir:0000000000000000
+#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1000110000011110 ex_result:0030
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0016 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2185,15 +2200,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 121 ====
-#  if_pc:001a if_ir:0000001010110001
-#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:001a idin:0141 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0018 if_ir:0000000000000000
+#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0018 idin:02b1 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2203,15 +2218,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 122 ====
-#  if_pc:001c if_ir:0000000101000001
-#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:00ff rf_treg2:010e rf_immediate:00b1
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:010e ddin:xx00 ddout:00ff doe:1 dwe:0
-#  iaddr:001c idin:0105 ioe:1
-#  alu_ain:00ff alu_bin:010e alu_op:0001 reg_file_we:0 if_pc_we:0
-#  alu_out:010e  ex_forwarding:xx00
+#  if_pc:001a if_ir:0000001010110001
+#  rf_pc:0018 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:001a idin:0141 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2221,15 +2236,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 123 ====
-#  if_pc:001e if_ir:0000000100000101
-#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:00eb rf_treg2:xx00 rf_immediate:0041
-#  ex_ir:0000001010110001 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:00eb doe:0 dwe:0
-#  iaddr:001e idin:9908 ioe:1
-#  alu_ain:00eb alu_bin:xx00 alu_op:0001 reg_file_we:1 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  if_pc:001c if_ir:0000000101000001
+#  rf_pc:001a rf_ir:0000001010110001 rf_treg1:1041 rf_treg2:010e rf_immediate:00b1
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:010e ddin:00ff ddout:1041 doe:1 dwe:0
+#  iaddr:001c idin:0105 ioe:1
+#  alu_ain:1041 alu_bin:010e alu_op:0001 reg_file_we:0 if_pc_we:0
+#  alu_out:010e  ex_forwarding:00ff
 #  led:000000
-#  regs: 0014 00eb 00ff 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2239,15 +2254,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 124 ====
-#  if_pc:0020 if_ir:1001100100001000
-#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:xx00 rf_treg2:0014 rf_immediate:0005
-#  ex_ir:0000000101000001 ex_result:xx00
-#  daddr:0014 ddin:xxxx ddout:xx00 doe:0 dwe:0
-#  iaddr:0020 idin:0000 ioe:1
-#  alu_ain:xx00 alu_bin:0014 alu_op:0101 reg_file_we:1 if_pc_we:0
-#  alu_out:xxxx  ex_forwarding:xxxx
+#  if_pc:001e if_ir:0000000100000101
+#  rf_pc:001c rf_ir:0000000101000001 rf_treg1:102f rf_treg2:00ff rf_immediate:0041
+#  ex_ir:0000001010110001 ex_result:00ff
+#  daddr:00ff ddin:xxxx ddout:102f doe:0 dwe:0
+#  iaddr:001e idin:9908 ioe:1
+#  alu_ain:102f alu_bin:00ff alu_op:0001 reg_file_we:1 if_pc_we:0
+#  alu_out:00ff  ex_forwarding:00ff
 #  led:000000
-#  regs: 0014 00eb xx00 0000 0002 010e 0200 0110
+#  regs: 0012 102f 1041 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2257,15 +2272,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 125 ====
-#  if_pc:0022 if_ir:0000000000000000
-#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:xxxx rf_treg2:0014 rf_immediate:0008
-#  ex_ir:0000000100000101 ex_result:xxxx
-#  daddr:0014 ddin:xxxx ddout:xxxx doe:0 dwe:0
-#  iaddr:0022 idin:0000 ioe:1
-#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
-#  alu_out:0028  ex_forwarding:0028
+#  if_pc:0020 if_ir:1001100100001000
+#  rf_pc:001e rf_ir:0000000100000101 rf_treg1:00ff rf_treg2:0012 rf_immediate:0005
+#  ex_ir:0000000101000001 ex_result:00ff
+#  daddr:0012 ddin:xxxx ddout:00ff doe:0 dwe:0
+#  iaddr:0020 idin:0000 ioe:1
+#  alu_ain:00ff alu_bin:0012 alu_op:0101 reg_file_we:1 if_pc_we:0
+#  alu_out:00ed  ex_forwarding:00ed
 #  led:000000
-#  regs: 0014 xx00 xx00 0000 0002 010e 0200 0110
+#  regs: 0012 102f 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2275,15 +2290,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 126 ====
-#  if_pc:0024 if_ir:0000000000000000
-#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:1001100100001000 ex_result:0028
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0024 idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0022 if_ir:0000000000000000
+#  rf_pc:0020 rf_ir:1001100100001000 rf_treg1:00ed rf_treg2:0012 rf_immediate:0008
+#  ex_ir:0000000100000101 ex_result:00ed
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  iaddr:0022 idin:0000 ioe:1
+#  alu_ain:0020 alu_bin:0008 alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_out:0028  ex_forwarding:0028
 #  led:000000
-#  regs: 0014 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ff 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2293,15 +2308,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 127 ====
-#  if_pc:0026 if_ir:0000000000000000
-#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
-#  iaddr:0026 idin:0041 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  if_pc:0024 if_ir:0000000000000000
+#  rf_pc:0022 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:1001100100001000 ex_result:0028
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
+#  iaddr:0024 idin:0000 ioe:1
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2311,15 +2326,15 @@
 #  mem[30-37]: 00 d0 c7 fe 00 00 00 00
 # 
 # ==== clock: 128 ====
-#  if_pc:0028 if_ir:0000000001000001
-#  rf_pc:0026 rf_ir:0000000000000000 rf_treg1:0014 rf_treg2:0014 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:0014 ddin:xxxx ddout:0014 doe:0 dwe:0
+#  if_pc:0028 if_ir:0000000000000000
+#  rf_pc:0024 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0028 idin:c7e0 ioe:1
-#  alu_ain:0014 alu_bin:0014 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:0014  ex_forwarding:0014
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2330,14 +2345,14 @@
 # 
 # ==== clock: 129 ====
 #  if_pc:002a if_ir:1100011111100000
-#  rf_pc:0028 rf_ir:0000000001000001 rf_treg1:0014 rf_treg2:xx00 rf_immediate:0041
-#  ex_ir:0000000000000000 ex_result:0014
-#  daddr:xx00 ddin:xxxx ddout:0014 doe:0 dwe:0
+#  rf_pc:0028 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:002a idin:0000 ioe:1
-#  alu_ain:0014 alu_bin:xx00 alu_op:0001 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: 0014 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2349,13 +2364,13 @@
 # ==== clock: 130 ====
 #  if_pc:002c if_ir:0000000000000000
 #  rf_pc:002a rf_ir:1100011111100000 rf_treg1:0110 rf_treg2:0110 rf_immediate:ffe0
-#  ex_ir:0000000001000001 ex_result:xx00
+#  ex_ir:0000000000000000 ex_result:0012
 #  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
 #  iaddr:002c idin:0000 ioe:1
-#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:1 if_pc_we:0
+#  alu_ain:002a alu_bin:ffe0 alu_op:0100 reg_file_we:0 if_pc_we:0
 #  alu_out:000a  ex_forwarding:000a
 #  led:000000
-#  regs: 0014 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2366,14 +2381,14 @@
 # 
 # ==== clock: 131 ====
 #  if_pc:002e if_ir:0000000000000000
-#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
+#  rf_pc:002c rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
 #  ex_ir:1100011111100000 ex_result:000a
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:002e idin:0000 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2384,14 +2399,14 @@
 # 
 # ==== clock: 132 ====
 #  if_pc:000a if_ir:0000000000000000
-#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  rf_pc:002e rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:000a idin:2502 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2402,14 +2417,14 @@
 # 
 # ==== clock: 133 ====
 #  if_pc:000c if_ir:0010010100000010
-#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  rf_pc:000a rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:000c idin:04e1 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2420,14 +2435,14 @@
 # 
 # ==== clock: 134 ====
 #  if_pc:000e if_ir:0000010011100001
-#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010e rf_treg2:xx00 rf_immediate:0002
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  rf_pc:000c rf_ir:0010010100000010 rf_treg1:010e rf_treg2:0012 rf_immediate:0002
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
 #  iaddr:000e idin:04a5 ioe:1
 #  alu_ain:010e alu_bin:0002 alu_op:0100 reg_file_we:0 if_pc_we:0
 #  alu_out:0110  ex_forwarding:0110
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2445,7 +2460,7 @@
 #  alu_ain:0002 alu_bin:0110 alu_op:0001 reg_file_we:1 if_pc_we:0
 #  alu_out:0110  ex_forwarding:0110
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 010e 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 010e 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2463,7 +2478,7 @@
 #  alu_ain:0110 alu_bin:0110 alu_op:0101 reg_file_we:1 if_pc_we:0
 #  alu_out:0000  ex_forwarding:0000
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0002 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0002 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2474,14 +2489,14 @@
 # 
 # ==== clock: 137 ====
 #  if_pc:0014 if_ir:0000000000000000
-#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0000 rf_treg2:xx00 rf_immediate:001e
+#  rf_pc:0012 rf_ir:1000110000011110 rf_treg1:0000 rf_treg2:0012 rf_immediate:001e
 #  ex_ir:0000010010100101 ex_result:0000
-#  daddr:xx00 ddin:xxxx ddout:xxxx doe:0 dwe:0
+#  daddr:0012 ddin:xxxx ddout:xxxx doe:0 dwe:0
 #  iaddr:0014 idin:0000 ioe:1
 #  alu_ain:0012 alu_bin:001e alu_op:0100 reg_file_we:1 if_pc_we:0
 #  alu_out:0030  ex_forwarding:0030
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0110 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0110 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2492,14 +2507,14 @@
 # 
 # ==== clock: 138 ====
 #  if_pc:0016 if_ir:0000000000000000
-#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
+#  rf_pc:0014 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
 #  ex_ir:1000110000011110 ex_result:0030
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0016 idin:0000 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2510,14 +2525,14 @@
 # 
 # ==== clock: 139 ====
 #  if_pc:0030 if_ir:0000000000000000
-#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  rf_pc:0016 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0030 idin:00d0 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2528,14 +2543,14 @@
 # 
 # ==== clock: 140 ====
 #  if_pc:0032 if_ir:0000000011010000
-#  rf_pc:0030 rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  rf_pc:0030 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0032 idin:c7fe ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2546,14 +2561,14 @@
 # 
 # ==== clock: 141 ====
 #  if_pc:0034 if_ir:1100011111111110
-#  rf_pc:0032 rf_ir:0000000011010000 rf_treg1:xx00 rf_treg2:0200 rf_immediate:00d0
-#  ex_ir:0000000000000000 ex_result:xx00
-#  daddr:0200 ddin:xxxx ddout:xx00 doe:0 dwe:1
+#  rf_pc:0032 rf_ir:0000000011010000 rf_treg1:0012 rf_treg2:0200 rf_immediate:00d0
+#  ex_ir:0000000000000000 ex_result:0012
+#  daddr:0200 ddin:xxxx ddout:0012 doe:0 dwe:1
 #  iaddr:0034 idin:0000 ioe:1
-#  alu_ain:xx00 alu_bin:0200 alu_op:0000 reg_file_we:0 if_pc_we:0
-#  alu_out:xx00  ex_forwarding:xx00
+#  alu_ain:0012 alu_bin:0200 alu_op:0000 reg_file_we:0 if_pc_we:0
+#  alu_out:0012  ex_forwarding:0012
 #  led:000000
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2565,13 +2580,13 @@
 # ==== clock: 142 ====
 #  if_pc:0036 if_ir:0000000000000000
 #  rf_pc:0034 rf_ir:1100011111111110 rf_treg1:0110 rf_treg2:0110 rf_immediate:fffe
-#  ex_ir:0000000011010000 ex_result:xx00
+#  ex_ir:0000000011010000 ex_result:0012
 #  daddr:0110 ddin:xxxx ddout:xxxx doe:0 dwe:0
 #  iaddr:0036 idin:0000 ioe:1
 #  alu_ain:0034 alu_bin:fffe alu_op:0100 reg_file_we:0 if_pc_we:0
 #  alu_out:0032  ex_forwarding:0032
-#  led:00xx00
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  led:000012
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
@@ -2582,14 +2597,14 @@
 # 
 # ==== clock: 143 ====
 #  if_pc:0038 if_ir:0000000000000000
-#  rf_pc:0036 rf_ir:0000000000000000 rf_treg1:xx00 rf_treg2:xx00 rf_immediate:0000
+#  rf_pc:0036 rf_ir:0000000000000000 rf_treg1:0012 rf_treg2:0012 rf_immediate:0000
 #  ex_ir:1100011111111110 ex_result:0032
-#  daddr:xx00 ddin:xxxx ddout:xx00 doe:0 dwe:0
+#  daddr:0012 ddin:xxxx ddout:0012 doe:0 dwe:0
 #  iaddr:0038 idin:0000 ioe:1
-#  alu_ain:xx00 alu_bin:xx00 alu_op:0000 reg_file_we:0 if_pc_we:1
-#  alu_out:xx00  ex_forwarding:xx00
-#  led:00xx00
-#  regs: xx00 xxxx xx00 0000 0000 0110 0200 0110
+#  alu_ain:0012 alu_bin:0012 alu_op:0000 reg_file_we:0 if_pc_we:1
+#  alu_out:0012  ex_forwarding:0012
+#  led:000012
+#  regs: 0012 00ed 00ff 0000 0000 0110 0200 0110
 #  mem[00-07]: 36 02 37 01 5f 10 35 01
 #  mem[08-0f]: 00 b1 25 02 04 e1 04 a5
 #  mem[10-17]: 8c 1e 00 00 00 00 00 00
