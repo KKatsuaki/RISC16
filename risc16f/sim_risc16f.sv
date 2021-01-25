@@ -21,6 +21,7 @@ module sim_risc16f();
    initial begin
       $readmemb("sim_risc16f.mem", mem);
    end
+
    always_ff @(posedge clk) begin
       if (rst) begin
          led_0 <= 8'h0;
@@ -36,6 +37,7 @@ module sim_risc16f();
          end
       end
    end
+
    always_ff @(posedge clk) begin
       if (rst) begin
          led_1 <= 8'h0;
@@ -61,7 +63,7 @@ module sim_risc16f();
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
          print();
-	 if (risc16f_inst.if_pc == 16'h52)
+	 if (risc16f_inst.if_pc == 16'h0040)
 	   $finish;
       end
       $finish;
@@ -93,8 +95,8 @@ module sim_risc16f();
 	     risc16f_inst.alu_ain, risc16f_inst.alu_bin,
 	     risc16f_inst.alu_op, risc16f_inst.reg_file_we,
 	     risc16f_inst.if_pc_we);
+      $write("\n alu_out:%X  ex_forwarding:%X\n",risc16f_inst.alu_dout, risc16f_inst.ex_forwarding);
       $write(" led:%X\n", led);
-      $write(" ex_forwarding:%X\n", risc16f_inst.ex_forwarding);
       $write(" regs: %X", risc16f_inst.reg_file_inst.register0);
       $write(" %X", risc16f_inst.reg_file_inst.register1);
       $write(" %X", risc16f_inst.reg_file_inst.register2);
