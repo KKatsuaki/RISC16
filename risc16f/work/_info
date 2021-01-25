@@ -6,21 +6,21 @@ Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16f
 valu16
 Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
 !i10b 1
-Z2 !s100 T]38z_ClYZ`WnW:of=W670
-Z3 Ieb92mkfdBWB9=0V]4k;T^3
+Z2 !s100 1mT3Kd:3XY_i?Yo>5Hc:L2
+Z3 I`VzQ:]dZPSlk@bXO=bAh=3
 Z4 Vd6eEEC>JB>`o1OT]UBGQR0
 Z5 !s105 risc16f_sv_unit
 S1
 Z6 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16f
-Z7 w1611564498
+Z7 w1611566137
 Z8 8risc16f.sv
 Z9 Frisc16f.sv
-Z10 L0 355
+Z10 L0 347
 Z11 OV;L;10.1d;51
 r1
 !s85 0
 31
-Z12 !s108 1611565007.922832
+Z12 !s108 1611566151.869399
 Z13 !s107 risc16f.sv|sim_risc16f.sv|
 Z14 !s90 sim_risc16f.sv|risc16f.sv|
 !s101 -O0
@@ -28,8 +28,8 @@ o-O0
 vreg_file
 R1
 !i10b 1
-Z15 !s100 Wn>nFX0LJG9ERUhHaERd12
-Z16 IoXW38z2lDaFF0h1W4mbBj3
+Z15 !s100 KIooIS[?aVA;aHMdfJ=GH3
+Z16 Ig_7h9Si7l8<zXC<?kjSI>0
 Z17 V]dOlhBM^R4i;CYM]kUSZc3
 R5
 S1
@@ -37,7 +37,7 @@ R6
 R7
 R8
 R9
-Z18 L0 289
+Z18 L0 281
 R11
 r1
 !s85 0
@@ -50,9 +50,9 @@ o-O0
 vrisc16f
 R1
 !i10b 1
-Z19 !s100 MmLJho:5bcbe9idA9TTzW0
-Z20 I@0K:AiM?:F?FleC[6jfFh2
-Z21 VeGz<abOVoW3dGkjdY5KNN0
+!s100 cTGCTgLzblhfUliIAB3BQ3
+IfiP8^<ohcdOkkz]nO?NhI2
+Z19 VeGz<abOVoW3dGkjdY5KNN0
 R5
 S1
 R6
@@ -72,15 +72,15 @@ o-O0
 vsim_risc16f
 R1
 !i10b 1
-Z22 !s100 da9JYTGBDNddBBg9N]I8c1
-Z23 IA;J8WRSdfFhzbBb[I3C=03
-Z24 VBb1KCokUFb6JM_7ea6L2@0
-Z25 !s105 sim_risc16f_sv_unit
+Z20 !s100 da9JYTGBDNddBBg9N]I8c1
+Z21 IA;J8WRSdfFhzbBb[I3C=03
+Z22 VBb1KCokUFb6JM_7ea6L2@0
+Z23 !s105 sim_risc16f_sv_unit
 S1
 R6
-Z26 w1611564792
-Z27 8sim_risc16f.sv
-Z28 Fsim_risc16f.sv
+Z24 w1611564792
+Z25 8sim_risc16f.sv
+Z26 Fsim_risc16f.sv
 L0 4
 R11
 r1
