@@ -79,7 +79,7 @@ module risc16f
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg1 <= 16'd0;
-      else if(rf_ir != 16'b0 && (rf_ir[10:8] == if_ir[10:8] && rf_ir[15:11] == 5'b0 && rf_ir[4] == 1'b0) || rf_ir[15] == 1'b0)
+      else if(rf_ir != 16'b0 && rf_ir[10:8] == if_ir[10:8] && rf_ir[4:0] != 5'b10000 && (rf_ir[15:11] == 5'b0 || rf_ir[15] == 1'b0))
         rf_treg1 <= ex_forwarding;
       else if(reg_file_we && ex_ir[10:8] == if_ir[10:8])
         rf_treg1 <= ex_result;
@@ -90,9 +90,9 @@ module risc16f
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg2 <= 16'd0;
-      else if(rf_ir != 16'b0 && (rf_ir[10:8] == if_ir[7:5] && rf_ir[15:11] == 5'b0 && rf_ir[4] == 1'b0) || rf_ir[15] == 1'b0)
+      else if(rf_ir != 16'b0 && rf_ir[10:8] == if_ir[7:5] && rf_ir[4:0] != 5'b10000 && (rf_ir[15:11] == 5'b0 || rf_ir[15] == 1'b0))
         rf_treg2 <= ex_forwarding;                                                                                            
-      else if(reg_file_we && ex_ir[10:8] == if_ir[10:8])
+      else if(reg_file_we && ex_ir[10:8] == if_ir[7:5])
         rf_treg2 <= ex_result;
       else                                                                                                                    
         rf_treg2 <= reg_file_dout2;                                                                                           
