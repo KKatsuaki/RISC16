@@ -80,29 +80,29 @@ module risc16f
       if (rst) 
         rf_treg1 <= 16'd0;
       else begin
-         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b0 && ex_ir[10:8] == if_ir[10:8])// ld && src == dst (wb)
-           rf_treg1 <= ex_result;
+         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b10001 && ex_ir[10:8] == if_ir[10:8])
+            rf_treg1 <= ex_result;
          else begin
-           if(if_ir != 16'b0 && rf_ir[10:8] == if_ir[10:8])
-             rf_treg1 <= ex_forwarding;
-           else
-             rf_treg1 <= reg_file_dout1;
+            if(rf_ir != 16'b0 && (rf_ir[10:8] == if_ir[10:8] && rf_ir[15:11] == 5'b0 && rf_ir[4] == 1'b0) || rf_ir[15] == 1'b0)
+              rf_treg1 <= ex_forwarding;
+            else
+              rf_treg1 <= reg_file_dout1;
          end
-      end
-   end 
+      end // else: !if(rst)
+   end // always_ff @ (posedge clk)
 
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg2 <= 16'd0;
       else begin
-         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b0 && ex_ir[10:8] == if_ir[7:5])// ld && src == dst (wb)
-           rf_treg2 <= ex_result;                                                                            
-         else begin                                                                                          
-           if(if_ir != 16'b0 && rf_ir[10:8] == if_ir[7:5])                                                  
-             rf_treg2 <= ex_forwarding;                                                                      
-           else                                                                                              
-             rf_treg2 <= reg_file_dout1;                                                                     
-         end                                                                                                 
+         if(ex_ir[15:11] == 5'b0 && ex_ir[4:0] == 5'b10001 && ex_ir[10:8] == if_ir[7:5])
+            rf_treg1 <= ex_result;                                                                      
+         else begin                                                                                     
+            if(rf_ir != 16'b0 && (rf_ir[10:8] == if_ir[7:5] && rf_ir[15:11] == 5'b0 && rf_ir[4] == 1'b0) || rf_ir[15] == 1'b0)
+              rf_treg2 <= ex_forwarding;                                                                
+            else                                                                                        
+              rf_treg2 <= reg_file_dout2;                                                               
+         end                                                                                            
       end
    end 
 
