@@ -72,7 +72,7 @@ module sim_risc16ba();
          clk <= 1'b1;
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
-         print();
+         //print();
 	 if (risc16ba_inst.if_pc == 16'h001c)
 	   dump_and_finish();
       end
