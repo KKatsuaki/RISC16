@@ -1,5 +1,5 @@
 # vsim -c sim_risc16ba -l sim_risc16ba.log -wlf sim_risc16ba.wlf -do "add wave -r /sim_risc16ba/risc16ba_inst/* /sim_risc16ba/mem; run -all" 
-# Start time: 06:54:45 on Feb 05,2021
+# Start time: 02:21:42 on Feb 06,2021
 # Loading sv_std.std
 # Loading work.sim_risc16ba
 # Loading work.risc16ba
@@ -10,5 +10,5 @@
 #  run -all
 # ** Note: $finish    : sim_risc16ba.sv(65)
 #    Time: 6553800 ns  Iteration: 0  Instance: /sim_risc16ba
-# End time: 06:54:49 on Feb 05,2021, Elapsed time: 0:00:04
+# End time: 02:21:45 on Feb 06,2021, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0

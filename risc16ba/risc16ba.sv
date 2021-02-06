@@ -8,8 +8,15 @@
 `define LEFT_SHIFT_BIN_8 4'b0110      
 `define LEFT_SHIFT_BIN_1 4'b1000      
 `define RIGHT_SHIFT_BIN_1 4'b1001     
-`define AND 4'b1010                   
-`define OR 4'b1011                    
+`define AND  4'b1010                   
+`define OR   4'b1011
+// `define ADDB 4'b1100
+// `define SUBB 4'b1101
+// `define XORB 4'b1101
+// `define ORB  4'b1101
+// `define ANDB 4'b1110
+// `define NOTB 4'b1111
+
 
 module risc16ba
   (
@@ -379,7 +386,6 @@ module reg_file
      end
 endmodule // reg_file
 
-
 module alu16
   (
    input wire [15:0]   ain,bin, 
@@ -404,5 +410,3 @@ module alu16
       endcase // case (op)                    
    end // always_comb begin                   
 endmodule // alu16
-
-`default_nettype wire

@@ -11,24 +11,24 @@ cModel Technology
 Z0 d/home/geek_731/Workspace/github/RISC16/risc16ba
 valu16
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1612475685
+Z2 !s110 1612545701
 !i10b 1
-!s100 =ChXGSNB14OZlETP<FCg_3
+!s100 :8JhB_>37QkZe;EKTo`C[2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IM@h=`D3e4^K6N8j4F`]E[0
+IG?XB[hDL8H=`_KXLg6A0h0
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-Z5 w1612475617
+Z5 w1612505090
 Z6 8risc16ba.sv
 Z7 Frisc16ba.sv
-!i122 1
-L0 383 24
+!i122 2
+L0 389 24
 Z8 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z9 !s108 1612475685.000000
+Z9 !s108 1612545701.000000
 !s107 risc16ba.sv|sim_risc16ba.sv|
 Z10 !s90 sim_risc16ba.sv|risc16ba.sv|
 !i113 1
@@ -37,17 +37,17 @@ vreg_file
 R1
 R2
 !i10b 1
-!s100 54Y1c[A:Bi2ElYQ;zXbRZ2
+!s100 F0<HiUZSV_R?gCjXO`?9j3
 R3
-IzKVRWHKYi=355Ce9P2_5[1
+I41l<Kf2L]DNMD02MHPRjF1
 R4
 S1
 R0
 R5
 R6
 R7
-!i122 1
-L0 317 64
+!i122 2
+L0 324 64
 R8
 r1
 !s85 0
@@ -61,17 +61,17 @@ vrisc16ba
 R1
 R2
 !i10b 1
-!s100 bHm7=ZZoFUEZ;>ggAJBO92
+!s100 hkOCK3YXloH?jI[3k;j?T2
 R3
-Ib6LObY_BIXicl;MRdTUSa0
+Ie]QH]=Z_ONn<jN?[6jJ6d0
 R4
 S1
 R0
 R5
 R6
 R7
-!i122 1
-L0 14 301
+!i122 2
+L0 21 301
 R8
 r1
 !s85 0
@@ -91,10 +91,10 @@ I9W:1O;9]lUQiakkNk1kMi3
 R4
 S1
 R0
-R5
+w1612475617
 8sim_risc16ba.sv
 Fsim_risc16ba.sv
-!i122 1
+!i122 2
 L0 4 121
 R8
 r1

@@ -1,1 +1,0 @@
-/home/mother/b318015/Workspace/Exp4/RISC16/asm-risc16/target/release/asm-risc16: /home/mother/b318015/Workspace/Exp4/RISC16/asm-risc16/src/asm.rs /home/mother/b318015/Workspace/Exp4/RISC16/asm-risc16/src/main.rs
