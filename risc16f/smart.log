@@ -14,13 +14,15 @@ Info: Running Quartus II 64-Bit Shell
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Mon Jan 25 18:48:05 2021
+    Info: Processing started: Sun Feb  7 19:47:25 2021
 Info: Command: quartus_sh --determine_smart_action risc16f_top
 Info: Quartus(args): risc16f_top
+Info (293032): Detected changes in source files.
+    Info (293027): Source file: /home/mother/b318015/Workspace/Exp4/RISC16/risc16f/risc16f.sv has changed.
 Info: SMART_ACTION = SOURCE
 Info (23030): Evaluation of Tcl script /opt/altera/13.0sp1/quartus/common/tcl/internal/qsh_smart.tcl was successful
 Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 318 megabytes
-    Info: Processing ended: Mon Jan 25 18:48:05 2021
+    Info: Peak virtual memory: 310 megabytes
+    Info: Processing ended: Sun Feb  7 19:47:25 2021
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00

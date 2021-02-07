@@ -10,6 +10,7 @@
 `define RIGHT_SHIFT_BIN_1 4'b1001     
 `define AND  4'b1010                   
 `define OR   4'b1011
+`define NOP 16'b0000_0000_0000_0000
 // `define ADDB 4'b1100
 // `define SUBB 4'b1101
 // `define XORB 4'b1101
@@ -83,26 +84,40 @@ module risc16ba
         rf_ir <= if_ir;
    end
 
+   // treg1
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg1 <= 16'd0;
-      else if(rf_ir != 16'b0 && rf_ir[10:8] == if_ir[10:8] && rf_ir[4:0] != 5'b10000 && (rf_ir[15:11] == 5'b0 || rf_ir[15] == 1'b0))
-        rf_treg1 <= ex_forwarding;
-      else if(reg_file_we && ex_ir[10:8] == if_ir[10:8])
-        rf_treg1 <= ex_result;
+      else if(rf_ir[10:8] == if_ir[10:8] || ex_ir[10:8] == if_ir[10:8] )
+        if(rf_ir[10:8] == if_ir[10:8])
+          if(rf_ir != `NOP && rf_ir[15] == 1'b0 && ~(rf_ir[15:11] == 5'b00000 && rf_ir[4:0] == 5'b10000)) // ex_forwarding
+            rf_treg1 <= ex_forwarding;
+          else
+            rf_treg1 <= reg_file_dout1;
+        else if(reg_file_we)
+          rf_treg1 <= ex_result;
+        else
+          rf_treg1 <= reg_file_dout1;
       else
-        rf_treg1 <= reg_file_dout1;
+          rf_treg1 <= reg_file_dout1;
    end // always_ff @ (posedge clk)
 
+   // treg2
    always_ff @(posedge clk) begin
       if (rst) 
         rf_treg2 <= 16'd0;
-      else if(rf_ir != 16'b0 && rf_ir[10:8] == if_ir[7:5] && rf_ir[4:0] != 5'b10000 && (rf_ir[15:11] == 5'b0 || rf_ir[15] == 1'b0))
-        rf_treg2 <= ex_forwarding;                                                                                            
-      else if(reg_file_we && ex_ir[10:8] == if_ir[7:5])
-        rf_treg2 <= ex_result;
-      else                                                                                                                    
-        rf_treg2 <= reg_file_dout2;                                                                                           
+      else if(rf_ir[10:8] == if_ir[7:5] || ex_ir[10:8] == if_ir[7:5] )       
+        if(rf_ir[10:8] == if_ir[7:5])
+          if(rf_ir != `NOP && rf_ir[15] == 1'b0 && ~(rf_ir[15:11] == 5'b00000 && rf_ir[4:0] == 5'b10000)) // ex_forwarding
+            rf_treg2 <= ex_forwarding;
+          else
+            rf_treg2 <= reg_file_dout2;
+        else if(reg_file_we)
+          rf_treg2 <= ex_result;
+        else
+          rf_treg2 <= reg_file_dout2;
+      else
+          rf_treg2 <= reg_file_dout2;
    end
 
    always_ff @(posedge clk) begin

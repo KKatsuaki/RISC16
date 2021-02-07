@@ -2,7 +2,7 @@
 `default_nettype none
 
 module sim_risc16ba();
-   localparam integer SIMULATION_CYCLES  = 10000000;
+   localparam integer SIMULATION_CYCLES  = 1000;
    localparam real    CLOCK_FREQ_HZ      = 25 * 10**6; // 25MHz 
    localparam real    CLOCK_PERIOD_NS    = 10**9 / CLOCK_FREQ_HZ;
    logic              clk, rst;
@@ -13,6 +13,8 @@ module sim_risc16ba();
    wire [23:0] 	      led;
    reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
+   logic[15:0]        end_cycle = 16'h38;
+              
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 
 			.daddr(daddr), .doe(doe), .dwe0(dwe0), .dwe1(dwe1),
@@ -37,6 +39,7 @@ module sim_risc16ba();
          end
       end
    end
+
    always_ff @(posedge clk) begin
       if (rst) begin
          led_1 <= 8'h0;
@@ -49,6 +52,7 @@ module sim_risc16ba();
          end
       end
    end
+
    assign led = {led_2, led_1, led_0};
    
    assign ddin = doe? {mem[daddr & 16'hfffe], mem[daddr | 16'h1]}: 16'hxxxx;
@@ -72,8 +76,8 @@ module sim_risc16ba();
          clk <= 1'b1;
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
-         //print();
-	 if (risc16ba_inst.if_pc == 16'h001c)
+         print();
+	 if (risc16ba_inst.if_pc == end_cycle)
 	   dump_and_finish();
       end
       dump_and_finish();
@@ -94,8 +98,8 @@ module sim_risc16ba();
 	     risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,
 	     risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,
 	     risc16ba_inst.rf_immediate);
-      $write(" ex_ir:%B ex_result:%X\n",
-	     risc16ba_inst.ex_ir, risc16ba_inst.ex_result);
+      $write(" ex_ir:%B ex_result:%X ex_forwarding:%X\n",
+	     risc16ba_inst.ex_ir, risc16ba_inst.ex_result, risc16ba_inst.ex_forwarding);
       $write(" daddr:%X ddin:%X ddout:%X doe:%B dwe0:%B dwe1:%B\n",
 	     risc16ba_inst.daddr, risc16ba_inst.ddin, risc16ba_inst.ddout, 
 	     risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);

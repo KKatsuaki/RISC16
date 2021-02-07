@@ -3,16 +3,19 @@
 	ORI r7, #0x10
 	LUI r5, #0x1
 	LD r0, (r5)
+LOOP:   
 	ADDI r5, #2
 	MV r4, r7
 	SUB r4, r5
-	BEQZ r4, #12
+	BEQZ r4, EXIT
 	LD r2, (r5)
 	MV r1, r2
 	SUB r1, r0
-	BPL r1, #2
+	BPL r1, ELSE
 	MV r0, r2
-	JMP #-20
+ELSE:   
+	JMP LOOP
+EXIT:   
 	ST r0, (r6)
 	JMP #-2
 	@100 #0xff

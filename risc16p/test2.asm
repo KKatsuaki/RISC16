@@ -1,1 +1,1 @@
-../asms/test2.asm
+../src/test2.asm

@@ -102,7 +102,7 @@ $(SIM_WORK):
 	vlib work
 
 sim: $(SIM_WORK)
-	asm-risc16 ./test1.asm -o $(SIM_TOP).mem
+	asm-risc16 ../src/test.asm -o $(SIM_TOP).mem
 	vlog $(SIM_FILE) $(DESIGN).sv
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 

@@ -18,14 +18,13 @@ fn main() -> Result<()> {
     let input_file = File::open(config.get_input_path())?;
 
     // porcess for output
-//    if config.is_on_stdout() {
+    if config.is_on_stdout() {
         let mut assembler = Assembler::new(std::io::stdout(), input_file);
         assembler.assemble()?;
-/*     } else {
+    } else {
         let mut assembler = Assembler::new(File::create(config.get_out_path())?, input_file);
         assembler.assemble()?;
     };
- */
 
     Ok(())
 }

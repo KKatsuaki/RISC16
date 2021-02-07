@@ -1,0 +1,41 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'vclk'
+Slack : -36.402
+TNS   : -2511.613
+
+Type  : Setup 'usb_clk'
+Slack : -16.509
+TNS   : -738.919
+
+Type  : Setup 'processor_clk'
+Slack : -4.863
+TNS   : -618.389
+
+Type  : Hold 'usb_clk'
+Slack : 0.822
+TNS   : 0.000
+
+Type  : Hold 'processor_clk'
+Slack : 1.045
+TNS   : 0.000
+
+Type  : Hold 'vclk'
+Slack : 4.875
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'processor_clk'
+Slack : 0.682
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'usb_clk'
+Slack : 0.682
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clk'
+Slack : 2.417
+TNS   : 0.000
+
+------------------------------------------------------------

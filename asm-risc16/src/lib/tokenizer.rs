@@ -26,7 +26,7 @@ pub enum Token {
 impl fmt::Display for Token{
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let res = match self{
-            Self::Data(d) => format!("{}", d),
+            Self::Data(d) => format!("{:x}", d),
             Self::Label(lab) => format!("{}", lab),
             Self::Reg(r) => format!("{:?}", r),
             Self::Addr(addr) => format!("@{:0>4x}", addr),

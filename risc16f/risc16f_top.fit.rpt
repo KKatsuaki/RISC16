@@ -1,5 +1,5 @@
 Fitter report for risc16f_top
-Mon Jan 25 18:48:54 2021
+Sun Feb  7 19:47:41 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -65,14 +65,14 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------+--------------------------------------------------+
-; Fitter Status             ; Successful - Mon Jan 25 18:48:54 2021            ;
+; Fitter Status             ; Successful - Sun Feb  7 19:47:41 2021            ;
 ; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name             ; risc16f_top                                      ;
 ; Top-level Entity Name     ; risc16f_top                                      ;
 ; Family                    ; Cyclone                                          ;
 ; Device                    ; EP1C20F400C8                                     ;
 ; Timing Models             ; Final                                            ;
-; Total logic elements      ; 858 / 20,060 ( 4 % )                             ;
+; Total logic elements      ; 857 / 20,060 ( 4 % )                             ;
 ; Total pins                ; 126 / 301 ( 42 % )                               ;
 ; Total virtual pins        ; 0                                                ;
 ; Total memory bits         ; 0 / 294,912 ( 0 % )                              ;
@@ -150,8 +150,8 @@ applicable agreement for further details.
 ; Type                ; Value                  ;
 +---------------------+------------------------+
 ; Placement (by node) ;                        ;
-;     -- Requested    ; 0 / 986 ( 0.00 % )     ;
-;     -- Achieved     ; 0 / 986 ( 0.00 % )     ;
+;     -- Requested    ; 0 / 985 ( 0.00 % )     ;
+;     -- Achieved     ; 0 / 985 ( 0.00 % )     ;
 ;                     ;                        ;
 ; Routing (by net)    ;                        ;
 ;     -- Requested    ; 0 / 0 ( 0.00 % )       ;
@@ -174,7 +174,7 @@ applicable agreement for further details.
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name                 ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
-; Top                            ; 985     ; 0                 ; N/A                     ; Source File       ;
+; Top                            ; 984     ; 0                 ; N/A                     ; Source File       ;
 ; hard_block:auto_generated_inst ; 1       ; 0                 ; N/A                     ; Source File       ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 
@@ -190,20 +190,20 @@ The pin-out file can be found in /home/mother/b318015/Workspace/Exp4/RISC16/risc
 +---------------------------------------------+----------------------+
 ; Resource                                    ; Usage                ;
 +---------------------------------------------+----------------------+
-; Total logic elements                        ; 858 / 20,060 ( 4 % ) ;
-;     -- Combinational with no register       ; 437                  ;
+; Total logic elements                        ; 857 / 20,060 ( 4 % ) ;
+;     -- Combinational with no register       ; 436                  ;
 ;     -- Register only                        ; 2                    ;
 ;     -- Combinational with a register        ; 419                  ;
 ;                                             ;                      ;
 ; Logic element usage by number of LUT inputs ;                      ;
-;     -- 4 input functions                    ; 486                  ;
+;     -- 4 input functions                    ; 485                  ;
 ;     -- 3 input functions                    ; 137                  ;
 ;     -- 2 input functions                    ; 229                  ;
 ;     -- 1 input functions                    ; 4                    ;
 ;     -- 0 input functions                    ; 0                    ;
 ;                                             ;                      ;
 ; Logic elements by mode                      ;                      ;
-;     -- normal mode                          ; 777                  ;
+;     -- normal mode                          ; 776                  ;
 ;     -- arithmetic mode                      ; 81                   ;
 ;     -- qfbk mode                            ; 159                  ;
 ;     -- register cascade mode                ; 0                    ;
@@ -211,7 +211,7 @@ The pin-out file can be found in /home/mother/b318015/Workspace/Exp4/RISC16/risc
 ;     -- asynchronous clear/load mode         ; 0                    ;
 ;                                             ;                      ;
 ; Total registers                             ; 421 / 20,951 ( 2 % ) ;
-; Total LABs                                  ; 102 / 2,006 ( 5 % )  ;
+; Total LABs                                  ; 104 / 2,006 ( 5 % )  ;
 ; Logic elements in carry chains              ; 86                   ;
 ; Virtual pins                                ; 0                    ;
 ; I/O pins                                    ; 126 / 301 ( 42 % )   ;
@@ -227,10 +227,10 @@ The pin-out file can be found in /home/mother/b318015/Workspace/Exp4/RISC16/risc
 ; ASMI Blocks                                 ; 0 / 1 ( 0 % )        ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )        ;
 ; Average interconnect usage (total/H/V)      ; 2% / 2% / 2%         ;
-; Peak interconnect usage (total/H/V)         ; 23% / 18% / 28%      ;
+; Peak interconnect usage (total/H/V)         ; 23% / 19% / 28%      ;
 ; Maximum fan-out                             ; 364                  ;
 ; Highest non-global fan-out                  ; 232                  ;
-; Total fan-out                               ; 3745                 ;
+; Total fan-out                               ; 3741                 ;
 ; Average fan-out                             ; 3.80                 ;
 +---------------------------------------------+----------------------+
 
@@ -242,8 +242,8 @@ The pin-out file can be found in /home/mother/b318015/Workspace/Exp4/RISC16/risc
 +---------------------------------------------+---------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                 ; Low                            ;
 ;                                             ;                     ;                                ;
-; Total logic elements                        ; 858                 ; 0                              ;
-;     -- Combinational with no register       ; 437                 ; 0                              ;
+; Total logic elements                        ; 857                 ; 0                              ;
+;     -- Combinational with no register       ; 436                 ; 0                              ;
 ;     -- Register only                        ; 2                   ; 0                              ;
 ;     -- Combinational with a register        ; 419                 ; 0                              ;
 ;                                             ;                     ;                                ;
@@ -277,8 +277,8 @@ The pin-out file can be found in /home/mother/b318015/Workspace/Exp4/RISC16/risc
 ;     -- Registered Output Connections        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Internal Connections                        ;                     ;                                ;
-;     -- Total Connections                    ; 3826                ; 365                            ;
-;     -- Registered Connections               ; 1897                ; 0                              ;
+;     -- Total Connections                    ; 3822                ; 365                            ;
+;     -- Registered Connections               ; 1894                ; 0                              ;
 ;                                             ;                     ;                                ;
 ; External Connections                        ;                     ;                                ;
 ;     -- Top                                  ; 0                   ; 365                            ;
@@ -959,7 +959,7 @@ Note: User assignments will override these defaults. The user specified values a
 +------------------------------------------------+-------------+--------------+-------------+------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; Logic Cells ; LC Registers ; Memory Bits ; M4Ks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                   ; Library Name ;
 +------------------------------------------------+-------------+--------------+-------------+------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
-; |risc16f_top                                   ; 858 (52)    ; 421          ; 0           ; 0    ; 126  ; 0            ; 437 (27)     ; 2 (0)             ; 419 (25)         ; 86 (0)          ; 158 (32)   ; |risc16f_top                                                          ; work         ;
+; |risc16f_top                                   ; 857 (52)    ; 421          ; 0           ; 0    ; 126  ; 0            ; 436 (27)     ; 2 (0)             ; 419 (25)         ; 86 (0)          ; 158 (32)   ; |risc16f_top                                                          ; work         ;
 ;    |clk_generator:clk_generator_inst|          ; 0 (0)       ; 0            ; 0           ; 0    ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|clk_generator:clk_generator_inst                         ; work         ;
 ;       |altpll:altpll_component|                ; 0 (0)       ; 0            ; 0           ; 0    ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|clk_generator:clk_generator_inst|altpll:altpll_component ; work         ;
 ;    |debouncer:debouncer_gen[0].debouncer_inst| ; 64 (64)     ; 26           ; 0           ; 0    ; 0    ; 0            ; 38 (38)      ; 0 (0)             ; 26 (26)          ; 23 (23)         ; 0 (0)      ; |risc16f_top|debouncer:debouncer_gen[0].debouncer_inst                ; work         ;
@@ -967,7 +967,7 @@ Note: User assignments will override these defaults. The user specified values a
 ;    |double_ff:double_ff_n_rst_usb|             ; 2 (2)       ; 2            ; 0           ; 0    ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|double_ff:double_ff_n_rst_usb                            ; work         ;
 ;    |double_ff:double_ff_sw|                    ; 2 (2)       ; 2            ; 0           ; 0    ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|double_ff:double_ff_sw                                   ; work         ;
 ;    |led_controller:led_controoler_inst|        ; 90 (90)     ; 29           ; 0           ; 0    ; 0    ; 0            ; 61 (61)      ; 0 (0)             ; 29 (29)          ; 16 (16)         ; 9 (9)      ; |risc16f_top|led_controller:led_controoler_inst                       ; work         ;
-;    |risc16f:risc16f_inst|                      ; 563 (386)   ; 275          ; 0           ; 0    ; 0    ; 0            ; 288 (239)    ; 0 (0)             ; 275 (147)        ; 47 (15)         ; 112 (112)  ; |risc16f_top|risc16f:risc16f_inst                                     ; work         ;
+;    |risc16f:risc16f_inst|                      ; 562 (385)   ; 275          ; 0           ; 0    ; 0    ; 0            ; 287 (238)    ; 0 (0)             ; 275 (147)        ; 47 (15)         ; 112 (112)  ; |risc16f_top|risc16f:risc16f_inst                                     ; work         ;
 ;       |alu16:alu16_inst|                       ; 39 (39)     ; 0            ; 0           ; 0    ; 0    ; 0            ; 39 (39)      ; 0 (0)             ; 0 (0)            ; 32 (32)         ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst|alu16:alu16_inst                    ; work         ;
 ;       |reg_file:reg_file_inst|                 ; 138 (138)   ; 128          ; 0           ; 0    ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 128 (128)        ; 0 (0)           ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst|reg_file:reg_file_inst              ; work         ;
 ;    |sync_diff:sync_diff_inst_key0|             ; 2 (2)       ; 2            ; 0           ; 0    ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|sync_diff:sync_diff_inst_key0                            ; work         ;
@@ -1101,7 +1101,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mem_b_n_lb     ; Output   ; --            ; --            ; --                    ; --  ;
 ; mem_b_n_ub     ; Output   ; --            ; --            ; --                    ; --  ;
 ; clk_usb_in     ; Input    ; OFF           ; OFF           ; --                    ; --  ;
-; usb_n_fwr      ; Input    ; ON            ; OFF           ; --                    ; --  ;
+; usb_n_fwr      ; Input    ; ON            ; ON            ; --                    ; --  ;
 ; clk_ext_in     ; Input    ; --            ; --            ; --                    ; --  ;
 ; usb_n_cmd      ; Input    ; ON            ; ON            ; --                    ; --  ;
 ; usb_n_frd      ; Input    ; ON            ; OFF           ; --                    ; --  ;
@@ -1126,7 +1126,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; usb_data[4]                                       ;                   ;         ;
 ;      - usb_if:usb_if_inst|mar~5                   ; 1                 ; ON      ;
 ; usb_data[5]                                       ;                   ;         ;
-;      - usb_if:usb_if_inst|reg_addr[5]             ; 0                 ; ON      ;
+;      - usb_if:usb_if_inst|reg_addr[5]             ; 1                 ; ON      ;
 ; usb_data[6]                                       ;                   ;         ;
 ;      - usb_if:usb_if_inst|mar~7                   ; 1                 ; ON      ;
 ;      - usb_if:usb_if_inst|Selector31~1            ; 1                 ; ON      ;
@@ -1149,8 +1149,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - risc16f:risc16f_inst|ex_forwarding[4]~29   ; 1                 ; ON      ;
 ;      - usb_if:usb_if_inst|mdr[4]                  ; 1                 ; ON      ;
 ; mem_a_data[5]                                     ;                   ;         ;
-;      - risc16f:risc16f_inst|ex_forwarding[5]~36   ; 1                 ; ON      ;
-;      - usb_if:usb_if_inst|mdr[5]                  ; 1                 ; ON      ;
+;      - risc16f:risc16f_inst|ex_forwarding[5]~36   ; 0                 ; ON      ;
+;      - usb_if:usb_if_inst|mdr[5]                  ; 0                 ; ON      ;
 ; mem_a_data[6]                                     ;                   ;         ;
 ;      - risc16f:risc16f_inst|ex_forwarding[6]~42   ; 1                 ; ON      ;
 ;      - usb_if:usb_if_inst|mdr[6]                  ; 1                 ; ON      ;
@@ -1198,13 +1198,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mem_b_data[3]                                     ;                   ;         ;
 ;      - risc16f:risc16f_inst|if_ir[3]              ; 0                 ; ON      ;
 ; mem_b_data[4]                                     ;                   ;         ;
-;      - risc16f:risc16f_inst|if_ir[4]              ; 1                 ; ON      ;
+;      - risc16f:risc16f_inst|if_ir[4]              ; 0                 ; ON      ;
 ; mem_b_data[5]                                     ;                   ;         ;
 ;      - risc16f:risc16f_inst|if_ir[5]              ; 1                 ; ON      ;
 ; mem_b_data[6]                                     ;                   ;         ;
 ;      - risc16f:risc16f_inst|if_ir[6]              ; 0                 ; ON      ;
 ; mem_b_data[7]                                     ;                   ;         ;
-;      - risc16f:risc16f_inst|if_ir[7]              ; 0                 ; ON      ;
+;      - risc16f:risc16f_inst|if_ir[7]              ; 1                 ; ON      ;
 ; mem_b_data[8]                                     ;                   ;         ;
 ;      - risc16f:risc16f_inst|if_ir[8]              ; 1                 ; ON      ;
 ; mem_b_data[9]                                     ;                   ;         ;
@@ -1233,7 +1233,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; clk_usb_in                                        ;                   ;         ;
 ; usb_n_fwr                                         ;                   ;         ;
 ;      - usb_if:usb_if_inst|reg_addr[1]             ; 0                 ; ON      ;
-;      - usb_if:usb_if_inst|Selector31~0            ; 1                 ; OFF     ;
+;      - usb_if:usb_if_inst|Selector31~0            ; 0                 ; ON      ;
 ;      - usb_if:usb_if_inst|Selector30~0            ; 0                 ; ON      ;
 ; clk_ext_in                                        ;                   ;         ;
 ; usb_n_cmd                                         ;                   ;         ;
@@ -1263,30 +1263,30 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; clk_ext_in                                                     ; PIN_K14       ; 1       ; Clock                     ; no     ; --                   ; --               ;
 ; clk_generator:clk_generator_inst|altpll:altpll_component|_clk0 ; PLL_2         ; 361     ; Clock                     ; yes    ; Global Clock         ; GCLK7            ;
 ; clk_usb_in                                                     ; PIN_K5        ; 60      ; Clock                     ; yes    ; Global Clock         ; GCLK2            ;
-; cpu_state[0]                                                   ; LC_X68_Y23_N2 ; 232     ; Sync. clear               ; no     ; --                   ; --               ;
-; double_ff:double_ff_n_rst_sys|sync_reg[0]                      ; LC_X60_Y24_N2 ; 55      ; Sync. clear, Sync. load   ; no     ; --                   ; --               ;
-; double_ff:double_ff_n_rst_usb|sync_reg[0]                      ; LC_X63_Y27_N6 ; 32      ; Sync. clear               ; no     ; --                   ; --               ;
-; led_controller:led_controoler_inst|seg_db[4]~9                 ; LC_X61_Y24_N4 ; 7       ; Sync. clear               ; no     ; --                   ; --               ;
-; led_controller:led_controoler_inst|seg_sel[3]~1                ; LC_X60_Y26_N0 ; 29      ; Clock enable, Sync. clear ; no     ; --                   ; --               ;
-; led_controller:led_controoler_inst|seg_sel[5]                  ; LC_X61_Y24_N7 ; 11      ; Sync. load                ; no     ; --                   ; --               ;
-; led_register[10]~11                                            ; LC_X68_Y26_N2 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; led_register[20]~6                                             ; LC_X68_Y26_N4 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
-; mem_a_n_oe~0                                                   ; LC_X68_Y23_N9 ; 17      ; Output enable             ; no     ; --                   ; --               ;
-; mem_b_n_oe~0                                                   ; LC_X68_Y23_N0 ; 17      ; Output enable             ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|if_pc_we~0                                ; LC_X66_Y22_N4 ; 15      ; Sync. load                ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register0[12]~1    ; LC_X63_Y25_N8 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register1[15]~1    ; LC_X63_Y25_N3 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register2[8]~1     ; LC_X63_Y25_N9 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register3[3]~0     ; LC_X63_Y25_N7 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register4[13]~0    ; LC_X63_Y25_N2 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register5[14]~0    ; LC_X63_Y25_N4 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register6[14]~0    ; LC_X63_Y25_N6 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; risc16f:risc16f_inst|reg_file:reg_file_inst|register7[6]~0     ; LC_X63_Y25_N1 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
-; usb_if:usb_if_inst|mar[12]~9                                   ; LC_X68_Y27_N8 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
-; usb_if:usb_if_inst|mar[6]~1                                    ; LC_X63_Y27_N6 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
-; usb_if:usb_if_inst|reg_addr[3]~0                               ; LC_X62_Y28_N8 ; 6       ; Clock enable              ; no     ; --                   ; --               ;
-; usb_if:usb_if_inst|wbuf~0                                      ; LC_X63_Y27_N3 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
-; usb_if:usb_if_inst|wbuf~1                                      ; LC_X68_Y27_N7 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
+; cpu_state[0]                                                   ; LC_X68_Y21_N9 ; 232     ; Sync. clear               ; no     ; --                   ; --               ;
+; double_ff:double_ff_n_rst_sys|sync_reg[0]                      ; LC_X58_Y25_N8 ; 55      ; Sync. clear, Sync. load   ; no     ; --                   ; --               ;
+; double_ff:double_ff_n_rst_usb|sync_reg[0]                      ; LC_X68_Y23_N5 ; 32      ; Sync. clear               ; no     ; --                   ; --               ;
+; led_controller:led_controoler_inst|seg_db[4]~9                 ; LC_X58_Y25_N9 ; 7       ; Sync. clear               ; no     ; --                   ; --               ;
+; led_controller:led_controoler_inst|seg_sel[3]~1                ; LC_X59_Y24_N6 ; 29      ; Clock enable, Sync. clear ; no     ; --                   ; --               ;
+; led_controller:led_controoler_inst|seg_sel[5]                  ; LC_X59_Y24_N9 ; 11      ; Sync. load                ; no     ; --                   ; --               ;
+; led_register[10]~11                                            ; LC_X66_Y22_N1 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; led_register[20]~6                                             ; LC_X66_Y22_N7 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
+; mem_a_n_oe~0                                                   ; LC_X68_Y21_N6 ; 17      ; Output enable             ; no     ; --                   ; --               ;
+; mem_b_n_oe~0                                                   ; LC_X68_Y21_N8 ; 17      ; Output enable             ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|if_pc_we~0                                ; LC_X66_Y22_N6 ; 15      ; Sync. load                ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register0[12]~1    ; LC_X64_Y23_N0 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register1[15]~1    ; LC_X64_Y23_N8 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register2[8]~1     ; LC_X64_Y23_N3 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register3[3]~0     ; LC_X64_Y23_N5 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register4[13]~0    ; LC_X64_Y23_N1 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register5[14]~0    ; LC_X64_Y23_N6 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register6[14]~0    ; LC_X64_Y23_N4 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; risc16f:risc16f_inst|reg_file:reg_file_inst|register7[6]~0     ; LC_X64_Y23_N9 ; 16      ; Clock enable              ; no     ; --                   ; --               ;
+; usb_if:usb_if_inst|mar[12]~9                                   ; LC_X68_Y23_N8 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
+; usb_if:usb_if_inst|mar[6]~1                                    ; LC_X68_Y23_N5 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
+; usb_if:usb_if_inst|reg_addr[3]~0                               ; LC_X62_Y27_N9 ; 6       ; Clock enable              ; no     ; --                   ; --               ;
+; usb_if:usb_if_inst|wbuf~0                                      ; LC_X68_Y23_N4 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
+; usb_if:usb_if_inst|wbuf~1                                      ; LC_X68_Y23_N1 ; 8       ; Clock enable              ; no     ; --                   ; --               ;
 ; usb_n_frd                                                      ; PIN_F3        ; 9       ; Output enable             ; no     ; --                   ; --               ;
 +----------------------------------------------------------------+---------------+---------+---------------------------+--------+----------------------+------------------+
 
@@ -1358,7 +1358,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; led_register[20]~6                                          ; 8       ;
 ; usb_if:usb_if_inst|mar[12]~9                                ; 8       ;
 ; usb_if:usb_if_inst|mar[6]~1                                 ; 8       ;
-; risc16f:risc16f_inst|Equal0~1                               ; 8       ;
 ; risc16f:risc16f_inst|rf_immediate[10]                       ; 8       ;
 ; risc16f:risc16f_inst|reg_file:reg_file_inst|register0~16    ; 7       ;
 ; risc16f:risc16f_inst|reg_file:reg_file_inst|register0~15    ; 7       ;
@@ -1386,6 +1385,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; led_register[20]                                            ; 7       ;
 ; risc16f:risc16f_inst|alu_bin[6]~6                           ; 7       ;
 ; risc16f:risc16f_inst|alu_bin[4]~4                           ; 7       ;
+; risc16f:risc16f_inst|Equal0~1                               ; 7       ;
 ; risc16f:risc16f_inst|ex_forwarding[1]~9                     ; 7       ;
 ; risc16f:risc16f_inst|alu_bin[2]~2                           ; 7       ;
 ; risc16f:risc16f_inst|alu_bin[1]~1                           ; 7       ;
@@ -1414,8 +1414,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16f:risc16f_inst|alu_bin[3]~3                           ; 6       ;
 ; usb_if:usb_if_inst|state[0]                                 ; 6       ;
 ; risc16f:risc16f_inst|alu_op[2]~5                            ; 6       ;
-; risc16f:risc16f_inst|rf_immediate[3]                        ; 6       ;
-; risc16f:risc16f_inst|rf_immediate[1]                        ; 6       ;
 ; led_register[7]                                             ; 6       ;
 ; led_register[19]                                            ; 6       ;
 ; led_register[6]                                             ; 6       ;
@@ -1438,7 +1436,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; usb_if:usb_if_inst|always3~1                                ; 5       ;
 ; usb_if:usb_if_inst|reg_addr[0]                              ; 5       ;
 ; risc16f:risc16f_inst|ex_ir[8]                               ; 5       ;
-; risc16f:risc16f_inst|rf_immediate[2]                        ; 5       ;
+; risc16f:risc16f_inst|rf_immediate[3]                        ; 5       ;
+; risc16f:risc16f_inst|rf_immediate[1]                        ; 5       ;
 ; led_controller:led_controoler_inst|seg_sel[3]               ; 5       ;
 ; led_controller:led_controoler_inst|seg_sel[2]               ; 5       ;
 ; led_controller:led_controoler_inst|seg_sel[1]               ; 5       ;
@@ -1520,12 +1519,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16f:risc16f_inst|rf_treg2[1]                            ; 4       ;
 ; risc16f:risc16f_inst|ex_result[1]                           ; 4       ;
 ; risc16f:risc16f_inst|reg_file_we~4                          ; 4       ;
-; risc16f:risc16f_inst|rf_immediate[7]                        ; 4       ;
 ; risc16f:risc16f_inst|rf_immediate[5]                        ; 4       ;
-; risc16f:risc16f_inst|rf_ir[8]                               ; 4       ;
 ; risc16f:risc16f_inst|rf_ir[10]                              ; 4       ;
 ; risc16f:risc16f_inst|rf_ir[9]                               ; 4       ;
+; risc16f:risc16f_inst|rf_ir[8]                               ; 4       ;
+; risc16f:risc16f_inst|rf_immediate[7]                        ; 4       ;
 ; risc16f:risc16f_inst|alu_op[3]~3                            ; 4       ;
+; risc16f:risc16f_inst|rf_immediate[2]                        ; 4       ;
 ; risc16f:risc16f_inst|alu_ain[1]~0                           ; 4       ;
 ; usb_if:usb_if_inst|mem_we                                   ; 4       ;
 ; usb_n_fwr                                                   ; 3       ;
@@ -1553,7 +1553,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; debouncer:debouncer_gen[0].debouncer_inst|count[0]          ; 3       ;
 ; debouncer:debouncer_gen[0].debouncer_inst|count[1]          ; 3       ;
 ; debouncer:debouncer_gen[0].debouncer_inst|shift_reg[0]      ; 3       ;
-; risc16f:risc16f_inst|Equal6~0                               ; 3       ;
+; risc16f:risc16f_inst|Equal5~0                               ; 3       ;
 ; usb_if:usb_if_inst|Selector30~0                             ; 3       ;
 ; risc16f:risc16f_inst|ex_forwarding[0]~112                   ; 3       ;
 ; risc16f:risc16f_inst|rf_treg2[15]                           ; 3       ;
@@ -1633,7 +1633,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; usb_if:usb_if_inst|Selector31~0                             ; 2       ;
 ; risc16f:risc16f_inst|reg_file:reg_file_inst|register5[1]    ; 2       ;
 ; risc16f:risc16f_inst|rf_treg1[8]~1                          ; 2       ;
-; risc16f:risc16f_inst|always3~4                              ; 2       ;
+; risc16f:risc16f_inst|always3~2                              ; 2       ;
 ; risc16f:risc16f_inst|rf_treg2[0]                            ; 2       ;
 ; led_register[20]~5                                          ; 2       ;
 ; risc16f:risc16f_inst|Mux0~2                                 ; 2       ;
@@ -1661,7 +1661,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16f:risc16f_inst|ex_ir[12]                              ; 2       ;
 ; risc16f:risc16f_inst|ex_ir[11]                              ; 2       ;
 ; risc16f:risc16f_inst|always4~1                              ; 2       ;
-; risc16f:risc16f_inst|always3~2                              ; 2       ;
+; risc16f:risc16f_inst|always3~0                              ; 2       ;
+; risc16f:risc16f_inst|Equal0~2                               ; 2       ;
 ; risc16f:risc16f_inst|alu_op[2]~4                            ; 2       ;
 ; risc16f:risc16f_inst|alu_op[1]~0                            ; 2       ;
 ; sync_diff:sync_diff_inst_key0|shift_reg[0]                  ; 2       ;
@@ -1933,7 +1934,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16f:risc16f_inst|reg_file:reg_file_inst|register0[1]    ; 1       ;
 ; risc16f:risc16f_inst|rf_treg1~3                             ; 1       ;
 ; risc16f:risc16f_inst|rf_treg1[8]~0                          ; 1       ;
-; risc16f:risc16f_inst|always3~3                              ; 1       ;
+; risc16f:risc16f_inst|always3~1                              ; 1       ;
 ; risc16f:risc16f_inst|if_ir[1]                               ; 1       ;
 ; risc16f:risc16f_inst|reg_file:reg_file_inst|register5[0]    ; 1       ;
 ; risc16f:risc16f_inst|rf_treg2~98                            ; 1       ;
@@ -1966,24 +1967,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; led_register~0                                              ; 1       ;
 ; risc16f:risc16f_inst|Mux0~1                                 ; 1       ;
 ; risc16f:risc16f_inst|Mux0~0                                 ; 1       ;
-; risc16f:risc16f_inst|Equal12~2                              ; 1       ;
+; risc16f:risc16f_inst|Equal11~2                              ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[7]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[6]                            ; 1       ;
-; risc16f:risc16f_inst|ex_treg1[0]                            ; 1       ;
-; risc16f:risc16f_inst|ex_treg1[1]                            ; 1       ;
+; risc16f:risc16f_inst|ex_treg1[5]                            ; 1       ;
+; risc16f:risc16f_inst|ex_treg1[4]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[14]                           ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[13]                           ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[12]                           ; 1       ;
-; risc16f:risc16f_inst|Equal12~1                              ; 1       ;
+; risc16f:risc16f_inst|Equal11~1                              ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[11]                           ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[10]                           ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[9]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[8]                            ; 1       ;
-; risc16f:risc16f_inst|Equal12~0                              ; 1       ;
+; risc16f:risc16f_inst|Equal11~0                              ; 1       ;
+; risc16f:risc16f_inst|ex_treg1[0]                            ; 1       ;
+; risc16f:risc16f_inst|ex_treg1[1]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[2]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[3]                            ; 1       ;
-; risc16f:risc16f_inst|ex_treg1[4]                            ; 1       ;
-; risc16f:risc16f_inst|ex_treg1[5]                            ; 1       ;
 ; risc16f:risc16f_inst|ex_treg1[15]                           ; 1       ;
 ; risc16f:risc16f_inst|if_ir[4]                               ; 1       ;
 ; risc16f:risc16f_inst|if_ir[0]                               ; 1       ;
@@ -2226,10 +2227,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16f:risc16f_inst|ex_ir[1]                               ; 1       ;
 ; risc16f:risc16f_inst|ex_ir[4]                               ; 1       ;
 ; risc16f:risc16f_inst|always4~0                              ; 1       ;
-; risc16f:risc16f_inst|always3~1                              ; 1       ;
-; risc16f:risc16f_inst|always3~0                              ; 1       ;
+; risc16f:risc16f_inst|Equal0~4                               ; 1       ;
 ; risc16f:risc16f_inst|Equal0~3                               ; 1       ;
-; risc16f:risc16f_inst|Equal0~2                               ; 1       ;
 ; risc16f:risc16f_inst|ex_forwarding[1]~8                     ; 1       ;
 ; risc16f:risc16f_inst|ex_forwarding[1]~7                     ; 1       ;
 ; risc16f:risc16f_inst|ex_forwarding[1]~6                     ; 1       ;
@@ -2307,6 +2306,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mem_b_addr~14                                               ; 1       ;
 ; mem_b_addr~13                                               ; 1       ;
 ; mem_b_addr~12                                               ; 1       ;
+; mem_b_addr~11                                               ; 1       ;
 +-------------------------------------------------------------+---------+
 
 
@@ -2315,130 +2315,132 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------+------------------------+
 ; Other Routing Resource Type ; Usage                  ;
 +-----------------------------+------------------------+
-; C4s                         ; 1,218 / 48,240 ( 3 % ) ;
-; Direct links                ; 166 / 69,520 ( < 1 % ) ;
+; C4s                         ; 1,190 / 48,240 ( 2 % ) ;
+; Direct links                ; 157 / 69,520 ( < 1 % ) ;
 ; Global clocks               ; 3 / 8 ( 38 % )         ;
 ; LAB clocks                  ; 35 / 384 ( 9 % )       ;
-; LUT chains                  ; 23 / 18,054 ( < 1 % )  ;
-; Local interconnects         ; 1,480 / 69,520 ( 2 % ) ;
+; LUT chains                  ; 20 / 18,054 ( < 1 % )  ;
+; Local interconnects         ; 1,491 / 69,520 ( 2 % ) ;
 ; M4K buffers                 ; 0 / 2,304 ( 0 % )      ;
-; R4s                         ; 1,203 / 45,520 ( 3 % ) ;
+; R4s                         ; 1,223 / 45,520 ( 3 % ) ;
 +-----------------------------+------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                         ;
 +--------------------------------------------+-------------------------------+
-; Number of Logic Elements  (Average = 8.41) ; Number of LABs  (Total = 102) ;
+; Number of Logic Elements  (Average = 8.24) ; Number of LABs  (Total = 104) ;
 +--------------------------------------------+-------------------------------+
-; 1                                          ; 2                             ;
-; 2                                          ; 10                            ;
-; 3                                          ; 2                             ;
-; 4                                          ; 1                             ;
-; 5                                          ; 1                             ;
+; 1                                          ; 12                            ;
+; 2                                          ; 2                             ;
+; 3                                          ; 1                             ;
+; 4                                          ; 0                             ;
+; 5                                          ; 2                             ;
 ; 6                                          ; 2                             ;
 ; 7                                          ; 3                             ;
-; 8                                          ; 7                             ;
-; 9                                          ; 8                             ;
-; 10                                         ; 66                            ;
+; 8                                          ; 5                             ;
+; 9                                          ; 15                            ;
+; 10                                         ; 62                            ;
 +--------------------------------------------+-------------------------------+
 
 
 +--------------------------------------------------------------------+
 ; LAB-wide Signals                                                   ;
 +------------------------------------+-------------------------------+
-; LAB-wide Signals  (Average = 1.43) ; Number of LABs  (Total = 102) ;
+; LAB-wide Signals  (Average = 1.43) ; Number of LABs  (Total = 104) ;
 +------------------------------------+-------------------------------+
-; 1 Clock                            ; 67                            ;
-; 1 Clock enable                     ; 28                            ;
-; 1 Sync. clear                      ; 15                            ;
-; 1 Sync. load                       ; 4                             ;
-; 2 Clock enables                    ; 17                            ;
-; 2 Clocks                           ; 15                            ;
+; 1 Clock                            ; 70                            ;
+; 1 Clock enable                     ; 30                            ;
+; 1 Sync. clear                      ; 16                            ;
+; 1 Sync. load                       ; 5                             ;
+; 2 Clock enables                    ; 15                            ;
+; 2 Clocks                           ; 13                            ;
 +------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Signals Sourced  (Average = 10.22) ; Number of LABs  (Total = 102) ;
+; Number of Signals Sourced  (Average = 10.01) ; Number of LABs  (Total = 104) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
-; 1                                            ; 2                             ;
-; 2                                            ; 7                             ;
-; 3                                            ; 4                             ;
-; 4                                            ; 1                             ;
-; 5                                            ; 2                             ;
-; 6                                            ; 1                             ;
-; 7                                            ; 0                             ;
-; 8                                            ; 4                             ;
+; 1                                            ; 9                             ;
+; 2                                            ; 4                             ;
+; 3                                            ; 2                             ;
+; 4                                            ; 0                             ;
+; 5                                            ; 1                             ;
+; 6                                            ; 3                             ;
+; 7                                            ; 2                             ;
+; 8                                            ; 1                             ;
 ; 9                                            ; 6                             ;
-; 10                                           ; 40                            ;
-; 11                                           ; 9                             ;
+; 10                                           ; 42                            ;
+; 11                                           ; 8                             ;
 ; 12                                           ; 5                             ;
-; 13                                           ; 4                             ;
-; 14                                           ; 1                             ;
-; 15                                           ; 5                             ;
-; 16                                           ; 1                             ;
-; 17                                           ; 2                             ;
-; 18                                           ; 1                             ;
-; 19                                           ; 0                             ;
-; 20                                           ; 7                             ;
+; 13                                           ; 3                             ;
+; 14                                           ; 2                             ;
+; 15                                           ; 3                             ;
+; 16                                           ; 4                             ;
+; 17                                           ; 0                             ;
+; 18                                           ; 2                             ;
+; 19                                           ; 1                             ;
+; 20                                           ; 6                             ;
 +----------------------------------------------+-------------------------------+
 
 
 +---------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                         ;
 +-------------------------------------------------+-------------------------------+
-; Number of Signals Sourced Out  (Average = 7.19) ; Number of LABs  (Total = 102) ;
+; Number of Signals Sourced Out  (Average = 7.17) ; Number of LABs  (Total = 104) ;
 +-------------------------------------------------+-------------------------------+
 ; 0                                               ; 0                             ;
-; 1                                               ; 3                             ;
-; 2                                               ; 10                            ;
-; 3                                               ; 7                             ;
-; 4                                               ; 6                             ;
-; 5                                               ; 2                             ;
-; 6                                               ; 12                            ;
-; 7                                               ; 14                            ;
-; 8                                               ; 7                             ;
-; 9                                               ; 9                             ;
-; 10                                              ; 21                            ;
-; 11                                              ; 4                             ;
-; 12                                              ; 3                             ;
-; 13                                              ; 1                             ;
-; 14                                              ; 1                             ;
-; 15                                              ; 1                             ;
-; 16                                              ; 1                             ;
+; 1                                               ; 9                             ;
+; 2                                               ; 9                             ;
+; 3                                               ; 6                             ;
+; 4                                               ; 2                             ;
+; 5                                               ; 5                             ;
+; 6                                               ; 3                             ;
+; 7                                               ; 17                            ;
+; 8                                               ; 13                            ;
+; 9                                               ; 14                            ;
+; 10                                              ; 14                            ;
+; 11                                              ; 3                             ;
+; 12                                              ; 5                             ;
+; 13                                              ; 0                             ;
+; 14                                              ; 0                             ;
+; 15                                              ; 0                             ;
+; 16                                              ; 2                             ;
+; 17                                              ; 0                             ;
+; 18                                              ; 2                             ;
 +-------------------------------------------------+-------------------------------+
 
 
 +------------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                          ;
 +----------------------------------------------+-------------------------------+
-; Number of Distinct Inputs  (Average = 13.73) ; Number of LABs  (Total = 102) ;
+; Number of Distinct Inputs  (Average = 13.52) ; Number of LABs  (Total = 104) ;
 +----------------------------------------------+-------------------------------+
 ; 0                                            ; 0                             ;
 ; 1                                            ; 0                             ;
-; 2                                            ; 0                             ;
-; 3                                            ; 4                             ;
-; 4                                            ; 3                             ;
-; 5                                            ; 3                             ;
-; 6                                            ; 4                             ;
-; 7                                            ; 5                             ;
+; 2                                            ; 2                             ;
+; 3                                            ; 3                             ;
+; 4                                            ; 2                             ;
+; 5                                            ; 2                             ;
+; 6                                            ; 9                             ;
+; 7                                            ; 4                             ;
 ; 8                                            ; 2                             ;
-; 9                                            ; 2                             ;
-; 10                                           ; 5                             ;
-; 11                                           ; 8                             ;
-; 12                                           ; 6                             ;
-; 13                                           ; 7                             ;
-; 14                                           ; 3                             ;
-; 15                                           ; 4                             ;
-; 16                                           ; 4                             ;
-; 17                                           ; 4                             ;
+; 9                                            ; 3                             ;
+; 10                                           ; 4                             ;
+; 11                                           ; 5                             ;
+; 12                                           ; 7                             ;
+; 13                                           ; 6                             ;
+; 14                                           ; 4                             ;
+; 15                                           ; 6                             ;
+; 16                                           ; 5                             ;
+; 17                                           ; 3                             ;
 ; 18                                           ; 10                            ;
-; 19                                           ; 11                            ;
+; 19                                           ; 9                             ;
 ; 20                                           ; 13                            ;
-; 21                                           ; 4                             ;
+; 21                                           ; 5                             ;
 +----------------------------------------------+-------------------------------+
 
 
@@ -2464,7 +2466,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; I/O             ; usb_clk              ; 5.4               ;
+; I/O             ; usb_clk              ; 5.3               ;
 +-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using either the TimeQuest Timing Analyzer or the Classic Timing Analyzer.
@@ -2475,21 +2477,21 @@ This will disable optimization of problematic paths and expose them for further 
 +-----------------+----------------------------+-------------------+
 ; Source Register ; Destination Register       ; Delay Added in ns ;
 +-----------------+----------------------------+-------------------+
-; mem_a_data[5]   ; usb_if:usb_if_inst|mdr[5]  ; 0.474             ;
-; mem_a_data[7]   ; usb_if:usb_if_inst|mdr[7]  ; 0.471             ;
-; mem_a_data[4]   ; usb_if:usb_if_inst|mdr[4]  ; 0.471             ;
-; mem_a_data[12]  ; usb_if:usb_if_inst|mdr[12] ; 0.458             ;
-; mem_a_data[0]   ; usb_if:usb_if_inst|mdr[0]  ; 0.455             ;
-; mem_a_data[13]  ; usb_if:usb_if_inst|mdr[13] ; 0.455             ;
-; mem_a_data[1]   ; usb_if:usb_if_inst|mdr[1]  ; 0.455             ;
-; mem_a_data[6]   ; usb_if:usb_if_inst|mdr[6]  ; 0.330             ;
-; mem_a_data[11]  ; usb_if:usb_if_inst|mdr[11] ; 0.312             ;
-; mem_a_data[8]   ; usb_if:usb_if_inst|mdr[8]  ; 0.312             ;
-; mem_a_data[15]  ; usb_if:usb_if_inst|mdr[15] ; 0.309             ;
-; mem_a_data[14]  ; usb_if:usb_if_inst|mdr[14] ; 0.300             ;
-; mem_a_data[9]   ; usb_if:usb_if_inst|mdr[9]  ; 0.300             ;
+; mem_a_data[12]  ; usb_if:usb_if_inst|mdr[12] ; 0.898             ;
+; mem_a_data[11]  ; usb_if:usb_if_inst|mdr[11] ; 0.471             ;
+; mem_a_data[8]   ; usb_if:usb_if_inst|mdr[8]  ; 0.471             ;
+; mem_a_data[13]  ; usb_if:usb_if_inst|mdr[13] ; 0.470             ;
+; mem_a_data[7]   ; usb_if:usb_if_inst|mdr[7]  ; 0.467             ;
+; mem_a_data[6]   ; usb_if:usb_if_inst|mdr[6]  ; 0.467             ;
+; mem_a_data[4]   ; usb_if:usb_if_inst|mdr[4]  ; 0.467             ;
+; mem_a_data[15]  ; usb_if:usb_if_inst|mdr[15] ; 0.464             ;
+; mem_a_data[5]   ; usb_if:usb_if_inst|mdr[5]  ; 0.451             ;
+; mem_a_data[14]  ; usb_if:usb_if_inst|mdr[14] ; 0.309             ;
 ; mem_a_data[10]  ; usb_if:usb_if_inst|mdr[10] ; 0.300             ;
 ; mem_a_data[2]   ; usb_if:usb_if_inst|mdr[2]  ; 0.032             ;
+; mem_a_data[1]   ; usb_if:usb_if_inst|mdr[1]  ; 0.032             ;
+; mem_a_data[0]   ; usb_if:usb_if_inst|mdr[0]  ; 0.018             ;
+; mem_a_data[3]   ; usb_if:usb_if_inst|mdr[3]  ; 0.018             ;
 +-----------------+----------------------------+-------------------+
 Note: This table only shows the top 15 path(s) that have the largest delay added for hold.
 
@@ -2532,23 +2534,23 @@ Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 2% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 20% of the available device resources in the region that extends from location X58_Y22 to location X69_Y33
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.57 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.51 seconds.
 Info (186079): Completed Fixed Delay Chain Operation
 Info (306004): Started post-fitting delay annotation
 Info (306005): Delay annotation completed successfully
 Info (186079): Completed Auto Delay Chain Operation
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 814 megabytes
-    Info: Processing ended: Mon Jan 25 18:48:54 2021
+    Info: Peak virtual memory: 811 megabytes
+    Info: Processing ended: Sun Feb  7 19:47:42 2021
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
 
 

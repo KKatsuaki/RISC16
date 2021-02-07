@@ -205,7 +205,7 @@ where
         if dst > cur {
             dst - (cur + 2)
         } else {
-            dst - cur
+            dst - cur - 2
         }
     }
 

@@ -1,5 +1,5 @@
 Assembler report for risc16f_top
-Mon Jan 25 18:48:57 2021
+Sun Feb  7 19:47:45 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Jan 25 18:48:57 2021 ;
+; Assembler Status      ; Successful - Sun Feb  7 19:47:45 2021 ;
 ; Revision Name         ; risc16f_top                           ;
 ; Top-level Entity Name ; risc16f_top                           ;
 ; Family                ; Cyclone                               ;
@@ -94,8 +94,8 @@ applicable agreement for further details.
 ; Option         ; Setting                  ;
 +----------------+--------------------------+
 ; Device         ; EP1C20F400C8             ;
-; JTAG usercode  ; 0x00276E63               ;
-; Checksum       ; 0x00276E63               ;
+; JTAG usercode  ; 0x00279108               ;
+; Checksum       ; 0x00279108               ;
 +----------------+--------------------------+
 
 
@@ -128,13 +128,13 @@ Info: Running Quartus II 64-Bit Assembler
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Mon Jan 25 18:48:56 2021
+    Info: Processing started: Sun Feb  7 19:47:43 2021
 Info: Command: quartus_asm risc16f_top
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 623 megabytes
-    Info: Processing ended: Mon Jan 25 18:48:57 2021
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Sun Feb  7 19:47:45 2021
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

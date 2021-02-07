@@ -1,5 +1,5 @@
 Analysis & Synthesis report for risc16f_top
-Mon Jan 25 18:48:44 2021
+Sun Feb  7 19:47:32 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -67,12 +67,12 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +-----------------------------+--------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Mon Jan 25 18:48:44 2021            ;
+; Analysis & Synthesis Status ; Successful - Sun Feb  7 19:47:32 2021            ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name               ; risc16f_top                                      ;
 ; Top-level Entity Name       ; risc16f_top                                      ;
 ; Family                      ; Cyclone                                          ;
-; Total logic elements        ; 1,078                                            ;
+; Total logic elements        ; 1,077                                            ;
 ; Total pins                  ; 126                                              ;
 ; Total virtual pins          ; 0                                                ;
 ; Total memory bits           ; 0                                                ;
@@ -199,20 +199,20 @@ applicable agreement for further details.
 +---------------------------------------------+----------------------------------------------------------------+
 ; Resource                                    ; Usage                                                          ;
 +---------------------------------------------+----------------------------------------------------------------+
-; Total logic elements                        ; 1078                                                           ;
-;     -- Combinational with no register       ; 657                                                            ;
+; Total logic elements                        ; 1077                                                           ;
+;     -- Combinational with no register       ; 656                                                            ;
 ;     -- Register only                        ; 222                                                            ;
 ;     -- Combinational with a register        ; 199                                                            ;
 ;                                             ;                                                                ;
 ; Logic element usage by number of LUT inputs ;                                                                ;
-;     -- 4 input functions                    ; 486                                                            ;
+;     -- 4 input functions                    ; 485                                                            ;
 ;     -- 3 input functions                    ; 137                                                            ;
 ;     -- 2 input functions                    ; 229                                                            ;
 ;     -- 1 input functions                    ; 4                                                              ;
 ;     -- 0 input functions                    ; 0                                                              ;
 ;                                             ;                                                                ;
 ; Logic elements by mode                      ;                                                                ;
-;     -- normal mode                          ; 997                                                            ;
+;     -- normal mode                          ; 996                                                            ;
 ;     -- arithmetic mode                      ; 81                                                             ;
 ;     -- qfbk mode                            ; 0                                                              ;
 ;     -- register cascade mode                ; 0                                                              ;
@@ -227,7 +227,7 @@ applicable agreement for further details.
 ;                                             ;                                                                ;
 ; Maximum fan-out node                        ; clk_generator:clk_generator_inst|altpll:altpll_component|_clk0 ;
 ; Maximum fan-out                             ; 364                                                            ;
-; Total fan-out                               ; 3926                                                           ;
+; Total fan-out                               ; 3922                                                           ;
 ; Average fan-out                             ; 3.26                                                           ;
 +---------------------------------------------+----------------------------------------------------------------+
 
@@ -237,7 +237,7 @@ applicable agreement for further details.
 +------------------------------------------------+-------------+--------------+-------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; Logic Cells ; LC Registers ; Memory Bits ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                   ; Library Name ;
 +------------------------------------------------+-------------+--------------+-------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
-; |risc16f_top                                   ; 1078 (93)   ; 421          ; 0           ; 126  ; 0            ; 657 (68)     ; 222 (16)          ; 199 (9)          ; 86 (0)          ; 0 (0)      ; |risc16f_top                                                          ; work         ;
+; |risc16f_top                                   ; 1077 (93)   ; 421          ; 0           ; 126  ; 0            ; 656 (68)     ; 222 (16)          ; 199 (9)          ; 86 (0)          ; 0 (0)      ; |risc16f_top                                                          ; work         ;
 ;    |clk_generator:clk_generator_inst|          ; 0 (0)       ; 0            ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|clk_generator:clk_generator_inst                         ; work         ;
 ;       |altpll:altpll_component|                ; 0 (0)       ; 0            ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|clk_generator:clk_generator_inst|altpll:altpll_component ; work         ;
 ;    |debouncer:debouncer_gen[0].debouncer_inst| ; 64 (64)     ; 26           ; 0           ; 0    ; 0            ; 38 (38)      ; 0 (0)             ; 26 (26)          ; 23 (23)         ; 0 (0)      ; |risc16f_top|debouncer:debouncer_gen[0].debouncer_inst                ; work         ;
@@ -245,7 +245,7 @@ applicable agreement for further details.
 ;    |double_ff:double_ff_n_rst_usb|             ; 2 (2)       ; 2            ; 0           ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|double_ff:double_ff_n_rst_usb                            ; work         ;
 ;    |double_ff:double_ff_sw|                    ; 2 (2)       ; 2            ; 0           ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|double_ff:double_ff_sw                                   ; work         ;
 ;    |led_controller:led_controoler_inst|        ; 99 (99)     ; 29           ; 0           ; 0    ; 0            ; 70 (70)      ; 0 (0)             ; 29 (29)          ; 16 (16)         ; 0 (0)      ; |risc16f_top|led_controller:led_controoler_inst                       ; work         ;
-;    |risc16f:risc16f_inst|                      ; 723 (530)   ; 275          ; 0           ; 0    ; 0            ; 448 (383)    ; 160 (32)          ; 115 (115)        ; 47 (15)         ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst                                     ; work         ;
+;    |risc16f:risc16f_inst|                      ; 722 (529)   ; 275          ; 0           ; 0    ; 0            ; 447 (382)    ; 160 (32)          ; 115 (115)        ; 47 (15)         ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst                                     ; work         ;
 ;       |alu16:alu16_inst|                       ; 39 (39)     ; 0            ; 0           ; 0    ; 0            ; 39 (39)      ; 0 (0)             ; 0 (0)            ; 32 (32)         ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst|alu16:alu16_inst                    ; work         ;
 ;       |reg_file:reg_file_inst|                 ; 154 (154)   ; 128          ; 0           ; 0    ; 0            ; 26 (26)      ; 128 (128)         ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|risc16f:risc16f_inst|reg_file:reg_file_inst              ; work         ;
 ;    |sync_diff:sync_diff_inst_key0|             ; 2 (2)       ; 2            ; 0           ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |risc16f_top|sync_diff:sync_diff_inst_key0                            ; work         ;
@@ -981,7 +981,7 @@ Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Mon Jan 25 18:48:40 2021
+    Info: Processing started: Sun Feb  7 19:47:28 2021
 Info: Command: quartus_map --family=Cyclone risc16f_top
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
 Info (12021): Found 7 design units, including 7 entities, in source file risc16f_top.sv
@@ -1089,15 +1089,15 @@ Warning (21074): Design contains 9 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "sw_in[7]"
     Warning (15610): No output dependent on input pin "usb_rg_dt"
     Warning (15610): No output dependent on input pin "usb_n_bulk"
-Info (21057): Implemented 1205 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1204 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 70 output pins
     Info (21060): Implemented 40 bidirectional pins
-    Info (21061): Implemented 1078 logic cells
+    Info (21061): Implemented 1077 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 731 megabytes
-    Info: Processing ended: Mon Jan 25 18:48:44 2021
+    Info: Peak virtual memory: 723 megabytes
+    Info: Processing ended: Sun Feb  7 19:47:32 2021
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
