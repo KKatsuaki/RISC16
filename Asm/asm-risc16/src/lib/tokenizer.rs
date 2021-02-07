@@ -3,6 +3,9 @@ use crate::lib::result::Result;
 use crate::lib::risc16::{Mnemonic, Register};
 use crate::regex::Regex;
 
+use std::io::Write;
+
+use std::collections::HashMap;
 use std::str::FromStr;
 /*
 data format
@@ -12,10 +15,11 @@ bin : r"#0b([0-1_]+)"
  */
 #[derive(Debug)]
 pub enum Token {
-    Comment,         // r"//[ \t.]*"
-    Mnemo(Mnemonic), // one of menimonic such as NOP, MV, etc
-    Label(String),   // r"(?P<label>[a-zA-Z]+[.0-9]+)"
-    Reg(Register),   // r"(?P<reg>[rR][0-7])"
+    Comment,          // r"//[ \t.]*"
+    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etc
+    SetLabel(String), // r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):"
+    Label(String),    // r"(?P<label>[a-zA-Z][a-zA-Z0-9]*)"
+    Reg(Register),    // r"(?P<reg>[rR][0-7])"
     Data(i16), // r"#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))"
     Addr(u16), // r"(@(?P<addr>[0-9A-Fa-f]*))
 }
@@ -23,8 +27,9 @@ pub enum Token {
 impl Token {
     pub fn parse(tok: &str) -> Result<Self> {
         let re_comment = Regex::new(r"//[ .\t]*").unwrap();
-        let re_label = Regex::new(r"^(?P<label>[a-zA-Z][.0-9]+)").unwrap();
+        let re_label = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9]*)").unwrap();
         let re_register = Regex::new(r"(?P<reg>[rR][0-7])").unwrap();
+        let re_setlabel = Regex::new(r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):").unwrap();
         let re_data = Regex::new(
             r"#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))",
         )
@@ -33,7 +38,7 @@ impl Token {
 
         if re_comment.is_match(tok) {
             // check if comment
-            Err(AsmError::new())
+            Ok(Self::Comment)
         } else {
             match re_addr.captures(tok) {
                 // addr
@@ -48,42 +53,47 @@ impl Token {
                         Some(cap2) => Ok(Self::Reg(Register::from_str(
                             cap2.name("reg").unwrap().as_str(),
                         )?)),
-                        None => match re_label.captures(tok) {
-                            // label
-                            Some(cap3) => Ok(Self::Label(
-                                cap3.name("label").unwrap().as_str().to_string(),
+                        None => match re_setlabel.captures(tok) {
+                            Some(cap5) => Ok(Self::SetLabel(
+                                cap5.name("label").unwrap().as_str().to_string(),
                             )),
-                            None => match re_data.captures(tok) {
-                                // data
-                                Some(cap4) => {
-                                    let val = match cap4.name("hex") {
-                                        Some(hex_val) => {
-                                            match i16::from_str_radix(hex_val.as_str(), 16) {
-                                                Ok(v) => v,
-                                                Err(_) => return Err(AsmError::new()),
-                                            }
-                                        }
-                                        None => match cap4.name("bin") {
-                                            Some(bin_val) => {
-                                                match i16::from_str_radix(bin_val.as_str(), 2) {
+                            None => match re_label.captures(tok) {
+                                // label
+                                Some(cap3) => Ok(Self::Label(
+                                    cap3.name("label").unwrap().as_str().to_string(),
+                                )),
+                                None => match re_data.captures(tok) {
+                                    // data
+                                    Some(cap4) => {
+                                        let val = match cap4.name("hex") {
+                                            Some(hex_val) => {
+                                                match i16::from_str_radix(hex_val.as_str(), 16) {
                                                     Ok(v) => v,
                                                     Err(_) => return Err(AsmError::new()),
                                                 }
                                             }
-                                            None => match cap4.name("dec") {
-                                                Some(dec_val) => {
-                                                    match dec_val.as_str().parse::<i16>() {
+                                            None => match cap4.name("bin") {
+                                                Some(bin_val) => {
+                                                    match i16::from_str_radix(bin_val.as_str(), 2) {
                                                         Ok(v) => v,
                                                         Err(_) => return Err(AsmError::new()),
                                                     }
                                                 }
-                                                None => return Err(AsmError::new()),
+                                                None => match cap4.name("dec") {
+                                                    Some(dec_val) => {
+                                                        match dec_val.as_str().parse::<i16>() {
+                                                            Ok(v) => v,
+                                                            Err(_) => return Err(AsmError::new()),
+                                                        }
+                                                    }
+                                                    None => return Err(AsmError::new()),
+                                                },
                                             },
-                                        },
-                                    };
-                                    Ok(Self::Data(val))
-                                }
-                                None => Err(AsmError::new()),
+                                        };
+                                        Ok(Self::Data(val))
+                                    }
+                                    None => Err(AsmError::new()),
+                                },
                             },
                         },
                     },
@@ -92,13 +102,24 @@ impl Token {
         }
     }
 
-    pub fn tokenize(l: &str) -> Result<Vec<Self>> {
+    pub fn tokenize(
+        l: &str,
+        linum: u16,
+        label_map: &mut HashMap<String, u16>,
+    ) -> Result<Vec<Self>> {
         let buf = String::from_str(l).unwrap();
         let mut res = Vec::new();
         for tok in buf.split_whitespace() {
             let tmp = Self::parse(tok)?;
+            match tmp {
+                Self::SetLabel(ref tmp) => {
+                    label_map.insert(tmp.clone(), (linum - 1) * 2);
+                }
+                _ => (),
+            }
             res.push(tmp);
         }
+
         Ok(res)
     }
 }

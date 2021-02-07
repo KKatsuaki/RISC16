@@ -14,22 +14,15 @@ pub struct Instruction {
 
 impl fmt::Display for Instruction {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let op1 = match self.operand1 {
-            Some(s) => s,
-            None => 0,
-        };
-        let op2 = match self.operand2 {
-            Some(s) => s,
-            None => 0,
-        };
-        write!(f, "{:?} 0x{:x} 0x{:x}", self.mnemonic, op1, op2)
+        let code = self.into_u16();
+        write!(f, "{:0>8x} {:0>8b}", code >> 8, code & 0xFF)
     }
 }
 
 impl Instruction {
-    pub fn new(mnemonic: Mnemonic, operand1: Option<u16>, operand2: Option<u16>) -> Self {
+    pub fn new(mnemonic: &Mnemonic, operand1: Option<u16>, operand2: Option<u16>) -> Self {
         Self {
-            mnemonic,
+            mnemonic: mnemonic.clone(),
             operand1,
             operand2,
         }
@@ -71,7 +64,7 @@ impl Instruction {
 }
 
 // convert negative number to 2's complement
-pub fn conv_complement(n: i16, bits: usize) -> u16 {
+pub fn conv_complement(n: i32, bits: usize) -> u16 {
     let n = if n < 0 { (n * (-1)) as u16 } else { n as u16 };
     (!n + 1) & (0b1111_1111_1111_1111) >> (16 - bits)
 }

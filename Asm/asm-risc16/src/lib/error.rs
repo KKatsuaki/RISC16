@@ -13,4 +13,8 @@ impl AsmError {
     pub fn new() -> Self {
         Self {}
     }
+
+    pub fn boxed() -> Box<Self> {
+        Box::new(Self::new())
+    }
 }
