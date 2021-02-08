@@ -1,93 +1,103 @@
 m255
 K3
+z0
+!s11f MIXED_VERSIONS
 13
 cModel Technology
-Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
+d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
 valu16
-Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1612815729
 !i10b 1
-Z2 !s100 @DFmDIN03mBloK^<0cG4j2
-Z3 I1TBk3D_c=BGm111oUMA4V1
-Z4 Vd6eEEC>JB>`o1OT]UBGQR0
-Z5 !s105 risc16ba_sv_unit
+!s100 ?bFmTVb4OKAS9FfLHfO2]1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Il`4RQ`1S2fmHA1WjFk;LN3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 S1
-Z6 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
-Z7 w1612690957
-Z8 8risc16ba.sv
-Z9 Frisc16ba.sv
-Z10 L0 404
-Z11 OV;L;10.1d;51
+Z4 d/home/geek_731/Workspace/github/RISC16/risc16ba
+Z5 w1612814124
+Z6 8risc16ba.sv
+Z7 Frisc16ba.sv
+!i122 2
+L0 404 24
+Z8 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z12 !s108 1612694783.684800
-Z13 !s107 risc16ba.sv|sim_risc16ba.sv|
-Z14 !s90 sim_risc16ba.sv|risc16ba.sv|
-!s101 -O0
-o-O0
+Z9 !s108 1612815729.000000
+!s107 risc16ba.sv|sim_risc16ba.sv|
+Z10 !s90 sim_risc16ba.sv|risc16ba.sv|
+!i113 1
+Z11 tCvgOpt 0
 vreg_file
+R0
 R1
 !i10b 1
-Z15 !s100 DCmWQ^6_`:EIYWjj]kTeF3
-Z16 I5?9l_>`?oh1GERNaPY^Nh0
-Z17 V]dOlhBM^R4i;CYM]kUSZc3
-R5
+!s100 J`kT=A?@KE17Y^amOgUUW2
+R2
+I:=@3l30GTUmR3EVXZH`lK1
+R3
 S1
+R4
+R5
 R6
 R7
+!i122 2
+L0 339 64
 R8
-R9
-Z18 L0 339
-R11
 r1
 !s85 0
 31
-R12
-R13
-R14
-!s101 -O0
-o-O0
+R9
+Z12 !s107 risc16ba.sv|sim_risc16ba.sv|
+R10
+!i113 1
+R11
 vrisc16ba
+R0
 R1
 !i10b 1
-Z19 !s100 3B_RU6ba]g4?DMM>FRbU42
-Z20 IzFU_2:NKMK=a>UaCG[5^o1
-Z21 VFSlf4UUCYhoCad5AOXogm3
-R5
+!s100 f5CLem?<;Ujzgme`[IM_>2
+R2
+I=1?_k`G]4Qn6kE3?^Vc8I1
+R3
 S1
+R4
+R5
 R6
 R7
+!i122 2
+L0 22 315
 R8
-R9
-L0 22
-R11
 r1
 !s85 0
 31
+R9
 R12
-R13
-R14
-!s101 -O0
-o-O0
+R10
+!i113 1
+R11
 vsim_risc16ba
+R0
 R1
 !i10b 1
-Z22 !s100 1V`Pm6of`URSJ`b4YTK_51
-Z23 IT923CbFL?376`R]1HEjL43
-Z24 V<I`L5`2^b6SPF0HKOW1f82
-Z25 !s105 sim_risc16ba_sv_unit
+!s100 96:m:^W@=clP26@_XJ]hO2
+R2
+I85O8[EK]h4<X;]=N]`Ig?1
+R3
 S1
-R6
-Z26 w1612691008
-Z27 8sim_risc16ba.sv
-Z28 Fsim_risc16ba.sv
-L0 4
-R11
+R4
+R5
+8sim_risc16ba.sv
+Fsim_risc16ba.sv
+!i122 2
+L0 4 125
+R8
 r1
 !s85 0
 31
+R9
 R12
-R13
-R14
-!s101 -O0
-o-O0
+R10
+!i113 1
+R11
