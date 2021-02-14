@@ -10,14 +10,8 @@
 `define RIGHT_SHIFT_BIN_1 4'b1001     
 `define AND  4'b1010                   
 `define OR   4'b1011
-`define NOP 16'b0000_0000_0000_0000
-// `define ADDB 4'b1100
-// `define SUBB 4'b1101
-// `define XORB 4'b1101
-// `define ORB  4'b1101
-// `define ANDB 4'b1110
-// `define NOTB 4'b1111
 
+`define NOP 16'b0000_0000_0000_0000
 
 module risc16ba
   (
@@ -48,18 +42,18 @@ module risc16ba
       else
         if_ir <= idin;
    end
-   
-   always_ff @(posedge clk) begin
-      if (rst)
-        if_pc <= 16'd0;
-      else begin
-         if (if_pc_we)
-           if_pc <= ex_result;
-         else
-           if_pc <= if_pc + 16'd2;
-      end
-   end
 
+   always_ff @(posedge clk) begin 
+      if (rst)                    
+        if_pc <= 16'd0;           
+      else begin                  
+         if (if_pc_we)            
+           if_pc <= ex_result;    
+         else                     
+           if_pc <= if_pc + 16'd2;
+      end                         
+   end                            
+   
    assign ioe = 1'b1;
    assign iaddr = if_pc;
 
@@ -99,7 +93,7 @@ module risc16ba
         else
           rf_treg1 <= reg_file_dout1;
       else
-          rf_treg1 <= reg_file_dout1;
+        rf_treg1 <= reg_file_dout1;
    end // always_ff @ (posedge clk)
 
    // treg2
@@ -117,7 +111,7 @@ module risc16ba
         else
           rf_treg2 <= reg_file_dout2;
       else
-          rf_treg2 <= reg_file_dout2;
+        rf_treg2 <= reg_file_dout2;
    end
 
    always_ff @(posedge clk) begin
@@ -184,13 +178,13 @@ module risc16ba
    always_comb begin
       if (rf_ir[15:11] == 5'd0 && rf_ir[4])
         case(rf_ir[3:0])
-           4'h1 : ex_forwarding <= ddin;
-           4'h3 : begin
-              if (rf_treg2[0]) // odd
-                ex_forwarding <= {8'b0,ddin[7:0]};
-              else
-                ex_forwarding <= {8'b0,ddin[15:8]};
-           end
+          4'h1 : ex_forwarding <= ddin;
+          4'h3 : begin
+             if (rf_treg2[0]) // odd
+               ex_forwarding <= {8'b0,ddin[7:0]};
+             else
+               ex_forwarding <= {8'b0,ddin[15:8]};
+          end
           default: ex_forwarding <= alu_dout;
         endcase // case (rf_ir[3:0])
       else
@@ -218,46 +212,53 @@ module risc16ba
        */
       if(rf_ir[15] == 1'b0)  begin // reg, mem, imm
          if(rf_ir[14:11] == 4'b0) begin // reg and mem
-            alu_ain <= rf_treg1;
-            alu_bin <= rf_treg2;
-            alu_op <= rf_ir[3:0];
+            alu_ain = rf_treg1;
+            alu_bin = rf_treg2;
+            alu_op = rf_ir[3:0];
 
             if(rf_ir[4] == 1'b0) begin  // reg
-               doe <= 1'b0;
-               dwe0 <= 1'b0;
-               dwe1 <= 1'b0;
+               doe = 1'b0;
+               dwe0 = 1'b0;
+               dwe1 = 1'b0;
                ddout <= rf_treg1;               
             end
             else begin // mem
                case(rf_ir[3:0]) 
                  4'h0 : begin // st
-                    doe   <= 1'b0;
-                    dwe1  <= 1'b1;
-                    dwe0  <= 1'b1;
+                    doe   = 1'b0;
+                    dwe1  = 1'b1;
+                    dwe0  = 1'b1;
                     ddout <= rf_treg1;
                  end
                  4'h1 : begin //ld
-                    doe <= 1'b1;
-                    dwe1 <= 1'b0;
-                    dwe0 <= 1'b0;  
+                    doe = 1'b1;
+                    dwe1 = 1'b0;
+                    dwe0 = 1'b0;  
                     ddout <= 16'hx;                                      
                  end
                  4'h2 : begin // SBU
-                    doe   <= 1'b0;  
-                    dwe0  <= rf_treg2[0] ? 1'b0 : 1'b1;
-                    dwe1  <= rf_treg2[0] ? 1'b1 : 1'b0;
-                    ddout <= rf_treg2[0] ? {8'b0, rf_treg1[7:0]}:{rf_treg1[7:0],8'b0};
+                    doe   = 1'b0;
+                    if(rf_treg2[0]) begin
+                       dwe0  =  1'b0;
+                       dwe1  =  1'b1;
+                       ddout <= {8'b0, rf_treg1[7:0]};
+                    end else begin
+                       dwe0  = 1'b1;               
+                       dwe1  = 1'b0;               
+                       ddout <= {rf_treg1[7:0],8'b0};
+
+                    end
                  end
                  4'h3 : begin // LBU
-                    doe <= 1'b1;                                         
-                    dwe1 <= 1'b0;                                        
-                    dwe0 <= 1'b0;                                        
-                    ddout <= 16'hx;                                                          
+                    doe = 1'b1;                                         
+                    dwe1 = 1'b0;                                        
+                    dwe0 = 1'b0;                                        
+                    ddout <= 16'hx;
                  end
                  default: begin
-                    doe <= 1'b0; 
-                    dwe1 <= 1'b0;
-                    dwe0 <= 1'b0;
+                    doe = 1'b0; 
+                    dwe1 = 1'b0;
+                    dwe0 = 1'b0;
                     ddout <= 16'hx;
                  end
                endcase // case (rf_ir[3:0])
@@ -333,8 +334,7 @@ module risc16ba
          end // else: !if(ex_ir[14] == 1'b1)
       end // else: !if(rf_ir[15] == 1'b0)
    end // always_comb 
-endmodule // risc16f
-
+endmodule // risc16ba
 
 module reg_file
   (
@@ -425,3 +425,81 @@ module alu16
       endcase // case (op)                    
    end // always_comb begin                   
 endmodule // alu16
+
+module BT // branch table (includes branch history table and brach target buffer)
+  (
+   input wire [7:0]    tag,
+   input wire [15:0]   new_addr,
+   input wire [1:0]    new_state,
+   input wire [1:0]    we,
+   /*
+    00| disable both
+    01| enable state write
+    10| enable addr write
+    11| enable both
+    */
+   input wire          rst, clk,
+   output logic [15:0] target,
+   output logic [1:0]  state,
+   output logic        hit
+   );
+   //|flag for hit|2 bits BHT|16 bits BTB| 
+   reg [18:0]          record [0:256];
+   integer             i;
+
+   always_ff @(posedge clk) begin
+      if(rst) begin
+         for(i = 0; i <= 256; i++) begin
+            record[i] <= 19'b0;
+         end
+      end else begin
+         case(we)
+           2'b0: record[tag]        <= record[tag];
+           2'b1: record[tag][17:16] <= new_state;
+           2'b10: record[tag]       <= {{1'b1,2'b0},new_addr};
+           2'b11: record[tag]       <= {{1'b1,new_state},new_addr};
+         endcase // case (we)
+      end
+   end
+   
+   assign target = record[tag][15:0];
+   assign state = record[tag][17:16];
+   assign hit = record[tag][18];
+endmodule // BT
+
+module direction_predictor
+  (
+   input wire         clk, rst, actually_taken,
+   input wire [1:0]   state,
+   output logic [1:0] next
+   );
+
+   always_comb begin
+      case (state)
+        2'b00 : begin
+           if(actually_taken)
+             next = 2'b01;
+           else
+             next = 2'b00;
+        end
+        2'b01: begin
+           if(actually_taken)
+             next = 2'b11;
+           else
+             next = 2'b00;
+        end
+        2'b10: begin
+           if(actually_taken)
+             next = 2'b11;
+           else
+             next = 2'b00;
+        end
+        2'b11: begin
+           if(actually_taken)
+             next = 2'b11;
+           else
+             next = 2'b10;
+        end
+      endcase // case (state)
+   end // always_ff @ (posedge clk)
+endmodule // 2bit_predic
