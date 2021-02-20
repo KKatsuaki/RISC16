@@ -56,7 +56,7 @@ module risc16ba
       if(rst)
 	if_pc <= 16'h0;
       else
-	if_pc <= if_pc + 16'h2;
+	if_pc <= if_pc_we?ex_result:if_pc + 16'h2;
    end
 
    assign iaddr = if_pc;

@@ -1,0 +1,93 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16p
+valu16
+Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
+!i10b 1
+!s100 QlL9e`]>?[6CnQ_OcY;G=3
+IhRbeGnPKfl`:g9iXf854Y3
+Vd6eEEC>JB>`o1OT]UBGQR0
+Z2 !s105 risc16p_sv_unit
+S1
+Z3 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16p
+Z4 w1610948479
+Z5 8risc16p.sv
+Z6 Frisc16p.sv
+L0 336
+Z7 OV;L;10.1d;51
+r1
+!s85 0
+31
+Z8 !s108 1612693660.382954
+Z9 !s107 risc16p.sv|sim_risc16p.sv|
+Z10 !s90 sim_risc16p.sv|risc16p.sv|
+!s101 -O0
+o-O0
+vreg_file
+R1
+!i10b 1
+!s100 3BkiQ;:?=kkJ1zhG_?hZH0
+IP3=omJP@c<m2RnTFhWO;Z2
+V]dOlhBM^R4i;CYM]kUSZc3
+R2
+S1
+R3
+R4
+R5
+R6
+L0 270
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!s101 -O0
+o-O0
+vrisc16p
+R1
+!i10b 1
+!s100 ec=VDo;mZQb6kGo4UdH=z0
+IaR5JNSYcjYRK6PJj`:8RG0
+V3I=:aL:dP;hmO^9lMniKz3
+R2
+S1
+R3
+R4
+R5
+R6
+L0 14
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!s101 -O0
+o-O0
+vsim_risc16p
+R1
+!i10b 1
+!s100 Z[2>CncfjJ`fhQ?c1@;[>2
+IY[PJ=^c;KdK_>hZT7PD8_2
+V:]i7:TPRZ8oZAdcH@omS^1
+!s105 sim_risc16p_sv_unit
+S1
+R3
+w1610949554
+8sim_risc16p.sv
+Fsim_risc16p.sv
+L0 4
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!s101 -O0
+o-O0
