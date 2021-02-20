@@ -220,7 +220,7 @@ module risc16ba
                doe = 1'b0;
                dwe0 = 1'b0;
                dwe1 = 1'b0;
-               ddout = rf_treg1;               
+               ddout <= rf_treg1;               
             end
             else begin // mem
                case(rf_ir[3:0]) 
@@ -228,37 +228,38 @@ module risc16ba
                     doe   = 1'b0;
                     dwe1  = 1'b1;
                     dwe0  = 1'b1;
-                    ddout = rf_treg1;
+                    ddout <= rf_treg1;
                  end
                  4'h1 : begin //ld
                     doe = 1'b1;
                     dwe1 = 1'b0;
                     dwe0 = 1'b0;  
-                    ddout = 16'hx;                                      
+                    ddout <= 16'hx;                                      
                  end
                  4'h2 : begin // SBU
                     doe   = 1'b0;
                     if(rf_treg2[0]) begin
                        dwe0  =  1'b0;
                        dwe1  =  1'b1;
-                       ddout =  {8'b0, rf_treg1[7:0]};
+                       ddout <= {8'b0, rf_treg1[7:0]};
                     end else begin
                        dwe0  = 1'b1;               
                        dwe1  = 1'b0;               
-                       ddout = {rf_treg1[7:0],8'b0};
+                       ddout <= {rf_treg1[7:0],8'b0};
+
                     end
                  end
                  4'h3 : begin // LBU
                     doe = 1'b1;                                         
                     dwe1 = 1'b0;                                        
                     dwe0 = 1'b0;                                        
-                    ddout = 16'hx;                                                          
+                    ddout <= 16'hx;
                  end
                  default: begin
                     doe = 1'b0; 
                     dwe1 = 1'b0;
                     dwe0 = 1'b0;
-                    ddout = 16'hx;
+                    ddout <= 16'hx;
                  end
                endcase // case (rf_ir[3:0])
             end // else: !if(rf_ir[4] == 1'b0)

@@ -20,10 +20,22 @@ fn main() -> Result<()> {
     // porcess for output
     if config.is_on_stdout() {
         let mut assembler = Assembler::new(std::io::stdout(), input_file);
-        assembler.assemble()?;
+        match assembler.assemble() {
+            Ok(_) => (),
+            Err(e) => {
+                println!("{}", e);
+                std::process::exit(-1);
+            }
+        }
     } else {
         let mut assembler = Assembler::new(File::create(config.get_out_path())?, input_file);
-        assembler.assemble()?;
+        match assembler.assemble() {
+            Ok(_) => (),
+            Err(e) => {
+                println!("{}", e);
+                std::process::exit(-1);
+            }
+        }
     };
 
     Ok(())

@@ -1,4 +1,4 @@
-use crate::lib::erroro::AsmError;
+use crate::lib::error::AsmError;
 use crate::lib::result::Result;
 use std::fmt;
 use std::str::FromStr;
@@ -61,7 +61,7 @@ impl FromStr for Mnemonic {
             "BMI" => Ok(Self::BMI),
             "BPL" => Ok(Self::BPL),
             "JMP" => Ok(Self::JMP),
-            _ => Err(AsmError::new()),
+            _ => Err(AsmError::new("invalid token")),
         }
     }
 }
@@ -122,7 +122,7 @@ impl FromStr for Register {
             "R5" => Ok(Self::R5),
             "R6" => Ok(Self::R6),
             "R7" => Ok(Self::R7),
-            _ => Err(AsmError::new()),
+            _ => Err(AsmError::new("invalid register")),
         }
     }
 }

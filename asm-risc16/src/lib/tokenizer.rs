@@ -4,8 +4,8 @@ use crate::lib::risc16::{Mnemonic, Register};
 use crate::regex::Regex;
 
 use std::collections::HashMap;
-use std::str::FromStr;
 use std::fmt;
+use std::str::FromStr;
 /*
 data format
 dec : r"#(\-?[0-9_]+)"
@@ -15,7 +15,7 @@ bin : r"#0b([0-1_]+)"
 #[derive(Debug)]
 pub enum Token {
     Comment,          // r"//[ \t.]*"
-    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etc
+    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etcn
     SetLabel(String), // r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):"
     Label(String),    // r"(?P<label>[a-zA-Z][a-zA-Z0-9]*)"
     Reg(Register),    // r"(?P<reg>[rR][0-7])"
@@ -23,9 +23,9 @@ pub enum Token {
     Addr(u16), // r"(@(?P<addr>[0-9A-Fa-f]*))
 }
 
-impl fmt::Display for Token{
+impl fmt::Display for Token {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let res = match self{
+        let res = match self {
             Self::Data(d) => format!("{:x}", d),
             Self::Label(lab) => format!("{}", lab),
             Self::Reg(r) => format!("{:?}", r),
@@ -58,10 +58,11 @@ impl Token {
                 // addr
                 Some(cap1) => match u16::from_str_radix(cap1.name("addr").unwrap().as_str(), 16) {
                     Ok(b) => Ok(Self::Addr(b)),
-                    Err(_) => Err(AsmError::new()),
+                    Err(_) => Err(AsmError::new("invalid addr")),
                 },
                 None => match Mnemonic::from_str(tok) {
-                    Ok(b) => Ok(Self::Mnemo(b)), // convert Mnenimonic
+                    // convert Mnenimonic
+                    Ok(b) => Ok(Self::Mnemo(b)),
                     Err(_) => match re_register.captures(tok) {
                         // reg
                         Some(cap2) => Ok(Self::Reg(Register::from_str(
@@ -83,33 +84,47 @@ impl Token {
                                             Some(hex_val) => {
                                                 match i16::from_str_radix(hex_val.as_str(), 16) {
                                                     Ok(v) => v,
-                                                    Err(_) => return Err(AsmError::new()),
+                                                    Err(_) => {
+                                                        return Err(AsmError::new("invalid hex"))
+                                                    }
                                                 }
                                             }
                                             None => match cap4.name("bin") {
                                                 Some(bin_val) => {
                                                     match i16::from_str_radix(bin_val.as_str(), 2) {
                                                         Ok(v) => v,
-                                                        Err(_) => return Err(AsmError::new()),
+                                                        Err(_) => {
+                                                            return Err(AsmError::new(
+                                                                "invalid binary",
+                                                            ))
+                                                        }
                                                     }
                                                 }
+                                                
                                                 None => match cap4.name("dec") {
                                                     Some(dec_val) => {
                                                         match dec_val.as_str().parse::<i16>() {
                                                             Ok(v) => v,
-                                                            Err(_) => return Err(AsmError::new()),
+                                                            Err(_) => {
+                                                                return Err(AsmError::new(
+                                                                    "invalid integer",
+                                                                ))
+                                                            }
                                                         }
                                                     }
-                                                    None => return Err(AsmError::new()),
+                                                    None => {
+                                                        return Err(AsmError::new("invalid token"))
+                                                    }
                                                 },
                                             },
                                         };
                                         Ok(Self::Data(val))
                                     }
-                                    None => Err(AsmError::new()),
+                                    None => return Err(AsmError::new("invalid token")),
                                 },
                             },
                         },
+
                     },
                 },
             }
@@ -127,11 +142,7 @@ impl Token {
             let tmp = Self::parse(tok)?;
             match tmp {
                 Self::SetLabel(ref tmp) => {
-                    let cur_addr = if *linum == 0{
-                        0
-                    }else{
-                        (*linum - 1) * 2
-                    };
+                    let cur_addr = if *linum == 0 { 0 } else { (*linum - 1) * 2 };
                     label_map.insert(tmp.clone(), cur_addr);
                     *linum -= 1;
                 }

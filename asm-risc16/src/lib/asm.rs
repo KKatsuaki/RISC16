@@ -32,21 +32,28 @@ where
         let mut tokens = Vec::new();
         let mut line = String::new();
         let mut lnum = 1;
+
         while self.reader.read_line(&mut line)? != 0 {
             let buf = line.trim();
-            tokens.push(Token::tokenize(&buf, &mut lnum, &mut self.label_map)?);
+            match Token::tokenize(&buf, &mut lnum, &mut self.label_map) {
+                Ok(tok) => tokens.push(tok),
+                Err(e) => panic!("l.{} {}", lnum + 1, e),
+            };
             line.clear();
         }
 
-        for token in tokens {
-            let code = self.token_handler(&token)?;
-            match &code{
+        for token in tokens.iter() {
+            let code = match self.token_handler(&token) {
+                Ok(code) => code,
+                Err(e) => panic!("l.{} {}", self.offset / 2 + 1, e),
+            };
+            match &code {
                 Some(s) => {
-                    let out = format!("{} //{}\n", s, tokens2str(token));
+                    let out = format!("{} //{}\n", s, self.tokens2str(token));
                     self.writer.write_all(out.as_bytes())?;
                     self.offset += 2;
-                },
-                None => ()
+                }
+                None => (),
             }
         }
 
@@ -65,7 +72,7 @@ where
     BRANCH_T : MNEMONIC REG DATA
     |MNEMONIC REG LAB
     JMP_T : MNEMONIC LAB
-    |MNEMONIC DAAT
+    |MNEMONIC DATA
 
     MEM : ADDR DATA
     |DATA
@@ -86,9 +93,9 @@ where
                     let data = match iter.next() {
                         Some(d) => match d {
                             Token::Data(data) => data,
-                            _ => return Err(AsmError::boxed()),
+                            _ => return Err(AsmError::boxed("invalid token")),
                         },
-                        None => return Err(AsmError::boxed()),
+                        None => return Err(AsmError::boxed("no data")),
                     };
                     Some(format!(
                         "@{:0>4x} {:0>8b} {:0>8b}",
@@ -117,31 +124,33 @@ where
                                         Some(conv_complement(offset, 11))
                                     } else {
                                         if offset > 0xFFFF {
-                                            println!("offset is larger than 0xffff.");
-                                            return Err(AsmError::boxed());
+                                            return Err(AsmError::boxed(
+                                                "offset is larger than 0xffff",
+                                            ));
                                         } else {
                                             Some(offset as u16)
                                         }
                                     }
                                 }
                                 None => {
-                                    println!("{} isn't used..", lab);
-                                    return Err(AsmError::boxed());
+                                    return Err(AsmError::boxed(&format!("{} isn't used..", lab)))
                                 }
                             },
                             Token::Data(d) => {
-                                let bits = match mnemonic{
+                                let bits = match mnemonic {
                                     Mnemonic::JMP => 11,
-                                    _ => 8
+                                    _ => 8,
                                 };
-                                let offset = if *d > 0 {word_align(*d as u16, bits)}else{conv_complement(*d as i32, bits)};
+                                let offset = if *d > 0 {
+                                    word_align(*d as u16, bits)
+                                } else {
+                                    conv_complement(*d as i32, bits)
+                                };
                                 Some(offset)
-                            },
-                            _ => {
-                                println!("unexpected token");
-                                return Err(AsmError::boxed());
                             }
+                            _ => return Err(AsmError::boxed("unexpected token")),
                         },
+
                         None => None,
                     };
 
@@ -152,45 +161,49 @@ where
                                 Some(op) => {
                                     let offset = self.calc_offset(*op);
                                     if offset < 0 {
-                                        match mnemonic{
-                                            Mnemonic::JMP =>  Some(conv_complement(offset, 11)),
-                                            Mnemonic::BEQZ | Mnemonic::BNEZ | Mnemonic::BMI | Mnemonic::BPL => Some(conv_complement(offset, 8)),
-                                            _ => return Err(AsmError::boxed())
+                                        match mnemonic {
+                                            Mnemonic::JMP => Some(conv_complement(offset, 11)),
+                                            Mnemonic::BEQZ
+                                            | Mnemonic::BNEZ
+                                            | Mnemonic::BMI
+                                            | Mnemonic::BPL => Some(conv_complement(offset, 8)),
+                                            _ => return Err(AsmError::boxed("")),
                                         }
                                     } else {
                                         if offset > 0xFFFF {
-                                            println!("offset is larger than 0xffff.");
-                                            return Err(AsmError::boxed());
+                                            return Err(AsmError::boxed(
+                                                "offset is larger than 0xffff.",
+                                            ));
                                         } else {
                                             Some(offset as u16)
                                         }
                                     }
                                 }
-                                None => {
-                                    println!("{} isn't used..", lab);
-                                    return Err(AsmError::boxed());
-                                }
+                                None => return Err(AsmError::boxed("un used label")),
                             },
+
                             Token::Data(d) => {
-                                let bits = match mnemonic{
+                                let bits = match mnemonic {
                                     Mnemonic::JMP => 11,
-                                    _ => 8
+                                    _ => 8,
                                 };
-                                let offset = if *d > 0 {word_align(*d as u16, bits)}else{conv_complement(*d as i32, bits)};
+                                let offset = if *d > 0 {
+                                    word_align(*d as u16, bits)
+                                } else {
+                                    conv_complement(*d as i32, bits)
+                                };
                                 Some(offset)
-                            },
-                            _ => {
-                                println!("unexpected token");
-                                return Err(AsmError::boxed());
                             }
+                            _ => return Err(AsmError::boxed("unexpected token")),
                         },
                         None => None,
                     };
 
                     let code = Instruction::new(&mnemonic, op1, op2);
+
                     Some(format!("@{:0>4x} {}", self.offset, code))
                 }
-                _ => return Err(AsmError::boxed()),
+                _ => return Err(AsmError::boxed("unexpected token")),
             }
         } else {
             None
@@ -202,20 +215,24 @@ where
     fn calc_offset(&self, dst: u16) -> i32 {
         let cur = self.offset as i32;
         let dst = dst as i32;
-        if dst > cur {
-            dst - (cur + 2)
-        } else {
-            dst - cur - 2
-        }
+        dst - (cur + 2)
     }
 
-}
-fn tokens2str(tokens : Vec::<Token>) -> String{
-    let mut res = String::new();
-    for tok in tokens{
-        res = format!("{} {}",res, tok);
+    fn tokens2str(&self, tokens: &Vec<Token>) -> String {
+        let mut res = String::new();
+
+        for tok in tokens {
+            let tmp = match &tok {
+                Token::Label(lab) => {
+                    format!("{}", self.calc_offset(*self.label_map.get(lab).unwrap()))
+                }
+                _ => format!("{}", tok),
+            };
+
+            res = format!("{} {}", res, tmp);
+        }
+        res
     }
-    res
 }
 
 fn conv_complement(n: i32, bits: usize) -> u16 {
@@ -225,7 +242,6 @@ fn conv_complement(n: i32, bits: usize) -> u16 {
     //(!n + 1) & (0b1111_1111_1111_1111) >> (16 - bits)
 }
 
-fn word_align(n : u16, bits : usize) -> u16{
+fn word_align(n: u16, bits: usize) -> u16 {
     n & ((0b1111_1111_1111_1111) >> (16 - bits))
 }
-

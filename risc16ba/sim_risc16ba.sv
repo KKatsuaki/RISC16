@@ -94,7 +94,7 @@ module sim_risc16ba();
       $write(" rf_pc:%X rf_ir:%B rf_treg1:%X rf_treg2:%X rf_immediate:%X\n",
 	     risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,
 	     risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,
-	     risc16ba_inst.rf_immediate);
+	     risc16ba_inst.rf_imm);
       $write(" ex_ir:%B ex_result:%X\n",
 	     risc16ba_inst.ex_ir, risc16ba_inst.ex_result);
       $write(" daddr:%X ddin:%X ddout:%X doe:%B dwe0:%B dwe1:%B\n",
@@ -102,9 +102,9 @@ module sim_risc16ba();
 	     risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);
       $write(" iaddr:%X idin:%X ioe:%B\n",
 	     risc16ba_inst.iaddr, risc16ba_inst.idin, risc16ba_inst.ioe);
-      $write(" alu_ain:%X alu_bin:%X alu_op:%B reg_file_we:%B if_pc_we:%B",
+      $write(" alu_ain:%X alu_bin:%X alu_op:%B reg_we:%B if_pc_we:%B",
 	     risc16ba_inst.alu_ain, risc16ba_inst.alu_bin,
-	     risc16ba_inst.alu_op, risc16ba_inst.reg_file_we,
+	     risc16ba_inst.alu_op, risc16ba_inst.reg_we,
 	     risc16ba_inst.if_pc_we);
       $write(" led:%X\n", led);
       $write(" regs: %X", risc16ba_inst.reg_file_inst.register0);
