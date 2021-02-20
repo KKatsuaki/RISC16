@@ -69,7 +69,7 @@ module risc16ba
    always_ff @(posedge clk)        
      rf_pc <= rst ? 16'h0 : if_pc; 
 
-   reg_file_inst
+   reg_file reg_file_inst
      (
       .clk(clk),
       .rst(rst),
@@ -78,6 +78,7 @@ module risc16ba
       .addr3(ex_ir[10:8]),
       .dout1(reg_dout1),
       .dout2(reg_dout2),
+      .din(ex_result),
       .we(reg_we)
       );
 
@@ -86,9 +87,9 @@ module risc16ba
       if(rst)
 	rf_imm <= 16'h0;
       else if(if_ir[15:14] == 2'b11)
-	rf_imm <= {5'b{if_ir[10]}, if_ir[10:0]};
+	rf_imm <= {{5{if_ir[10]}}, if_ir[10:0]};
       else if(~if_ir[15] && if_ir[14:11] == `ALU_ADD)
-	rf_imm <= {8'b{if_ir[7]}, if_ir[7:0]};
+	rf_imm <= {{8{if_ir[7]}}, if_ir[7:0]};
       else
 	rf_imm <= {8'd0,if_ir[7:0]};
    end
@@ -131,7 +132,7 @@ module risc16ba
 
    // EX stage
    
-   alu16_inst
+   alu16 alu16_inst
      (
       .ain(alu_ain), 
       .bin(alu_bin), 
@@ -154,8 +155,8 @@ module risc16ba
    always_comb begin
       if(rf_ir[15:11] == 5'b00000 && rf_ir[4])
 	case(rf_ir[3:0])
-	  4b'0001 : ex_forwarding = ddin;
-	  4b'0011 : ex_forwarding = rf_treg2[0] ? {8'b0,ddin[7:0]}:{8'b0,ddin[15:8]};
+	  4'b0001 : ex_forwarding = ddin;
+	  4'b0011 : ex_forwarding = rf_treg2[0] ? {8'b0,ddin[7:0]}:{8'b0,ddin[15:8]};
 	  default : ex_forwarding = alu_dout;
 	endcase // case (rf_ir[3:0])
       else
@@ -176,7 +177,7 @@ module risc16ba
     */
    always_comb begin
       alu_ain = rf_ir[15]? rf_pc : rf_treg1;
-      alu_bin = rf_ir[14:11] != 4'b0000? rf_imm : rf_treg2;
+      alu_bin = (rf_ir[14:11] != 4'b0000)? rf_imm : rf_treg2;
       if(rf_ir[14:11] == 4'b0000)
 	alu_op = rf_ir[3:0];
       else
@@ -246,7 +247,7 @@ module risc16ba
            reg_we = 1'b1;
       end
       else begin // BR and JMP
-         reg_file_we = 1'b0;
+         reg_we = 1'b0;
 
          if(ex_ir[14] == 1'b1) //JMP
            if_pc_we = 1'b1;

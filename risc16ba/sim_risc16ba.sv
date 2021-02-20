@@ -11,9 +11,8 @@ module sim_risc16ba();
    wire               doe, dwe0, dwe1, ioe;
    reg [7:0]          mem[0:65535];
    wire [23:0] 	      led;
-   reg [7:0]          led_0, led_1, led_2;
+   reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
-   integer            end_addr = 16'h1c;
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 
 			.daddr(daddr), .doe(doe), .dwe0(dwe0), .dwe1(dwe1),
@@ -73,8 +72,8 @@ module sim_risc16ba();
          clk <= 1'b1;
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
-         //print();
-	 if (risc16ba_inst.if_pc == end_addr)
+         print();
+	 if (risc16ba_inst.if_pc == 16'h001c)
 	   dump_and_finish();
       end
       dump_and_finish();
@@ -102,20 +101,16 @@ module sim_risc16ba();
 	     risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);
       $write(" iaddr:%X idin:%X ioe:%B\n",
 	     risc16ba_inst.iaddr, risc16ba_inst.idin, risc16ba_inst.ioe);
-      $write(" alu_ain:%X alu_bin:%X alu_op:%B reg_we:%B if_pc_we:%B",
+      $write(" alu_ain:%X alu_bin:%X alu_op:%B reg_file_we:%B if_pc_we:%B",
 	     risc16ba_inst.alu_ain, risc16ba_inst.alu_bin,
 	     risc16ba_inst.alu_op, risc16ba_inst.reg_we,
 	     risc16ba_inst.if_pc_we);
       $write(" led:%X\n", led);
-      $write(" regs: %X", risc16ba_inst.reg_file_inst.register0);
-      $write(" %X", risc16ba_inst.reg_file_inst.register1);
-      $write(" %X", risc16ba_inst.reg_file_inst.register2);
-      $write(" %X", risc16ba_inst.reg_file_inst.register3);
-      $write(" %X", risc16ba_inst.reg_file_inst.register4);
-      $write(" %X", risc16ba_inst.reg_file_inst.register5);
-      $write(" %X", risc16ba_inst.reg_file_inst.register6);
-      $write(" %X\n", risc16ba_inst.reg_file_inst.register7);
-      for (i = 16'hc000; i < 16'hc032; i += 8) begin
+      $write(" regs: %X", risc16ba_inst.reg_file_inst.register[0]);
+      for(i = 1; i< 8; i++)
+        $write(" %X", risc16ba_inst.reg_file_inst.register[i]);
+      $write("\n");
+      for (i = 0; i < 32; i += 8) begin
          $write(" mem[%02x-%02x]:", i, i+7);
          $write(" %X %X %X %X",   mem[i],   mem[i+1], mem[i+2], mem[i+3]);
          $write(" %X %X %X %X\n", mem[i+4], mem[i+5], mem[i+6], mem[i+7]);
