@@ -10,10 +10,4 @@ LOOP:
 	ADDI r0, #-1
 	ADDI r2, #1
 	BNEZ r0, LOOP
-        NOP
-	NOP	
-	NOP	
 	JMP  #-2
-	NOP
-	NOP
-	NOP

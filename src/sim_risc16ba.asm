@@ -8,8 +8,9 @@ LOOP:
 	SBU r4,  (r2)
 	ADDI r1, #1
 	ADDI r0, #-1
+	ADDI r2, #1     
 	BNEZ r0, LOOP
-	ADDI r2, #1
+	NOP	
 	NOP	
 	NOP	
 	JMP  #-2

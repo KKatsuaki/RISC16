@@ -19,6 +19,7 @@ PGM_FILE = $(SIM_TOP).pgm
 IMG_DUMP = $(SIM_TOP).dump
 IMG_DIR  = imfiles
 REF_DUMP = nega.dump
+BACKUP_DIR = .bak.dir
 
 ###################################################################
 # Main Targets
@@ -120,8 +121,17 @@ sim_s: $(SIM_WORK) $(SIM_TOP).mem
 	vlog $(SIM_TOP)_s.sv $(DESIGN).sv                                         
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
+$(BACKUP_DIR): 
+	mkdir $(BACKUP_DIR)
+
+bak : $(SIM_TOP).asm $(DESIGN).sv $(BACKUP_DIR) 
+	@cp $(SIM_TOP).asm $(BACKUP_DIR)/$(SIM_TOP).asm
+	@cp $(DESIGN).sv   $(BACKUP_DIR)/$(DESIGN).sv
+	@tar cf backup_`date --date today "+%Y%m%d"`.tar $(BACKUP_DIR)
+	@echo backup archive \`backup_`date --date today "+%Y%m%d"`\`.tar was created.
+
 push: sim
-	git reset
+	@git reset
 	git add -A
 	git commit -m "update"
 	git push

@@ -11,12 +11,18 @@
 `define ALU_AND  4'b1010                   
 `define ALU_OR   4'b1011
 
-`define NOP 16'b0000_0000_0000_0000
+`define PRED_STRONGLY_TAKEN 2'b11
+`define PRED_WEAKLY_TAKEN 2'b10
+`define PRED_WEAKLY_NOT_TAKEN 2'b01
+`define PRED_STRONGLY_NOT_TAKEN 2'b00
+
+
+`define NOP 16'h0000
 
 module risc16ba
   (
-   input wire 	       clk,
-   input wire 	       rst,
+   input wire          clk,
+   input wire          rst,
    input wire [15:0]   ddin,
    output logic [15:0] ddout,
    output wire [15:0]  daddr,
@@ -24,22 +30,23 @@ module risc16ba
    output logic        dwe0, dwe1,
    input wire [15:0]   idin,
    output wire [15:0]  iaddr,
-   output wire 	       ioe
+   output wire         ioe
    );
 
    // objects for if stage
-   reg [15:0] 	       if_pc, if_ir;
-   logic 	       if_pc_we; 
+   reg [15:0]          if_pc, if_ir;
+   logic 	       if_pc_we;
 
    // register for rf stage
-   reg [15:0] 	       rf_pc, rf_ir, rf_imm, rf_treg1, rf_treg2;
+   reg [15:0]          rf_pc, rf_ir, rf_imm, rf_treg1, rf_treg2;
 
    // registor for ex stage
-   reg [15:0] 	       ex_ir, ex_result, ex_forwarding, ex_pc, ex_treg1;
+   reg [15:0]          ex_ir, ex_result, ex_forwarding, ex_pc, ex_treg1;
+   logic               stall;
 
    // wire for alu
    logic [15:0]        alu_ain, alu_bin, alu_dout;
-   logic [3:0] 	       alu_op;
+   logic [3:0]         alu_op;
 
    // wire for register
    logic [15:0]        reg_dout1, reg_dout2;
@@ -64,7 +71,7 @@ module risc16ba
 
    // RF stage
    always_ff @(posedge clk)	   
-     rf_ir <= rst ? 16'h0 : if_ir;
+     rf_ir <= (rst || stall) ? 16'h0 : if_ir;
 
    always_ff @(posedge clk)        
      rf_pc <= rst ? 16'h0 : if_pc; 
@@ -139,8 +146,8 @@ module risc16ba
       .dout(alu_dout)      
       );
 
-   always_ff @(posedge clk)
-     ex_ir <= rst ? 16'h0 : rf_ir;
+   always_ff @(posedge clk) 
+      ex_ir <= (stall || rst) ? `NOP : rf_ir;
 
    always_ff @(posedge clk)	       
      ex_treg1 <= rst? 16'h0 : rf_treg1;
@@ -238,6 +245,7 @@ module risc16ba
        */
       if(ex_ir[15] == 1'b0)  begin // reg, mem, imm
          if_pc_we = 1'b0;
+         stall = 1'b0;
          if(ex_ir == 16'b0 /*NOP*/ || (ex_ir[14:11] == 4'b0 && ex_ir[4] == 1'b1 && ex_ir[0] == 1'b0) /*ST*/)
            reg_we = 1'b0;
          else
@@ -245,34 +253,46 @@ module risc16ba
       end
       else begin // BR and JMP
          reg_we = 1'b0;
-
-         if(ex_ir[14] == 1'b1) //JMP
-           if_pc_we = 1'b1;
-         else begin
+         if(ex_ir[14] == 1'b1) begin//JMP
+            if_pc_we = 1'b1;
+            stall = 1'b1;
+         end else begin
             case(ex_ir[12:11])
               2'b00 : begin // BNEZ
-                 if(ex_treg1 != 16'b0)
-                   if_pc_we = 1'b1;
-                 else
-                   if_pc_we = 1'b0;
+                 if(ex_treg1 != 16'b0) begin
+                    if_pc_we = 1'b1;
+                    stall = 1'b1;
+                 end else begin
+                    if_pc_we = 1'b0;
+                    stall = 1'b0;
+                 end
               end
               2'b01 : begin // BEQZ
-                 if(ex_treg1 == 16'b0)
-                   if_pc_we = 1'b1;
-                 else
-                   if_pc_we = 1'b0;
+                 if(ex_treg1 == 16'b0) begin
+                    if_pc_we = 1'b1;
+                    stall = 1'b1;
+                 end else begin
+                    if_pc_we = 1'b0;
+                    stall = 1'b0;
+                 end
               end
               2'b10:begin
-                 if(ex_treg1[15])
-                   if_pc_we = 1'b1;
-                 else
-                   if_pc_we = 1'b0;
+                 if(ex_treg1[15]) begin
+                    if_pc_we = 1'b1;
+                    stall = 1'b1;
+                 end else begin
+                    if_pc_we = 1'b0;
+                    stall = 1'b0;
+                 end
               end
               2'b11 : begin
-                 if(ex_treg1[15])
+                 if(ex_treg1[15]) begin
                    if_pc_we = 1'b0;
-                 else
-                   if_pc_we = 1'b1;
+                    stall = 1'b0;
+                 end else begin
+                    if_pc_we = 1'b1;
+                    stall = 1'b1;
+                 end
               end
             endcase // case (ex_ir[12:11])
          end // else: !if(ex_ir[14] == 1'b1)
@@ -282,14 +302,14 @@ endmodule // risc16ba
 
 module reg_file
   (
-   input wire 	       clk, rst,
+   input wire          clk, rst,
    input wire [2:0]    addr1, addr2, addr3,
    input wire [15:0]   din,
    output logic [15:0] dout1, dout2,
-   input wire 	       we
+   input wire          we
    );
    
-   reg [15:0] 	       register[7:0];
+   reg [15:0]          register[7:0];
    integer 	       i;
    
    always_comb begin
@@ -339,9 +359,9 @@ module BPU
    input wire [15:0]   rf_pc,
    input wire [15:0]   ex_result,
    input wire [15:0]   dst, 
-   input wire [15:0]   ir_pc, 
+   input wire [15:0]   if_pc, 
    input wire 	       we, rst, clk, if_pc_we, 
-   output logic [15:0] next_pc,      
+   output logic [15:0] next_pc
    );
 
    logic 	       bpb_dst_we, bpb_pred_we, act_b; // actually branch
@@ -374,17 +394,13 @@ module BPB
    input wire [9:0]    ex_tag,
    input wire [15:0]   ex_result,
    input wire [9:0]    if_tag,
-   input wire 	       pred_we, dst_we, rst, clk,
+   input wire          pred_we, dst_we, rst, clk,
    input wire [1:0]    next_pred,
    output logic [15:0] dst,
    output logic [1:0 ] pred
    );
 
-   reg [18:0] 	       buffer[1023:0];
-   /*
-    | flag 1 | addr 16| state 2| 
-    */
-
+   reg [18:0]          buffer[1023:0];
    integer 	       i;
    
    always_ff @(posedge clk) begin
@@ -394,43 +410,42 @@ module BPB
       end 
       else begin
 	 case({dst_we, pred_we})
-	   2'b00 : buffer[ex_tag] <= {1'b0, buffer[17:1], buffer[1:0]};
-	   2'b01 : buffer[ex_tag] <= {1'b1, buffer[17:1], next_pred};
-	   2'b10 : buffer[ex_tag] <= {1'b1, dst, buffer[1:0]};
+	   2'b00 : buffer[ex_tag] <= {1'b0, buffer[ex_tag][17:2], buffer[ex_tag][1:0]};
+	   2'b01 : buffer[ex_tag] <= {1'b1, buffer[ex_tag][17:2], next_pred};
+	   2'b10 : buffer[ex_tag] <= {1'b1, dst, buffer[ex_tag][1:0]};
 	   2'b11 : buffer[ex_tag] <= {1'b1, dst, next_pred};
 	 endcase // case ({pred_we, dst_we})
       end // else: !if(rst)
    end // always_ff @ (posedge clk)
 
    assign dst = buffer[if_tag][17:2];
-   assign pred = btb[if_tag][1:0];
+   assign pred = buffer[if_tag][1:0];
 endmodule // BPT
 
 module two_bits_predict
   (
    input wire [1:0]   pred,
-   input wire 	      act_b, // actually branch
+   input wire         act_b, // actually branch
    output logic [1:0] next_pred
    );
 
-   if(act_b) begin
-      case(pred)
-	2'b00 : next_pred <= 2'b;
-	2'b01 : next_pred <= 2'b;
-	2'b10 : next_pred <= 2'b;
-	2'b11 : next_pred <= 2'b;
-	default: next_pred <= 2'bx;
-      endcase // case (pred)
-   end
-   else
-     begin
-	case(pred)
-	  2'b00 : next_pred <= 2'b;  
-	  2'b01 : next_pred <= 2'b;  
-	  2'b10 : next_pred <= 2'b;  
-	  2'b11 : next_pred <= 2'b;  
-	  default: next_pred <= 2'bx;
-	endcase // case (pred)
-     end // else: !if(act_b)
+   always_comb begin
+      if(act_b) begin
+         case (pred)
+           `PRED_STRONGLY_TAKEN    : next_pred <= `PRED_STRONGLY_TAKEN;
+	   `PRED_WEAKLY_TAKEN      : next_pred <= `PRED_STRONGLY_TAKEN;
+           `PRED_WEAKLY_NOT_TAKEN  : next_pred <= `PRED_WEAKLY_TAKEN;
+           `PRED_STRONGLY_NOT_TAKEN: next_pred <= `PRED_WEAKLY_NOT_TAKEN;
+	   default: next_pred <= 2'bx;
+         endcase // case (pred)
+      end else begin
+         case(pred)
+           `PRED_STRONGLY_TAKEN    : next_pred <= `PRED_WEAKLY_TAKEN;  
+           `PRED_WEAKLY_TAKEN      : next_pred <= `PRED_WEAKLY_NOT_TAKEN;  
+           `PRED_WEAKLY_NOT_TAKEN  : next_pred <= `PRED_STRONGLY_NOT_TAKEN;    
+           `PRED_STRONGLY_NOT_TAKEN: next_pred <= `PRED_STRONGLY_NOT_TAKEN;
+	   default: next_pred <= 2'bx;
+         endcase // case (pred)
+      end // else: !if(act_b)
+   end // always_comb
 endmodule // two_bits_predict
-
