@@ -130,7 +130,7 @@ bak : $(SIM_TOP).asm $(DESIGN).sv $(BACKUP_DIR)
 	@tar cf backup_`date --date today "+%Y%m%d"`.tar $(BACKUP_DIR)
 	@echo backup archive \`backup_`date --date today "+%Y%m%d"`\`.tar was created.
 
-push: sim
+push: check
 	@git reset
 	git add -A
 	git commit -m "update"
