@@ -15,8 +15,8 @@
 
 module risc16ba
   (
-   input wire          clk,
-   input wire          rst,
+   input wire 	       clk,
+   input wire 	       rst,
    input wire [15:0]   ddin,
    output logic [15:0] ddout,
    output wire [15:0]  daddr,
@@ -24,22 +24,22 @@ module risc16ba
    output logic        dwe0, dwe1,
    input wire [15:0]   idin,
    output wire [15:0]  iaddr,
-   output wire         ioe
+   output wire 	       ioe
    );
 
    // objects for if stage
-   reg [15:0]          if_pc, if_ir;
+   reg [15:0] 	       if_pc, if_ir;
    logic 	       if_pc_we; 
 
    // register for rf stage
-   reg [15:0]          rf_pc, rf_ir, rf_imm, rf_treg1, rf_treg2;
+   reg [15:0] 	       rf_pc, rf_ir, rf_imm, rf_treg1, rf_treg2;
 
    // registor for ex stage
-   reg [15:0]          ex_ir, ex_result, ex_forwarding, ex_pc, ex_treg1;
+   reg [15:0] 	       ex_ir, ex_result, ex_forwarding, ex_pc, ex_treg1;
 
    // wire for alu
    logic [15:0]        alu_ain, alu_bin, alu_dout;
-   logic [3:0]         alu_op;
+   logic [3:0] 	       alu_op;
 
    // wire for register
    logic [15:0]        reg_dout1, reg_dout2;
@@ -282,14 +282,14 @@ endmodule // risc16ba
 
 module reg_file
   (
-   input wire          clk, rst,
+   input wire 	       clk, rst,
    input wire [2:0]    addr1, addr2, addr3,
    input wire [15:0]   din,
    output logic [15:0] dout1, dout2,
-   input wire          we
+   input wire 	       we
    );
    
-   reg [15:0]          register[7:0];
+   reg [15:0] 	       register[7:0];
    integer 	       i;
    
    always_comb begin
@@ -333,35 +333,104 @@ module alu16
    end // always_comb begin                   
 endmodule // alu16
 
-module BPT
+module BPU
   (
-   input wire [15:0]  ex_pc,
-   input wire [15:0]  target,
-   input wire [15:0]  cur_pc,
-   input wire         we, rst, clk, 
-   output logic [15:0] next_pc,
+   input wire [15:0]   ex_pc,
+   input wire [15:0]   rf_pc,
+   input wire [15:0]   ex_result,
+   input wire [15:0]   dst, 
+   input wire [15:0]   ir_pc, 
+   input wire 	       we, rst, clk, if_pc_we, 
+   output logic [15:0] next_pc,      
+   );
+
+   logic 	       bpb_dst_we, bpb_pred_we, act_b; // actually branch
+   logic [1:0] 	       pred_res, pred_prev;
+
+   BPB BPB_inst
+     (
+      .ex_tag(ex_pc[11:2]),
+      .ex_result(ex_result),
+      .if_tag(if_pc[11:2]),
+      .pred_we(bpb_pred_we),
+      .dst_we(bpb_dst_we),
+      .rst(rst),
+      .clk(clk),
+      .next_pred(pred_res),
+      .dst(next_pc),
+      .pred(pred_prev)
+      );
+
+   two_bits_predict two_bits_predict_inst
+     (
+      .pred(pred_prev),
+      .act_b(act_b),
+      .next_pred(pred_res)
+      );
+endmodule // BPU
+
+module BPB
+  (
+   input wire [9:0]    ex_tag,
+   input wire [15:0]   ex_result,
+   input wire [9:0]    if_tag,
+   input wire 	       pred_we, dst_we, rst, clk,
+   input wire [1:0]    next_pred,
+   output logic [15:0] dst,
    output logic [1:0 ] pred
    );
 
-   reg [18:0]         btb[1023:0];
+   reg [18:0] 	       buffer[1023:0];
    /*
     | flag 1 | addr 16| state 2| 
     */
 
-   integer            i;
+   integer 	       i;
    
    always_ff @(posedge clk) begin
       if (rst) begin
-         for(i = 0; i < 1023; i += 1) 
-           btb[i] <= 18'h0;
+         for(i = 0; i < $size(buffer); i += 1) 
+           buffer[i] <= 18'h0;
       end 
-      else if(we) 
-        btb[ex_pc[11:2]] <= {1'd1,target,2'b0};
-   end
+      else begin
+	 case({dst_we, pred_we})
+	   2'b00 : buffer[ex_tag] <= {1'b0, buffer[17:1], buffer[1:0]};
+	   2'b01 : buffer[ex_tag] <= {1'b1, buffer[17:1], next_pred};
+	   2'b10 : buffer[ex_tag] <= {1'b1, dst, buffer[1:0]};
+	   2'b11 : buffer[ex_tag] <= {1'b1, dst, next_pred};
+	 endcase // case ({pred_we, dst_we})
+      end // else: !if(rst)
+   end // always_ff @ (posedge clk)
 
-   always_comb begin
-      next_pc <= btb[cur_pc[11:2]][17:2];
-      pred <= btb[cur_pc][1:0];
-   end
-
+   assign dst = buffer[if_tag][17:2];
+   assign pred = btb[if_tag][1:0];
 endmodule // BPT
+
+module two_bits_predict
+  (
+   input wire [1:0]   pred,
+   input wire 	      act_b, // actually branch
+   output logic [1:0] next_pred
+   );
+
+   if(act_b) begin
+      case(pred)
+	2'b00 : next_pred <= 2'b;
+	2'b01 : next_pred <= 2'b;
+	2'b10 : next_pred <= 2'b;
+	2'b11 : next_pred <= 2'b;
+	default: next_pred <= 2'bx;
+      endcase // case (pred)
+   end
+   else
+     begin
+	case(pred)
+	  2'b00 : next_pred <= 2'b;  
+	  2'b01 : next_pred <= 2'b;  
+	  2'b10 : next_pred <= 2'b;  
+	  2'b11 : next_pred <= 2'b;  
+	  default: next_pred <= 2'bx;
+	endcase // case (pred)
+     end // else: !if(act_b)
+endmodule // two_bits_predict
+
