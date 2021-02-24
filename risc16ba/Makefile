@@ -105,12 +105,19 @@ asm.chg:
 $(SIM_WORK):
 	vlib work
 
-$(IMG_DUMP): sim
+$(IMG_DUMP): sim_s
 
-sim: $(SIM_WORK)
-	asm-risc16 $(SIM_TOP).asm -o $(SIM_TOP).mem
+sim: $(SIM_WORK) $(SIM_TOP).mem
 	rm -f $(IMG_DUMP) $(PGM_FILE) 
 	vlog $(SIM_FILE) $(DESIGN).sv
+	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
+
+$(SIM_TOP).mem: $(SIM_TOP).asm
+	asm-risc16 $(SIM_TOP).asm -o $(SIM_TOP).mem                           
+
+sim_s: $(SIM_WORK) $(SIM_TOP).mem
+	rm -f $(IMG_DUMP) $(PGM_FILE)                                         
+	vlog $(SIM_TOP)_s.sv $(DESIGN).sv                                         
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
 push: sim

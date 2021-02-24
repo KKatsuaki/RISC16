@@ -2,7 +2,7 @@
 `default_nettype none
 
 module sim_risc16ba();
-   localparam integer SIMULATION_CYCLES  = 10000000;
+   localparam integer SIMULATION_CYCLES  = 100;
    localparam real    CLOCK_FREQ_HZ      = 25 * 10**6; // 25MHz 
    localparam real    CLOCK_PERIOD_NS    = 10**9 / CLOCK_FREQ_HZ;
    logic              clk, rst;
@@ -89,28 +89,28 @@ module sim_risc16ba();
       integer i;
       $write("==== clock: %1d ====\n", $rtoi($time / CLOCK_PERIOD_NS) - 1);  
       $write(" if_pc:%X if_ir:%B\n", 
-	     risc16ba_inst.if_pc, risc16ba_inst.if_ir);
+             risc16ba_inst.if_pc, risc16ba_inst.if_ir);
       $write(" rf_pc:%X rf_ir:%B rf_treg1:%X rf_treg2:%X rf_immediate:%X\n",
-	     risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,
-	     risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,
-	     risc16ba_inst.rf_imm);
+             risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,
+             risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,
+             risc16ba_inst.rf_imm);
       $write(" ex_ir:%B ex_result:%X\n",
-	     risc16ba_inst.ex_ir, risc16ba_inst.ex_result);
+             risc16ba_inst.ex_ir, risc16ba_inst.ex_result);
       $write(" daddr:%X ddin:%X ddout:%X doe:%B dwe0:%B dwe1:%B\n",
-	     risc16ba_inst.daddr, risc16ba_inst.ddin, risc16ba_inst.ddout, 
-	     risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);
+             risc16ba_inst.daddr, risc16ba_inst.ddin, risc16ba_inst.ddout, 
+             risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);
       $write(" iaddr:%X idin:%X ioe:%B\n",
-	     risc16ba_inst.iaddr, risc16ba_inst.idin, risc16ba_inst.ioe);
+             risc16ba_inst.iaddr, risc16ba_inst.idin, risc16ba_inst.ioe);
       $write(" alu_ain:%X alu_bin:%X alu_op:%B reg_file_we:%B if_pc_we:%B",
-	     risc16ba_inst.alu_ain, risc16ba_inst.alu_bin,
-	     risc16ba_inst.alu_op, risc16ba_inst.reg_we,
-	     risc16ba_inst.if_pc_we);
+             risc16ba_inst.alu_ain, risc16ba_inst.alu_bin,
+             risc16ba_inst.alu_op, risc16ba_inst.reg_we,
+             risc16ba_inst.if_pc_we);
       $write(" led:%X\n", led);
       $write(" regs: %X", risc16ba_inst.reg_file_inst.register[0]);
       for(i = 1; i< 8; i++)
         $write(" %X", risc16ba_inst.reg_file_inst.register[i]);
       $write("\n");
-      for (i = 0; i < 32; i += 8) begin
+      for (i = 'hc000; i < 'hc032; i += 8) begin
          $write(" mem[%02x-%02x]:", i, i+7);
          $write(" %X %X %X %X",   mem[i],   mem[i+1], mem[i+2], mem[i+3]);
          $write(" %X %X %X %X\n", mem[i+4], mem[i+5], mem[i+6], mem[i+7]);

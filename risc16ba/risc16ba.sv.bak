@@ -246,7 +246,6 @@ module risc16ba
                        dwe0  = 1'b1;               
                        dwe1  = 1'b0;               
                        ddout <= {rf_treg1[7:0],8'b0};
-
                     end
                  end
                  4'h3 : begin // LBU
