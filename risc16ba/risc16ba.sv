@@ -123,12 +123,12 @@ module risc16ba
       if(rst)
         rf_treg2 <= 16'd0;
       else if(if_ir[7:5] == ex_ir[10:8] || if_ir[7:5] == rf_ir[10:8]) begin
-         if(rf_ir[7:5] == if_ir[10:8]) begin
+         if(rf_ir[10:8] == if_ir[7:5]) begin
             if(rf_ir != `NOP && rf_ir[15] == 1'b0 && ~(rf_ir[15:11] == 5'b00000 && rf_ir[4:0] == 5'b10000))
               rf_treg2 <= ex_forwarding;
             else
               rf_treg2 <= reg_dout2;
-         end else if(reg_we)                                                                               
+         end else if(reg_we)
            rf_treg2 <= ex_result;
          else
            rf_treg2 <= reg_dout2;
@@ -190,7 +190,7 @@ module risc16ba
       else
         alu_op = (rf_ir[15:11]==5'b0)? rf_ir[3:0] : rf_ir[14:11];
 
-      doe = (rf_ir[4]&&rf_ir[0])? 1'b1:1'b0;
+      doe = (rf_ir[4] && rf_ir[0] && rf_ir[15:11] == 5'b0)? 1'b1:1'b0;
 
       if(rf_ir[15:11] == 5'b0 && rf_ir[4]) begin
          case(rf_ir[3:0])                       

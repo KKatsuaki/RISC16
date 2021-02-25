@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/geek_731/Workspace/github/RISC16/risc16ba
 valu16
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1614194667
+Z2 !s110 1614229880
 !i10b 1
 !s100 G0;MA]fPMA<]CSDZN2Czm2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -19,20 +19,20 @@ ICT@RGQT[ze?N0CX0[Lj_33
 Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-Z5 w1614191069
+Z5 w1614201764
 Z6 8risc16ba.sv
 Z7 Frisc16ba.sv
-!i122 7
+!i122 29
 L0 330 24
 Z8 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z9 !s108 1614194667.000000
-Z10 !s107 risc16ba.sv|sim_risc16ba_s.sv|
-Z11 !s90 sim_risc16ba_s.sv|risc16ba.sv|
+Z9 !s108 1614229880.000000
+!s107 risc16ba.sv|sim_risc16ba_s.sv|
+Z10 !s90 sim_risc16ba_s.sv|risc16ba.sv|
 !i113 1
-Z12 tCvgOpt 0
+Z11 tCvgOpt 0
 vBPB
 R1
 R2
@@ -46,43 +46,18 @@ R0
 R5
 R6
 R7
-!i122 7
+!i122 29
 L0 355 31
 R8
 r1
 !s85 0
 31
 R9
+Z12 !s107 risc16ba.sv|sim_risc16ba_s.sv|
 R10
-R11
 !i113 1
-R12
+R11
 n@b@p@b
-vBPU
-R1
-!s110 1614188678
-!i10b 1
-!s100 hNKSEg;Oea=z;a>5Jflna2
-R3
-Il97PI??5QP8SfWN8607d12
-R4
-S1
-R0
-w1614187774
-R6
-R7
-!i122 1
-L0 356 35
-R8
-r1
-!s85 0
-31
-!s108 1614188678.000000
-R10
-R11
-!i113 1
-R12
-n@b@p@u
 vreg_file
 R1
 R2
@@ -96,41 +71,41 @@ R0
 R5
 R6
 R7
-!i122 7
+!i122 29
 L0 302 27
 R8
 r1
 !s85 0
 31
 R9
-R10
-R11
-!i113 1
 R12
+R10
+!i113 1
+R11
 vrisc16ba
 R1
 R2
 !i10b 1
-!s100 z[YX`^G@:60_o`GzX0LfX0
+!s100 dGXbb6;>In_YNE5NV0_4H0
 R3
-ISD<j6`o`dSHngNSn3czh=1
+IQG@deM;3==DlNZTZ[P6hS0
 R4
 S1
 R0
 R5
 R6
 R7
-!i122 7
+!i122 29
 L0 22 279
 R8
 r1
 !s85 0
 31
 R9
-R10
-R11
-!i113 1
 R12
+R10
+!i113 1
+R11
 vsim_risc16ba
 R1
 R2
@@ -144,17 +119,17 @@ R0
 w1614184481
 8sim_risc16ba_s.sv
 Fsim_risc16ba_s.sv
-!i122 7
+!i122 29
 L0 4 117
 R8
 r1
 !s85 0
 31
 R9
-R10
-R11
-!i113 1
 R12
+R10
+!i113 1
+R11
 vtwo_bits_predict
 R1
 R2
@@ -168,14 +143,14 @@ R0
 R5
 R6
 R7
-!i122 7
+!i122 29
 L0 387 27
 R8
 r1
 !s85 0
 31
 R9
-R10
-R11
-!i113 1
 R12
+R10
+!i113 1
+R11

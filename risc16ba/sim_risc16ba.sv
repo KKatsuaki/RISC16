@@ -2,7 +2,7 @@
 `default_nettype none
 
 module sim_risc16ba();
-   localparam integer SIMULATION_CYCLES  = 100;
+   localparam integer SIMULATION_CYCLES  = 1000000;
    localparam real    CLOCK_FREQ_HZ      = 25 * 10**6; // 25MHz 
    localparam real    CLOCK_PERIOD_NS    = 10**9 / CLOCK_FREQ_HZ;
    logic              clk, rst;
@@ -13,6 +13,8 @@ module sim_risc16ba();
    wire [23:0] 	      led;
    reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
+   integer            stop_addr = 'h30;
+           
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 
 			.daddr(daddr), .doe(doe), .dwe0(dwe0), .dwe1(dwe1),
@@ -73,7 +75,7 @@ module sim_risc16ba();
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
          print();
-	 if (risc16ba_inst.if_pc == 16'h001c)
+	 if (risc16ba_inst.if_pc == stop_addr)
 	   dump_and_finish();
       end
       dump_and_finish();
@@ -94,8 +96,8 @@ module sim_risc16ba();
              risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,
              risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,
              risc16ba_inst.rf_imm);
-      $write(" ex_ir:%B ex_result:%X\n",
-             risc16ba_inst.ex_ir, risc16ba_inst.ex_result);
+      $write(" ex_ir:%B ex_result:%X ex_forwarding:%X\n",
+             risc16ba_inst.ex_ir, risc16ba_inst.ex_result, risc16ba_inst.ex_forwarding);
       $write(" daddr:%X ddin:%X ddout:%X doe:%B dwe0:%B dwe1:%B\n",
              risc16ba_inst.daddr, risc16ba_inst.ddin, risc16ba_inst.ddout, 
              risc16ba_inst.doe, risc16ba_inst.dwe0, risc16ba_inst.dwe1);
@@ -110,7 +112,7 @@ module sim_risc16ba();
       for(i = 1; i< 8; i++)
         $write(" %X", risc16ba_inst.reg_file_inst.register[i]);
       $write("\n");
-      for (i = 'hc000; i < 'hc032; i += 8) begin
+      for (i = 'h7f00; i < 'h8000; i += 8) begin
          $write(" mem[%02x-%02x]:", i, i+7);
          $write(" %X %X %X %X",   mem[i],   mem[i+1], mem[i+2], mem[i+3]);
          $write(" %X %X %X %X\n", mem[i+4], mem[i+5], mem[i+6], mem[i+7]);

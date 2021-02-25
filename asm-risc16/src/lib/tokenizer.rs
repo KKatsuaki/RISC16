@@ -14,8 +14,8 @@ bin : r"#0b([0-1_]+)"
  */
 #[derive(Debug)]
 pub enum Token {
-    Comment,          // r"//[ \t.]*"
-    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etcn
+    Comment,          // r"//[ \t.]*$"
+    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etc
     SetLabel(String), // r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):"
     Label(String),    // r"(?P<label>[a-zA-Z][a-zA-Z0-9]*)"
     Reg(Register),    // r"(?P<reg>[rR][0-7])"
@@ -41,9 +41,9 @@ impl fmt::Display for Token {
 impl Token {
     pub fn parse(tok: &str) -> Result<Self> {
         let re_comment = Regex::new(r"//[ .\t]*").unwrap();
-        let re_label = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9]*)").unwrap();
+        let re_label = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9_]*)").unwrap();
         let re_register = Regex::new(r"(?P<reg>[rR][0-7])").unwrap();
-        let re_setlabel = Regex::new(r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):").unwrap();
+        let re_setlabel = Regex::new(r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9_]*):").unwrap();
         let re_data = Regex::new(
             r"#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))",
         )
@@ -100,7 +100,7 @@ impl Token {
                                                         }
                                                     }
                                                 }
-                                                
+
                                                 None => match cap4.name("dec") {
                                                     Some(dec_val) => {
                                                         match dec_val.as_str().parse::<i16>() {
@@ -124,7 +124,6 @@ impl Token {
                                 },
                             },
                         },
-
                     },
                 },
             }
@@ -138,13 +137,19 @@ impl Token {
     ) -> Result<Vec<Self>> {
         let buf = String::from_str(l).unwrap();
         let mut res = Vec::new();
-        for tok in buf.split_whitespace() {
+        for (i, tok) in buf.split_whitespace().enumerate() {
             let tmp = Self::parse(tok)?;
             match tmp {
                 Self::SetLabel(ref tmp) => {
                     let cur_addr = if *linum == 0 { 0 } else { (*linum - 1) * 2 };
                     label_map.insert(tmp.clone(), cur_addr);
                     *linum -= 1;
+                }
+                Self::Comment => {
+                    if i == 0 {
+                        *linum -= 1;
+                    };
+                    break;
                 }
                 _ => (),
             }

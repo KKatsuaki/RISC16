@@ -18,7 +18,7 @@ CHECKER  = check_$(SIM_TOP)
 PGM_FILE = $(SIM_TOP).pgm
 IMG_DUMP = $(SIM_TOP).dump
 IMG_DIR  = imfiles
-REF_DUMP = nega.dump
+REF_DUMP = hist.dump
 BACKUP_DIR = .bak.dir
 
 ###################################################################
@@ -33,7 +33,7 @@ all: smart.log $(PROJECT).asm.rpt $(PROJECT).sta.rpt $(PROJECT).rbf
 clean:
 	rm -rf *.rbf *.rpt *.chg smart.log *.htm *.eqn *.pin *.sof *.jdi \
 	*.pof db INCA_libs ncverilog.log incremental_db *~ $(CHECKER) \
-	transcript qdb 
+	transcript qdb \#*\#
 
 distclean: clean
 	rm -rf $(ASSIGNMENT_FILES) *.summary *.smsg *.dpf *.qws
@@ -108,7 +108,8 @@ $(SIM_WORK):
 
 $(IMG_DUMP): sim_s
 
-sim: $(SIM_WORK) $(SIM_TOP).mem
+sim: $(SIM_WORK) 
+	asm-risc16 $(SIM_TOP).asm -o $(SIM_TOP).mem                           
 	rm -f $(IMG_DUMP) $(PGM_FILE) 
 	vlog $(SIM_FILE) $(DESIGN).sv
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
@@ -130,7 +131,7 @@ bak : $(SIM_TOP).asm $(DESIGN).sv $(BACKUP_DIR)
 	@tar cf backup_`date --date today "+%Y%m%d"`.tar $(BACKUP_DIR)
 	@echo backup archive \`backup_`date --date today "+%Y%m%d"`\`.tar was created.
 
-push: check
+push:
 	@git reset
 	git add -A
 	git commit -m "update"

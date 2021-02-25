@@ -58,7 +58,6 @@ module risc16ba
    always_ff @(posedge clk)
      if_ir <= rst ? 16'h0 : idin;
 
-   // should BPT later
    always_ff @(posedge clk) begin
       if(rst)
 	if_pc <= 16'h0;
@@ -124,12 +123,12 @@ module risc16ba
       if(rst)
         rf_treg2 <= 16'd0;
       else if(if_ir[7:5] == ex_ir[10:8] || if_ir[7:5] == rf_ir[10:8]) begin
-         if(rf_ir[7:5] == if_ir[10:8]) begin
+         if(rf_ir[10:8] == if_ir[7:5]) begin
             if(rf_ir != `NOP && rf_ir[15] == 1'b0 && ~(rf_ir[15:11] == 5'b00000 && rf_ir[4:0] == 5'b10000))
               rf_treg2 <= ex_forwarding;
             else
               rf_treg2 <= reg_dout2;
-         end else if(reg_we)                                                                               
+         end else if(reg_we)
            rf_treg2 <= ex_result;
          else
            rf_treg2 <= reg_dout2;
@@ -191,7 +190,7 @@ module risc16ba
       else
         alu_op = (rf_ir[15:11]==5'b0)? rf_ir[3:0] : rf_ir[14:11];
 
-      doe = (rf_ir[4]&&rf_ir[0])? 1'b1:1'b0;
+      doe = (rf_ir[4] && rf_ir[0] && rf_ir[15:11] == 5'b0)? 1'b1:1'b0;
 
       if(rf_ir[15:11] == 5'b0 && rf_ir[4]) begin
          case(rf_ir[3:0])                       
@@ -348,56 +347,20 @@ module alu16
         `ALU_RIGHT_SHIFT_BIN_1: dout <= bin >> 1; 
         `ALU_AND              : dout <= ain & bin;
         `ALU_OR               : dout <= ain | bin;
-        default           : dout <= 16'bx;    
+        default               : dout <= 16'bx;    
       endcase // case (op)                    
    end // always_comb begin                   
 endmodule // alu16
 
-module BPU
-  (
-   input wire [15:0]   ex_pc,
-   input wire [15:0]   rf_pc,
-   input wire [15:0]   ex_result,
-   input wire [15:0]   dst, 
-   input wire [15:0]   if_pc, 
-   input wire 	       we, rst, clk, if_pc_we, 
-   output logic [15:0] next_pc
-   );
-
-   logic 	       bpb_dst_we, bpb_pred_we, act_b; // actually branch
-   logic [1:0] 	       pred_res, pred_prev;
-
-   BPB BPB_inst
-     (
-      .ex_tag(ex_pc[11:2]),
-      .ex_result(ex_result),
-      .if_tag(if_pc[11:2]),
-      .pred_we(bpb_pred_we),
-      .dst_we(bpb_dst_we),
-      .rst(rst),
-      .clk(clk),
-      .next_pred(pred_res),
-      .dst(next_pc),
-      .pred(pred_prev)
-      );
-
-   two_bits_predict two_bits_predict_inst
-     (
-      .pred(pred_prev),
-      .act_b(act_b),
-      .next_pred(pred_res)
-      );
-endmodule // BPU
-
 module BPB
   (
-   input wire [9:0]    ex_tag,
-   input wire [15:0]   ex_result,
-   input wire [9:0]    if_tag,
+   input wire [9:0]    tag_w,
+   input wire [9:0]    tag_r,
+   input wire [15:0]   new_dst,
+   input wire [1:0]    new_pred,
    input wire          pred_we, dst_we, rst, clk,
-   input wire [1:0]    next_pred,
    output logic [15:0] dst,
-   output logic [1:0 ] pred
+   output logic [1:0]  pred
    );
 
    reg [18:0]          buffer[1023:0];
@@ -405,32 +368,31 @@ module BPB
    
    always_ff @(posedge clk) begin
       if (rst) begin
-         for(i = 0; i < $size(buffer); i += 1) 
+         for(i = 0; i < $size(buffer); i++) 
            buffer[i] <= 18'h0;
-      end 
-      else begin
+      end else begin
 	 case({dst_we, pred_we})
-	   2'b00 : buffer[ex_tag] <= {1'b0, buffer[ex_tag][17:2], buffer[ex_tag][1:0]};
-	   2'b01 : buffer[ex_tag] <= {1'b1, buffer[ex_tag][17:2], next_pred};
-	   2'b10 : buffer[ex_tag] <= {1'b1, dst, buffer[ex_tag][1:0]};
-	   2'b11 : buffer[ex_tag] <= {1'b1, dst, next_pred};
+	   2'b00 : buffer[tag_w] <= {1'b0, buffer[tag_w][17:2], buffer[tag_w][1:0]};
+	   2'b01 : buffer[tag_w] <= {1'b1, buffer[tag_w][17:2], new_pred};
+	   2'b10 : buffer[tag_w] <= {1'b1, dst, buffer[tag_w][1:0]};
+	   2'b11 : buffer[tag_w] <= {1'b1, dst, new_pred};
 	 endcase // case ({pred_we, dst_we})
       end // else: !if(rst)
    end // always_ff @ (posedge clk)
 
-   assign dst = buffer[if_tag][17:2];
-   assign pred = buffer[if_tag][1:0];
+   assign dst  = buffer[tag_r][17:2];
+   assign pred = buffer[tag_r][1:0];
 endmodule // BPT
 
 module two_bits_predict
   (
    input wire [1:0]   pred,
-   input wire         act_b, // actually branch
+   input wire         act_t, // actually taken
    output logic [1:0] next_pred
    );
 
    always_comb begin
-      if(act_b) begin
+      if(act_t) begin
          case (pred)
            `PRED_STRONGLY_TAKEN    : next_pred <= `PRED_STRONGLY_TAKEN;
 	   `PRED_WEAKLY_TAKEN      : next_pred <= `PRED_STRONGLY_TAKEN;
