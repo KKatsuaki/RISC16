@@ -11,15 +11,20 @@ SOURCE_FILES = $(PROJECT).sv $(DESIGN).sv $(PROJECT).sdc
 ASSIGNMENT_FILES = $(PROJECT).qpf $(PROJECT).qsf
 TCL_FILE = $(PROJECT).tcl
 SIM_TOP  = sim_$(DESIGN)
-SIM_FILE = $(SIM_TOP).sv
+SIM_FILE = src/$(SIM_TOP).sv
 SIM_WORK = work
 SIM_DO   = "add wave -r /$(SIM_TOP)/$(DESIGN)_inst/* /$(SIM_TOP)/mem; run -all"
 CHECKER  = check_$(SIM_TOP)
 PGM_FILE = $(SIM_TOP).pgm
 IMG_DUMP = $(SIM_TOP).dump
 IMG_DIR  = imfiles
-REF_DUMP = hist.dump
-BACKUP_DIR = .bak.dir
+REF_DUMP = nega.dump
+ASM_CODE = src/$(SIM_TOP).asm
+
+BACKUP_TMP_DIR = $(shell date --date today +%m%d_%H%M%S)
+FNAME = $(BACKUP_TMP_DIR).tar.bak
+BACKUP_DIR = backups
+
 
 ###################################################################
 # Main Targets
@@ -106,33 +111,33 @@ asm.chg:
 $(SIM_WORK):
 	vlib work
 
-$(IMG_DUMP): sim_s
+$(IMG_DUMP): sims
 
 sim: $(SIM_WORK) 
-	asm-risc16 $(SIM_TOP).asm -o $(SIM_TOP).mem                           
+	asm-risc16 $(ASM_CODE) -o $(SIM_TOP).mem                           
 	rm -f $(IMG_DUMP) $(PGM_FILE) 
-	vlog $(SIM_FILE) $(DESIGN).sv
+	vlog $(SIM_FILE) src/$(DESIGN).sv
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
-$(SIM_TOP).mem: $(SIM_TOP).asm
-	asm-risc16 $(SIM_TOP).asm -o $(SIM_TOP).mem                           
+$(SIM_TOP).mem: $(ASM_CODE)
+	asm-risc16 $(ASM_CODE) -o $(SIM_TOP).mem
 
-sim_s: $(SIM_WORK) $(SIM_TOP).mem
+
+sims: $(SIM_WORK) $(SIM_TOP).mem
 	rm -f $(IMG_DUMP) $(PGM_FILE)                                         
-	vlog $(SIM_TOP)_s.sv $(DESIGN).sv                                         
+	vlog src/$(SIM_TOP)_s.sv src/$(DESIGN).sv                                         
 	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
-$(BACKUP_DIR): 
+$(BACKUP_DIR):
 	mkdir $(BACKUP_DIR)
 
-bak : $(SIM_TOP).asm $(DESIGN).sv $(BACKUP_DIR) 
-	@cp $(SIM_TOP).asm $(BACKUP_DIR)/$(SIM_TOP).asm
-	@cp $(DESIGN).sv   $(BACKUP_DIR)/$(DESIGN).sv
-	@tar cf backup_`date --date today "+%Y%m%d"`.tar $(BACKUP_DIR)
-	@echo backup archive \`backup_`date --date today "+%Y%m%d"`\`.tar was created.
+
+bak :  src/$(DESIGN).sv $(ASM_CODE) $(BACKUP_DIR)
+	@tar cvf $(FNAME) src/*
+	@echo backup archive $(FNAME) was created.
+	@mv $(FNAME) $(BACKUP_DIR)
 
 push:
-	@git reset
 	git add -A
 	git commit -m "update"
 	git push
