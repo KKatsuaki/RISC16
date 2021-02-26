@@ -13,7 +13,7 @@ module sim_risc16ba();
    wire [23:0] 	      led;
    reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
-   integer end_pc = 'h18;
+   integer end_pc = 'h5e;
    
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 

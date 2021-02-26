@@ -11,7 +11,7 @@ cModel Technology
 Z0 d/home/geek_731/Workspace/github/RISC16/risc16ba
 valu16
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1614356878
+Z2 !s110 1614374060
 !i10b 1
 !s100 RC`hf=DJ=^PV@eL@T8<`P2
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -22,13 +22,13 @@ R0
 Z5 w1614278422
 Z6 8src/risc16ba.sv
 Z7 Fsrc/risc16ba.sv
-!i122 40
+!i122 68
 L0 359 24
 Z8 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z9 !s108 1614356878.000000
+Z9 !s108 1614374060.000000
 !s107 src/risc16ba.sv|src/sim_risc16ba_s.sv|
 Z10 !s90 src/sim_risc16ba_s.sv|src/risc16ba.sv|
 !i113 1
@@ -46,7 +46,7 @@ R0
 R5
 R6
 R7
-!i122 40
+!i122 68
 L0 384 31
 R8
 r1
@@ -71,7 +71,7 @@ R0
 R5
 R6
 R7
-!i122 40
+!i122 68
 L0 331 27
 R8
 r1
@@ -95,7 +95,7 @@ R0
 R5
 R6
 R7
-!i122 40
+!i122 68
 L0 22 308
 R8
 r1
@@ -110,16 +110,16 @@ vsim_risc16ba
 R1
 R2
 !i10b 1
-!s100 ?l<5[zNdXKF`INP=LIzJX3
+!s100 ?M^@]UkJ^Nm90bH>kfK:F0
 R3
-I4c`^JRF2P3JZOS]XljHbI3
+IEDFR5OLz2F;LSl:GOlNcA3
 R4
 S1
 R0
-w1614354894
+w1614374059
 8src/sim_risc16ba_s.sv
 Fsrc/sim_risc16ba_s.sv
-!i122 40
+!i122 68
 L0 4 119
 R8
 r1
@@ -143,7 +143,7 @@ R0
 R5
 R6
 R7
-!i122 40
+!i122 68
 L0 416 27
 R8
 r1

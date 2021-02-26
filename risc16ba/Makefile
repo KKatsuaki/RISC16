@@ -18,9 +18,8 @@ CHECKER  = check_$(SIM_TOP)
 PGM_FILE = $(SIM_TOP).pgm
 IMG_DUMP = $(SIM_TOP).dump
 IMG_DIR  = imfiles
-REF_DUMP = nega.dump
+REF_DUMP = hist.dump
 ASM_CODE = src/$(SIM_TOP).asm
-
 BACKUP_TMP_DIR = $(shell date --date today +%m%d_%H%M%S)
 FNAME = $(BACKUP_TMP_DIR).tar.bak
 BACKUP_DIR = backups
@@ -113,15 +112,17 @@ $(SIM_WORK):
 
 $(IMG_DUMP): sims
 
-sim: $(SIM_WORK) 
-	asm-risc16 $(ASM_CODE) -o $(SIM_TOP).mem                           
-	rm -f $(IMG_DUMP) $(PGM_FILE) 
-	vlog $(SIM_FILE) src/$(DESIGN).sv
-	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
 $(SIM_TOP).mem: $(ASM_CODE)
 	asm-risc16 $(ASM_CODE) -o $(SIM_TOP).mem
 
+mem: $(ASM_CODE)
+	asm-risc16 $(ASM_CODE) -o $(SIM_TOP).mem
+
+sim: $(SIM_WORK) $(SIM_TOP).mem							      
+	rm -f $(IMG_DUMP) $(PGM_FILE) 					      
+	vlog $(SIM_FILE) src/$(DESIGN).sv				      
+	vsim -c $(SIM_TOP) -l $(SIM_TOP).log -wlf $(SIM_TOP).wlf -do $(SIM_DO)
 
 sims: $(SIM_WORK) $(SIM_TOP).mem
 	rm -f $(IMG_DUMP) $(PGM_FILE)                                         

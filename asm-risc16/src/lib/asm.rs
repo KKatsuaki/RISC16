@@ -42,10 +42,11 @@ where
             line.clear();
         }
 
-        for token in tokens.iter() {
+        for (linum, token) in tokens.iter().enumerate() {
+            //println!("{:?}", token);
             let code = match self.token_handler(&token) {
                 Ok(code) => code,
-                Err(e) => panic!("l.{} {}", self.offset / 2 + 1, e),
+                Err(e) => panic!("l.{} {}", linum + 1, e),
             };
             match &code {
                 Some(s) => {
@@ -179,7 +180,7 @@ where
                                         }
                                     }
                                 }
-                                None => return Err(AsmError::boxed("un used label")),
+                                None => return Err(AsmError::boxed("undeclared label")),
                             },
 
                             Token::Data(d) => {
@@ -220,7 +221,6 @@ where
 
     fn tokens2str(&self, tokens: &Vec<Token>) -> String {
         let mut res = String::new();
-
         for tok in tokens {
             let tmp = match &tok {
                 Token::Label(lab) => {

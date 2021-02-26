@@ -6,21 +6,16 @@ use crate::regex::Regex;
 use std::collections::HashMap;
 use std::fmt;
 use std::str::FromStr;
-/*
-data format
-dec : r"#(\-?[0-9_]+)"
-hex : r"#0x([0-9a-fA-F_]+)"
-bin : r"#0b([0-1_]+)"
- */
+
 #[derive(Debug)]
 pub enum Token {
-    Comment,          // r"//[ \t.]*$"
-    Mnemo(Mnemonic),  // one of menimonic such as NOP, MV, etc
-    SetLabel(String), // r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9]*):"
-    Label(String),    // r"(?P<label>[a-zA-Z][a-zA-Z0-9]*)"
-    Reg(Register),    // r"(?P<reg>[rR][0-7])"
-    Data(i16), // r"#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))"
-    Addr(u16), // r"(@(?P<addr>[0-9A-Fa-f]*))
+    Comment,
+    Mnemo(Mnemonic),
+    SetLabel(String),
+    Label(String),
+    Reg(Register),
+    Data(i16),
+    Addr(u16),
 }
 
 impl fmt::Display for Token {
@@ -42,13 +37,19 @@ impl Token {
     pub fn parse(tok: &str) -> Result<Self> {
         let re_comment = Regex::new(r"//[ .\t]*").unwrap();
         let re_label = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9_]*)").unwrap();
-        let re_register = Regex::new(r"(?P<reg>[rR][0-7])").unwrap();
-        let re_setlabel = Regex::new(r"^[ \t]*(?P<label>[a-zA-Z][a-zA-Z0-9_]*):").unwrap();
+        let re_register = Regex::new(r"^\(?(?P<reg>[rR][0-7])\)?").unwrap();
+        let re_setlabel = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9_]*):").unwrap();
         let re_data = Regex::new(
-            r"#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))",
+            r"\#(?P<val>0x(?P<hex>[0-9a-fA-F_]+)|0b(?P<bin>[0-1_]+)|(?P<dec>\-?([0-9_]+)))",
         )
         .unwrap();
         let re_addr = Regex::new(r"(@(?P<addr>[0-9A-Fa-f]+))").unwrap();
+
+        // removing parentheses
+        let mut _tok = tok.replace(",", "");
+        let tok = _tok.as_str();
+
+        //println!("tok: {}", tok);
 
         if re_comment.is_match(tok) {
             // check if comment

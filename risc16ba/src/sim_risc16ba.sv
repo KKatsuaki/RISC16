@@ -13,7 +13,7 @@ module sim_risc16ba();
    wire [23:0] 	      led;
    reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
-   integer            stop_addr = 'h1c;
+   integer            stop_addr = 'h38;
            
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 
@@ -75,7 +75,7 @@ module sim_risc16ba();
        #(CLOCK_PERIOD_NS / 2.0)
          clk <= 1'b0;
          print();
-         //show_mem();
+         show_mem();
 	 if (risc16ba_inst.if_pc == stop_addr)
 	   dump_and_finish();
       end
