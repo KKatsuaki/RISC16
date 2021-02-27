@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for risc16ba_top
-Sat Feb 27 12:44:31 2021
+Sat Feb 27 13:14:53 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -86,12 +86,11 @@ applicable agreement for further details.
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ; < 0.1%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -100,7 +99,7 @@ applicable agreement for further details.
 +------------------+--------+--------------------------+
 ; SDC File Path    ; Status ; Read at                  ;
 +------------------+--------+--------------------------+
-; risc16ba_top.sdc ; OK     ; Sat Feb 27 12:44:30 2021 ;
+; risc16ba_top.sdc ; OK     ; Sat Feb 27 13:14:52 2021 ;
 +------------------+--------+--------------------------+
 
 
@@ -1594,7 +1593,7 @@ Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sat Feb 27 12:44:29 2021
+    Info: Processing started: Sat Feb 27 13:14:51 2021
 Info: Command: quartus_sta --do_report_timing risc16ba_top
 Info: qsta_default_script.tcl version: #1
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
@@ -1962,8 +1961,8 @@ Info (332113): Path #1: slack is 2.417
 Info (332101): Design is fully constrained for setup requirements
 Info (332101): Design is fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 614 megabytes
-    Info: Processing ended: Sat Feb 27 12:44:31 2021
+    Info: Peak virtual memory: 612 megabytes
+    Info: Processing ended: Sat Feb 27 13:14:53 2021
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 

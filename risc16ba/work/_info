@@ -6,88 +6,111 @@ Z0 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
 valu16
 Z1 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
 !i10b 1
-Z2 !s100 ?I=5MJm_FALg:b29gmnY52
-Z3 IXX]>l7D_4Sbae]ZhDfZn10
-Z4 Vd6eEEC>JB>`o1OT]UBGQR0
-Z5 !s105 risc16ba_sv_unit
+!s100 ^^F_HN;E_Gco3UCd?OZ^30
+IcHcai1A`5P?N>V1H4F5]R2
+Z2 Vd6eEEC>JB>`o1OT]UBGQR0
+Z3 !s105 risc16ba_sv_unit
 S1
-Z6 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
-Z7 w1614397351
-Z8 8src/risc16ba.sv
-Z9 Fsrc/risc16ba.sv
-Z10 L0 342
-Z11 OV;L;10.1d;51
+Z4 d/home/mother/b318015/Workspace/Exp4/RISC16/risc16ba
+Z5 w1614400901
+Z6 8src/risc16ba.sv
+Z7 Fsrc/risc16ba.sv
+L0 341
+Z8 OV;L;10.1d;51
 r1
 !s85 0
 31
-Z12 !s108 1614397410.285913
-Z13 !s107 src/risc16ba.sv|src/sim_risc16ba_s.sv|
-Z14 !s90 src/sim_risc16ba_s.sv|src/risc16ba.sv|
+Z9 !s108 1614400903.065469
+Z10 !s107 src/risc16ba.sv|src/sim_risc16ba_s.sv|
+Z11 !s90 src/sim_risc16ba_s.sv|src/risc16ba.sv|
 !s101 -O0
 o-O0
+vBTB
+R1
+Z12 !s100 n:z<R^GTcb0n@9aPhCJK62
+Z13 Ig5QISQ^O5YLQ31H5Fh>l<0
+Z14 VZG^FVeeokeVYzkP]e16;]0
+R3
+S1
+R4
+Z15 w1614400549
+R6
+R7
+Z16 L0 394
+R8
+r1
+31
+Z17 !s108 1614400551.125847
+Z18 !s107 src/risc16ba.sv|src/sim_risc16ba_s.sv|
+R11
+o-O0
+Z19 n@b@t@b
+!i10b 1
+!s85 0
+!s101 -O0
 vreg_file
 R1
 !i10b 1
-Z15 !s100 5`[1>5k34l84VVkQfILB03
-Z16 I9:I[`Sz9oR6k9d:M6]l161
-Z17 V]dOlhBM^R4i;CYM]kUSZc3
-R5
+!s100 =::Z=J`J`T7d40]koc1h]2
+If`LW]Pc]_KEPU]IQZoG0K2
+Z20 V]dOlhBM^R4i;CYM]kUSZc3
+R3
 S1
+R4
+R5
 R6
 R7
+L0 276
 R8
-R9
-Z18 L0 277
-R11
 r1
 !s85 0
 31
-R12
-R13
-R14
+R9
+R10
+R11
 !s101 -O0
 o-O0
 vrisc16ba
 R1
 !i10b 1
-Z19 !s100 2m:[83EU=i?L_j2[^:z[a0
-Z20 IAVnLlUU729FlSSW_:16:51
+!s100 1h>1ACo>7Wb4W9E9=4lV[2
+IHl839C8`PBbLCSZ?M9D5m0
 Z21 VFSlf4UUCYhoCad5AOXogm3
-R5
+R3
 S1
+R4
+R5
 R6
 R7
-R8
-R9
 L0 19
-R11
+R8
 r1
 !s85 0
 31
-R12
-R13
-R14
+R9
+R10
+R11
 !s101 -O0
 o-O0
 vsim_risc16ba
 R1
 !i10b 1
-!s100 0Y=EzIQM7n>a]J6o1^Nd@0
-I60djARaiVK`48gffV1YOd3
-Z22 V<I`L5`2^b6SPF0HKOW1f82
-Z23 !s105 sim_risc16ba_s_sv_unit
+Z22 !s100 0Y=EzIQM7n>a]J6o1^Nd@0
+Z23 I60djARaiVK`48gffV1YOd3
+Z24 V<I`L5`2^b6SPF0HKOW1f82
+Z25 !s105 sim_risc16ba_s_sv_unit
 S1
-R6
-w1614397407
-Z24 8src/sim_risc16ba_s.sv
-Z25 Fsrc/sim_risc16ba_s.sv
+R4
+Z26 w1614397407
+Z27 8src/sim_risc16ba_s.sv
+Z28 Fsrc/sim_risc16ba_s.sv
 L0 4
-R11
+R8
 r1
 !s85 0
 31
-R12
-R13
-R14
+R9
+R10
+R11
 !s101 -O0
 o-O0

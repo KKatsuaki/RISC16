@@ -33,7 +33,7 @@ module risc16ba
    // objects for if stage
    reg [15:0]          if_pc, if_ir;
    logic 	       if_pc_we;
-
+   
    // register for rf stage
    reg [15:0]          rf_ir, rf_imm, rf_treg1, rf_treg2;
    logic [15:0]        rf_imm_w, rf_treg1_w;
@@ -50,7 +50,6 @@ module risc16ba
    logic               reg_we;
    
    // IF stage
-
    // if_ir
    always_ff @(posedge clk)
      if_ir <= (if_pc_we | rst) ? `NOP : idin;
@@ -58,8 +57,8 @@ module risc16ba
    always_ff @(posedge clk) begin
       if(rst)
 	if_pc <= 16'h0;
-      else
-	if_pc <= if_pc_we? if_pc + rf_imm_w : if_pc + 16'h2;
+      else 
+        if_pc <= if_pc_we?rf_imm_w + if_pc: if_pc+16'h2;
    end
 
    assign iaddr = if_pc;
