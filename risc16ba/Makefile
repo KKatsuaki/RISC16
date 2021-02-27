@@ -149,3 +149,7 @@ check: $(CHECKER) $(IMG_DUMP)
 
 $(CHECKER): $(CHECKER).c
 	gcc -o $@ -Wall -O2 $< -lm
+
+spec:risc16ba_top.sta.rpt risc16ba_top.map.summary
+	@cat risc16ba_top.sta.rpt | grep processor_clk | grep MHz | grep -v pll
+	@cat risc16ba_top.map.summary | grep logic

@@ -2,7 +2,7 @@
 `default_nettype none
 
 module sim_risc16ba();
-   localparam integer SIMULATION_CYCLES  = 10000000;
+   localparam integer SIMULATION_CYCLES  = 2000000;
    localparam real    CLOCK_FREQ_HZ      = 25 * 10**6; // 25MHz 
    localparam real    CLOCK_PERIOD_NS    = 10**9 / CLOCK_FREQ_HZ;
    logic              clk, rst;
@@ -13,7 +13,7 @@ module sim_risc16ba();
    wire [23:0] 	      led;
    reg [7:0] 	      led_0, led_1, led_2;
    integer            i;
-   integer end_pc = 'h5e;
+   integer end_pc = 'h62;
    
    
    risc16ba risc16ba_inst(.clk(clk), .rst(rst), .ddin(ddin), .ddout(ddout), 
@@ -88,12 +88,12 @@ module sim_risc16ba();
       rst <= 1'b0;      
    end
    task print();                                                             
-      integer i;                                                             
+
       $write("==== clock: %1d ====\n", $rtoi($time / CLOCK_PERIOD_NS) - 1);  
       $write(" if_pc:%X if_ir:%B\n",                                         
              risc16ba_inst.if_pc, risc16ba_inst.if_ir);                      
-      $write(" rf_pc:%X rf_ir:%B rf_treg1:%X rf_treg2:%X rf_immediate:%X\n", 
-             risc16ba_inst.rf_pc, risc16ba_inst.rf_ir,                       
+      $write(" rf_ir:%B rf_treg1:%X rf_treg2:%X rf_immediate:%X\n",
+              risc16ba_inst.rf_ir,                       
              risc16ba_inst.rf_treg1, risc16ba_inst.rf_treg2,                 
              risc16ba_inst.rf_imm);                                          
       $write(" ex_ir:%B ex_result:%X\n",                                     
@@ -108,17 +108,36 @@ module sim_risc16ba();
              risc16ba_inst.alu_op, risc16ba_inst.reg_we,                     
              risc16ba_inst.if_pc_we);                                        
       $write(" led:%X\n", led);                                              
-      $write(" regs: %X", risc16ba_inst.reg_file_inst.register[0]);          
-      for(i = 1; i< 8; i++)                                                  
-        $write(" %X", risc16ba_inst.reg_file_inst.register[i]);              
+
       $write("\n");                                                          
+
+      mem_show();
+
+      $write("\n");                                                          
+   endtask // print
+
+   task mem_show();
+      integer i;                                                             
       for (i = 'hc000; i < 'hc032; i += 8) begin                             
          $write(" mem[%02x-%02x]:", i, i+7);                                 
          $write(" %X %X %X %X",   mem[i],   mem[i+1], mem[i+2], mem[i+3]);   
          $write(" %X %X %X %X\n", mem[i+4], mem[i+5], mem[i+6], mem[i+7]);   
       end                                                                    
-      $write("\n");                                                          
-   endtask
+   endtask // mem_show
+
+   task register_show();
+      // integer i;
+      // for(i = 1; i< 8; i++)                                                  
+      //   $write(" %X", risc16ba_inst.reg_file_inst.register[i]);
+      $write(" regs: %X", risc16ba_inst.reg_file_inst.register0);
+      $write(" %X", risc16ba_inst.reg_file_inst.register1);
+      $write(" %X", risc16ba_inst.reg_file_inst.register2);
+      $write(" %X", risc16ba_inst.reg_file_inst.register3);
+      $write(" %X", risc16ba_inst.reg_file_inst.register4);
+      $write(" %X", risc16ba_inst.reg_file_inst.register5);
+      $write(" %X", risc16ba_inst.reg_file_inst.register6);
+      $write(" %X\n", risc16ba_inst.reg_file_inst.register7);
+   endtask // register_show
 endmodule
 
 `default_nettype wire
