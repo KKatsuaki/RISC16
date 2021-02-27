@@ -1,5 +1,5 @@
 Analysis & Synthesis report for risc16ba_top
-Sat Feb 27 13:14:39 2021
+Sat Feb 27 13:43:13 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -32,17 +32,16 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Ver
  24. Parameter Settings for User Entity Instance: sync_diff:sync_diff_inst_key0
  25. Parameter Settings for User Entity Instance: led_controller:led_controoler_inst
  26. altpll Parameter Settings by Entity Instance
- 27. Port Connectivity Checks: "risc16ba:risc16ba_inst|BTB:BTB_inst"
- 28. Port Connectivity Checks: "risc16ba:risc16ba_inst"
- 29. Port Connectivity Checks: "debouncer:debouncer_gen[7].debouncer_inst"
- 30. Port Connectivity Checks: "debouncer:debouncer_gen[6].debouncer_inst"
- 31. Port Connectivity Checks: "debouncer:debouncer_gen[5].debouncer_inst"
- 32. Port Connectivity Checks: "debouncer:debouncer_gen[4].debouncer_inst"
- 33. Port Connectivity Checks: "debouncer:debouncer_gen[3].debouncer_inst"
- 34. Port Connectivity Checks: "debouncer:debouncer_gen[2].debouncer_inst"
- 35. Port Connectivity Checks: "debouncer:debouncer_gen[1].debouncer_inst"
- 36. Elapsed Time Per Partition
- 37. Analysis & Synthesis Messages
+ 27. Port Connectivity Checks: "risc16ba:risc16ba_inst"
+ 28. Port Connectivity Checks: "debouncer:debouncer_gen[7].debouncer_inst"
+ 29. Port Connectivity Checks: "debouncer:debouncer_gen[6].debouncer_inst"
+ 30. Port Connectivity Checks: "debouncer:debouncer_gen[5].debouncer_inst"
+ 31. Port Connectivity Checks: "debouncer:debouncer_gen[4].debouncer_inst"
+ 32. Port Connectivity Checks: "debouncer:debouncer_gen[3].debouncer_inst"
+ 33. Port Connectivity Checks: "debouncer:debouncer_gen[2].debouncer_inst"
+ 34. Port Connectivity Checks: "debouncer:debouncer_gen[1].debouncer_inst"
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
 
 
 
@@ -68,7 +67,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                   ;
 +-----------------------------+--------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Feb 27 13:14:39 2021            ;
+; Analysis & Synthesis Status ; Successful - Sat Feb 27 13:43:13 2021            ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name               ; risc16ba_top                                     ;
 ; Top-level Entity Name       ; risc16ba_top                                     ;
@@ -883,17 +882,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+----------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "risc16ba:risc16ba_inst|BTB:BTB_inst"                                                                       ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                                                  ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; taken  ; Input  ; Info     ; Stuck at VCC                                                                                             ;
-; pred   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
-; target ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
 +--------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "risc16ba:risc16ba_inst"                                                                 ;
 +----------+--------+----------+-------------------------------------------------------------------------------------+
@@ -994,7 +982,7 @@ Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: programming logic devices manufactured by Altera and sold by 
     Info: Altera or its authorized distributors.  Please refer to the 
     Info: applicable agreement for further details.
-    Info: Processing started: Sat Feb 27 13:14:30 2021
+    Info: Processing started: Sat Feb 27 13:43:08 2021
 Info: Command: quartus_map --family=Cyclone risc16ba_top
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
 Info (12021): Found 7 design units, including 7 entities, in source file risc16ba_top.sv
@@ -1005,12 +993,10 @@ Info (12021): Found 7 design units, including 7 entities, in source file risc16b
     Info (12023): Found entity 5: led_controller
     Info (12023): Found entity 6: usb_if
     Info (12023): Found entity 7: clk_generator
-Warning (10275): Verilog HDL Module Instantiation warning at risc16ba.sv(64): ignored dangling comma in List of Port Connections
-Info (12021): Found 4 design units, including 4 entities, in source file risc16ba.sv
+Info (12021): Found 3 design units, including 3 entities, in source file risc16ba.sv
     Info (12023): Found entity 1: risc16ba
     Info (12023): Found entity 2: reg_file
     Info (12023): Found entity 3: alu16
-    Info (12023): Found entity 4: BTB
 Info (12127): Elaborating entity "risc16ba_top" for the top level hierarchy
 Info (12128): Elaborating entity "clk_generator" for hierarchy "clk_generator:clk_generator_inst"
 Info (12128): Elaborating entity "altpll" for hierarchy "clk_generator:clk_generator_inst|altpll:altpll_component"
@@ -1077,11 +1063,9 @@ Info (12128): Elaborating entity "double_ff" for hierarchy "double_ff:double_ff_
 Info (12128): Elaborating entity "debouncer" for hierarchy "debouncer:debouncer_gen[0].debouncer_inst"
 Info (12128): Elaborating entity "sync_diff" for hierarchy "sync_diff:sync_diff_inst_key0"
 Info (12128): Elaborating entity "risc16ba" for hierarchy "risc16ba:risc16ba_inst"
-Info (12128): Elaborating entity "BTB" for hierarchy "risc16ba:risc16ba_inst|BTB:BTB_inst"
 Info (12128): Elaborating entity "reg_file" for hierarchy "risc16ba:risc16ba_inst|reg_file:reg_file_inst"
 Info (12128): Elaborating entity "alu16" for hierarchy "risc16ba:risc16ba_inst|alu16:alu16_inst"
 Info (12128): Elaborating entity "led_controller" for hierarchy "led_controller:led_controoler_inst"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "seg_db[7]" is stuck at GND
     Warning (13410): Pin "usb_n_ack64" is stuck at GND
@@ -1112,10 +1096,10 @@ Info (21057): Implemented 1245 device resources after synthesis - the final reso
     Info (21060): Implemented 40 bidirectional pins
     Info (21061): Implemented 1118 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 838 megabytes
-    Info: Processing ended: Sat Feb 27 13:14:39 2021
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:07
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 722 megabytes
+    Info: Processing ended: Sat Feb 27 13:43:13 2021
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:03
 
 

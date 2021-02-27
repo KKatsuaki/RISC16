@@ -1,5 +1,5 @@
 Flow report for risc16ba_top
-Sat Feb 27 13:14:53 2021
+Sat Feb 27 13:43:27 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------+--------------------------------------------------+
-; Flow Status               ; Successful - Sat Feb 27 13:14:49 2021            ;
+; Flow Status               ; Successful - Sat Feb 27 13:43:23 2021            ;
 ; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name             ; risc16ba_top                                     ;
 ; Top-level Entity Name     ; risc16ba_top                                     ;
@@ -60,7 +60,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/27/2021 13:14:31 ;
+; Start date & time ; 02/27/2021 13:43:09 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; risc16ba_top        ;
 +-------------------+---------------------+
@@ -71,7 +71,7 @@ applicable agreement for further details.
 +-----------------------+--------------------------------+---------------+-------------+------------+
 ; Assignment Name       ; Value                          ; Default Value ; Entity Name ; Section Id ;
 +-----------------------+--------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID ; 22759552095759.161439927104511 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID ; 22759552095759.161440098906652 ; --            ; --          ; --         ;
 +-----------------------+--------------------------------+---------------+-------------+------------+
 
 
@@ -80,10 +80,10 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 827 MB              ; 00:00:07                           ;
+; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 674 MB              ; 00:00:03                           ;
 ; Fitter                    ; 00:00:09     ; 1.2                     ; 814 MB              ; 00:00:10                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 612 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:19     ; --                      ; --                  ; 00:00:18                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 614 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:15     ; --                      ; --                  ; 00:00:14                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

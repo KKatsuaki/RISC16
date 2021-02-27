@@ -1,5 +1,5 @@
 Fitter report for risc16ba_top
-Sat Feb 27 13:14:49 2021
+Sat Feb 27 13:43:23 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -65,7 +65,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------+--------------------------------------------------+
-; Fitter Status             ; Successful - Sat Feb 27 13:14:49 2021            ;
+; Fitter Status             ; Successful - Sat Feb 27 13:43:23 2021            ;
 ; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name             ; risc16ba_top                                     ;
 ; Top-level Entity Name     ; risc16ba_top                                     ;
@@ -1473,10 +1473,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; debouncer:debouncer_gen[0].debouncer_inst|Add0~103            ; 5       ;
 ; debouncer:debouncer_gen[0].debouncer_inst|Add0~79             ; 5       ;
 ; debouncer:debouncer_gen[0].debouncer_inst|Add0~56             ; 5       ;
+; risc16ba:risc16ba_inst|Add0~32                                ; 5       ;
 ; risc16ba:risc16ba_inst|Add1~32                                ; 5       ;
-; risc16ba:risc16ba_inst|Add2~32                                ; 5       ;
+; risc16ba:risc16ba_inst|Add0~7                                 ; 5       ;
 ; risc16ba:risc16ba_inst|Add1~7                                 ; 5       ;
-; risc16ba:risc16ba_inst|Add2~7                                 ; 5       ;
 ; risc16ba:risc16ba_inst|alu16:alu16_inst|Add0~32               ; 5       ;
 ; risc16ba:risc16ba_inst|alu16:alu16_inst|Add1~32               ; 5       ;
 ; risc16ba:risc16ba_inst|alu16:alu16_inst|Add0~7                ; 5       ;
@@ -1582,8 +1582,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; risc16ba:risc16ba_inst|rf_ir[12]                              ; 3       ;
 ; risc16ba:risc16ba_inst|rf_ir[11]                              ; 3       ;
 ; risc16ba:risc16ba_inst|Decoder0~0                             ; 3       ;
+; risc16ba:risc16ba_inst|Add0~57                                ; 3       ;
 ; risc16ba:risc16ba_inst|Add1~57                                ; 3       ;
-; risc16ba:risc16ba_inst|Add2~57                                ; 3       ;
 ; risc16ba:risc16ba_inst|alu16:alu16_inst|Add0~57               ; 3       ;
 ; risc16ba:risc16ba_inst|alu16:alu16_inst|Add1~57               ; 3       ;
 ; led_controller:led_controoler_inst|count[12]~27               ; 3       ;
@@ -2544,7 +2544,7 @@ Info (170195): Router estimated average interconnect usage is 2% of the availabl
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.21 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.11 seconds.
 Info (186079): Completed Fixed Delay Chain Operation
 Info (306004): Started post-fitting delay annotation
 Info (306005): Delay annotation completed successfully
@@ -2552,7 +2552,7 @@ Info (186079): Completed Auto Delay Chain Operation
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 814 megabytes
-    Info: Processing ended: Sat Feb 27 13:14:50 2021
+    Info: Processing ended: Sat Feb 27 13:43:24 2021
     Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:11
 
