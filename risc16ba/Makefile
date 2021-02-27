@@ -133,7 +133,9 @@ $(BACKUP_DIR):
 	mkdir $(BACKUP_DIR)
 
 
-bak :  src/$(DESIGN).sv $(ASM_CODE) $(BACKUP_DIR)
+bak :  src/$(DESIGN).sv $(ASM_CODE) $(BACKUP_DIR) risc16ba_top.sta.rpt risc16ba_top.map.summary
+	@cp risc16ba_top.sta.rpt ./src
+	@cp risc16ba_top.map.summary ./src
 	@tar cvf $(FNAME) src/*
 	@echo backup archive $(FNAME) was created.
 	@mv $(FNAME) $(BACKUP_DIR)

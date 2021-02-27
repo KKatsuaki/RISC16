@@ -1,1 +1,0 @@
-../asms/test.asm
