@@ -35,7 +35,7 @@ impl fmt::Display for Token {
 
 impl Token {
     pub fn parse(tok: &str) -> Result<Self> {
-        let re_comment = Regex::new(r"//[ .\t]*").unwrap();
+        let re_comment = Regex::new(r"(//|;;)[ .\t]*").unwrap();
         let re_label = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9_]*)").unwrap();
         let re_register = Regex::new(r"^\(?(?P<reg>[rR][0-7])\)?").unwrap();
         let re_setlabel = Regex::new(r"^(?P<label>[a-zA-Z][a-zA-Z0-9_]*):").unwrap();

@@ -29,6 +29,10 @@ pub enum Mnemonic {
     JMP,
     SBU,
     LBU,
+    SRB,
+    SLB,
+    SRHB,
+    LL,
 }
 
 impl FromStr for Mnemonic {
@@ -61,6 +65,10 @@ impl FromStr for Mnemonic {
             "BMI" => Ok(Self::BMI),
             "BPL" => Ok(Self::BPL),
             "JMP" => Ok(Self::JMP),
+            "SLB" => Ok(Self::SLB),
+            "SRB" => Ok(Self::SRB),
+            "SRHB" => Ok(Self::SRHB),
+            "LL" => Ok(Self::LL),                        
             _ => Err(AsmError::new("invalid token")),
         }
     }
@@ -75,10 +83,14 @@ impl Mnemonic {
             Self::XOR => 0b00000_000_000_00011,
             Self::ADD => 0b00000_000_000_00100,
             Self::SUB => 0b00000_000_000_00101,
+            Self::SLB => 0b00000_000_000_00110,
+            Self::SRB => 0b00000_000_000_00111,
             Self::SL => 0b00000_000_000_01000,
             Self::SR => 0b00000_000_000_01001,
             Self::AND => 0b00000_000_000_01010,
             Self::OR => 0b00000_000_000_01011,
+            Self::SRHB => 0b00000_000_000_01100,
+            Self::LL => 0b00000_000_000_01101,
             Self::ST => 0b00000_000_000_10000,
             Self::SBU => 0b00000_000_000_10010,
             Self::LD => 0b00000_000_000_10001,
