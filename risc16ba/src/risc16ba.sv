@@ -39,7 +39,8 @@ module risc16ba
    logic [15:0]        rf_imm_w, rf_treg1_w;
    
    // registor for ex stage
-   reg [15:0]          ex_ir, ex_result, ex_forwarding;
+   reg [15:0] 	       ex_ir, ex_result;
+   logic [15:0]        ex_forwarding;
 
    // wire for alu
    logic [15:0]        alu_ain, alu_bin, alu_dout;
