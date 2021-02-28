@@ -1,0 +1,30 @@
+# vsim -c sim_risc16ba -l sim_risc16ba.log -wlf sim_risc16ba.wlf -do "add wave -r /sim_risc16ba/risc16ba_inst/* /sim_risc16ba/mem; run -all" 
+# Start time: 21:11:19 on Feb 28,2021
+# Loading sv_std.std
+# Loading work.sim_risc16ba
+# Loading work.risc16ba
+# Loading work.reg_file
+# Loading work.alu16
+# add wave -r /sim_risc16ba/risc16ba_inst/* /sim_risc16ba/mem
+# (vsim-4077) Logging very large object: /sim_risc16ba/mem
+#  run -all
+# ==== clock: 174233 ====
+#  if_pc:0062 if_ir:1100011111111110
+#  rf_ir:1000011111100010 rf_treg1:0000 rf_treg2:0000 rf_immediate:ffe2
+#  ex_ir:0101011111111111 ex_result:0000
+#  daddr:0000 ddin:xxxx ddout:xxxx doe:0 dwe0:0 dwe1:0
+#  iaddr:0062 idin:xxxx ioe:1
+#  alu_ain:0000 alu_bin:ffe2 alu_op:0100 reg_file_we:1 if_pc_we:1 led:000000
+# 
+#  mem[c000-c007]: 00 00 00 00 00 00 00 00
+#  mem[c008-c00f]: 00 00 00 00 00 00 00 00
+#  mem[c010-c017]: 00 00 00 00 00 00 00 00
+#  mem[c018-c01f]: 00 00 00 00 00 00 00 00
+#  mem[c020-c027]: 00 00 00 00 00 00 00 00
+#  mem[c028-c02f]: 00 00 00 00 00 00 00 00
+#  mem[c030-c037]: 00 00 00 00 00 00 00 00
+# 
+# ** Note: $finish    : src/sim_risc16ba_s.sv(67)
+#    Time: 6969360 ns  Iteration: 0  Instance: /sim_risc16ba
+# End time: 21:11:22 on Feb 28,2021, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0
